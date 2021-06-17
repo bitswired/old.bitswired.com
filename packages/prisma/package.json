@@ -1,0 +1,14 @@
+{
+  "name": "@bitswired-web/prisma",
+  "main": "dist/index.js",
+  "scripts": {
+    "hook:check": "echo PASS",
+    "hook:fix": "echo PASS"
+  },
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@prisma/client": "*",
+    "@types/node": "*",
+    "prisma": "*"
+  }
+}
