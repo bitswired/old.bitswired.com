@@ -1,0 +1,62 @@
+import { BlogPost } from '@bitswired-web/graphql';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Link from 'next/link';
+import React from 'react';
+
+interface BlogPostCardProps {
+  blogPost: BlogPost;
+}
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345
+  },
+  media: {
+    height: 140
+  }
+});
+
+export function BlogPostCard({ blogPost }: BlogPostCardProps) {
+  const classes = useStyles();
+
+  console.log(blogPost);
+
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/contemplative-reptile.jpg"
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {blogPost.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Link href={`/blog/${blogPost.id}`}>
+          <Button size="small" color="primary">
+            Edit
+          </Button>
+        </Link>
+
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
+  );
+}
