@@ -1,28 +1,28 @@
-import { Box, Text, useStyleConfig } from "@chakra-ui/react";
-import React from "react";
+import { Box, Text, useStyleConfig } from '@chakra-ui/react';
+import React from 'react';
 
 export interface SublineProps {
-  size: "sm" | "md" | "lg";
+  size: 'sm' | 'md' | 'lg';
 }
 
-export default function ({ size }: SublineProps) {
-  const styles = useStyleConfig("HomeSubline", { size });
+export default function Subline({ size }: SublineProps): JSX.Element {
+  const styles = useStyleConfig('HomeSubline', { size });
 
   return (
     <Box __css={styles}>
       <Box>
-        Community driven content, in-depth{" "}
+        Community driven content, in-depth{' '}
         <Box as="span" color="primary">
           tutorials
         </Box>
       </Box>
       <Text>
-        quick{" "}
+        quick{' '}
         <Box as="span" color="primary">
-          {" "}
-          tips{" "}
-        </Box>{" "}
-        and fortnightly{" "}
+          {' '}
+          tips{' '}
+        </Box>{' '}
+        and fortnightly{' '}
         <Box as="span" color="primary">
           newsletter
         </Box>

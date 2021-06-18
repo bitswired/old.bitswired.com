@@ -1,43 +1,44 @@
-import { action } from "@storybook/addon-actions";
-import { Story } from "@storybook/react";
-import Header, { HeaderProps } from ".";
+import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react';
+
+import Header, { HeaderProps } from '.';
 
 export default {
-  title: "Header",
+  title: 'Header',
   component: Header,
-  parameters: { actions: { argTypesRegex: "^on.*" } },
+  parameters: { actions: { argTypesRegex: '^on.*' } },
   argTypes: {
     isGoingDown: {
       control: {
-        type: "boolean",
-      },
+        type: 'boolean'
+      }
     },
     lock: {
       control: {
-        type: "boolean",
-      },
+        type: 'boolean'
+      }
     },
     isSliderOpen: {
       control: {
-        type: "boolean",
-      },
+        type: 'boolean'
+      }
     },
     onSliderOpen: {},
-    onSliderClose: {},
-  },
+    onSliderClose: {}
+  }
 };
 
 const actionsData = {
-  onSliderOpen: action("open-slider"),
-  onSliderClose: action("close-slider"),
+  onSliderOpen: action('open-slider'),
+  onSliderClose: action('close-slider')
 };
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />;
+const Template: Story<HeaderProps> = (arguments_) => <Header {...arguments_} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
   isGoingDown: false,
   lock: true,
   isSliderOpen: false,
-  ...actionsData,
+  ...actionsData
 };

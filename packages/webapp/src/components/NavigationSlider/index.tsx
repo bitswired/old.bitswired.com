@@ -1,15 +1,8 @@
-import {
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import { routes } from "config";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay, Stack, Text } from '@chakra-ui/react';
+import { routes } from 'config';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 interface NavigationItemProps {
   route: Route;
@@ -20,19 +13,18 @@ function NavigationMobileItem({ route, isActive }: NavigationItemProps) {
   return (
     <Text
       mx={4}
-      color={isActive ? "secondary" : "white"}
+      color={isActive ? 'secondary' : 'white'}
       textTransform="uppercase"
       _hover={
         isActive
           ? {}
           : {
-              color: "secondary",
-              transform: "scale(1.2)",
+              color: 'secondary',
+              transform: 'scale(1.2)'
             }
       }
       transition="all 0.3s"
-      cursor="pointer"
-    >
+      cursor="pointer">
       <Link href={route.path}>{route.name}</Link>
     </Text>
   );
@@ -43,11 +35,14 @@ export interface NavigationSliderProps {
   onSliderClose: () => void;
 }
 
-export default function ({ isOpen, onSliderClose }: NavigationSliderProps) {
+export default function NavigationSlider({
+  isOpen,
+  onSliderClose
+}: NavigationSliderProps): JSX.Element {
   const { pathname } = useRouter();
 
   const baseMatch = pathname.match(/(\/\w*)/);
-  if (baseMatch === null) throw Error("Invalid pathname");
+  if (baseMatch === null) throw new Error('Invalid pathname');
   const base = baseMatch[1];
 
   return (
@@ -57,11 +52,10 @@ export default function ({ isOpen, onSliderClose }: NavigationSliderProps) {
         <DrawerContent
           bgColor="rgba(0,0,0,0.5)"
           style={{
-            backdropFilter: "blur(20px) saturate(180%)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)'
           }}
-          onClick={onSliderClose}
-        >
+          onClick={onSliderClose}>
           <DrawerBody>
             <Stack
               m="auto"
@@ -69,14 +63,9 @@ export default function ({ isOpen, onSliderClose }: NavigationSliderProps) {
               textAlign="center"
               mt="32"
               align="center"
-              justify="center"
-            >
+              justify="center">
               {routes.map((x) => (
-                <NavigationMobileItem
-                  key={x.name}
-                  route={x}
-                  isActive={base === x.path}
-                />
+                <NavigationMobileItem key={x.name} route={x} isActive={base === x.path} />
               ))}
             </Stack>
           </DrawerBody>

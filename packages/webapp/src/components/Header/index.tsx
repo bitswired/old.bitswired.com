@@ -1,22 +1,16 @@
-import { Box, Flex, Spacer } from "@chakra-ui/react";
-import Logo from "components/Logo";
-import Navigation from "components/Navigation";
-import NavigationSlider from "components/NavigationSlider";
-import { FaBars } from "react-icons/fa";
+import { Box, Flex, Spacer } from '@chakra-ui/react';
+import Logo from 'components/Logo';
+import Navigation from 'components/Navigation';
+import NavigationSlider from 'components/NavigationSlider';
+import { FaBars } from 'react-icons/fa';
 
 interface MenuIconResponsiveWrapperProps {
   onSliderOpen: () => void;
 }
 
-function MenuIconResponsiveWrapper({
-  onSliderOpen,
-}: MenuIconResponsiveWrapperProps) {
+function MenuIconResponsiveWrapper({ onSliderOpen }: MenuIconResponsiveWrapperProps) {
   return (
-    <Box
-      display={["block", "none", "none"]}
-      cursor="pointer"
-      onClick={onSliderOpen}
-    >
+    <Box display={['block', 'none', 'none']} cursor="pointer" onClick={onSliderOpen}>
       <FaBars />
     </Box>
   );
@@ -24,7 +18,7 @@ function MenuIconResponsiveWrapper({
 
 function NavigationResponsiveWrapper() {
   return (
-    <Box display={["none", "none", "flex"]}>
+    <Box display={['none', 'none', 'flex']}>
       <Navigation />
     </Box>
   );
@@ -43,8 +37,8 @@ export default function Header({
   lock,
   isSliderOpen,
   onSliderOpen,
-  onSliderClose,
-}: HeaderProps) {
+  onSliderClose
+}: HeaderProps): JSX.Element {
   return (
     <>
       <Flex
@@ -59,14 +53,13 @@ export default function Header({
         justify="space-between"
         align="center"
         px={8}
-        bg={lock ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0)"}
+        bg={lock ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0)'}
         style={{
-          backdropFilter: lock ? "blur(10px) saturate(180%)" : "none",
-          WebkitBackdropFilter: lock ? "blur(10px) saturate(180%)" : "none",
+          backdropFilter: lock ? 'blur(10px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: lock ? 'blur(10px) saturate(180%)' : 'none'
         }}
         transition="color 0.5s, top 0.5s"
-        shadow={lock ? "dark-lg" : "none"}
-      >
+        shadow={lock ? 'dark-lg' : 'none'}>
         <Logo /> <Spacer /> <NavigationResponsiveWrapper /> <Spacer />
         <MenuIconResponsiveWrapper onSliderOpen={onSliderOpen} />
       </Flex>

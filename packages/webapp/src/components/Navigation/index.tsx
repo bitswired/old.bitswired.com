@@ -1,8 +1,8 @@
-import { Flex, Text } from "@chakra-ui/react";
-import { routes } from "config";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
+import { Flex, Text } from '@chakra-ui/react';
+import { routes } from 'config';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 interface HeaderNavItemProps {
   route: Route;
@@ -13,18 +13,17 @@ function NavigationItem({ route, isActive }: HeaderNavItemProps) {
   return (
     <Text
       mx={4}
-      color={isActive ? "secondary" : "white"}
+      color={isActive ? 'secondary' : 'white'}
       _hover={
         isActive
           ? {}
           : {
-              color: "secondary",
-              transform: "scale(1.2)",
+              color: 'secondary',
+              transform: 'scale(1.2)'
             }
       }
       transition="all 0.3s"
-      cursor="pointer"
-    >
+      cursor="pointer">
       <Link href={route.path}>{route.name}</Link>
     </Text>
   );
@@ -33,7 +32,7 @@ function NavigationItem({ route, isActive }: HeaderNavItemProps) {
 export default function Navigation() {
   const { pathname } = useRouter();
   const baseMatch = pathname.match(/(\/\w*)/);
-  if (baseMatch === null) throw Error("Invalid pathname");
+  if (baseMatch === null) throw new Error('Invalid pathname');
 
   const base = baseMatch[1];
 
