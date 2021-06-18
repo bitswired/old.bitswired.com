@@ -6,12 +6,13 @@ module.exports = {
       jsx: true
     }
   },
+  parser: '@typescript-eslint/parser',
   env: {
     browser: true,
     node: true,
     es6: true
   },
-  plugins: ['simple-import-sort'],
+  plugins: ['unused-imports', 'simple-import-sort'],
   settings: {
     react: {
       version: 'detect'
@@ -25,7 +26,9 @@ module.exports = {
     'plugin:sonarjs/recommended',
     'plugin:unicorn/recommended',
     'plugin:security/recommended',
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   rules: {
     'no-console': 'error',
@@ -33,6 +36,9 @@ module.exports = {
     'react/prop-types': 'error',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
-    'unicorn/filename-case': 'off'
+    'unicorn/filename-case': 'off',
+    'unicorn/prevent-abbreviations': 'off',
+    'unicorn/no-null': 'off',
+    'unused-imports/no-unused-imports': 'error'
   }
 };
