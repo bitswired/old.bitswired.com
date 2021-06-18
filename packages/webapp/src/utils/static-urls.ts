@@ -1,10 +1,5 @@
-const BASE_IMG_OPTI =
-  "https://bitswired.fra1.digitaloceanspaces.com/images-opti";
+const BASE_IMG_OPTI = 'https://bitswired.fra1.digitaloceanspaces.com/images-opti';
 
-export default function (type: string, asset: string) {
-  if (type === "blog") {
-    return `${BASE_IMG_OPTI}/${asset}@blog.webp`;
-  } else {
-    return `${BASE_IMG_OPTI}/${asset}`;
-  }
+export default function (type: string, asset: string): string {
+  return type === 'blog' ? `${BASE_IMG_OPTI}/${asset}@blog.webp` : `${BASE_IMG_OPTI}/${asset}`;
 }

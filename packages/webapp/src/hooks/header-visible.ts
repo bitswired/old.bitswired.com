@@ -1,8 +1,13 @@
-import useWindowScrollPosition from "@rehooks/window-scroll-position";
-import { useRouter } from "next/router";
-import React from "react";
+import useWindowScrollPosition from '@rehooks/window-scroll-position';
+import { useRouter } from 'next/router';
+import React from 'react';
 
-export default function () {
+interface HeaderVisible {
+  isGoingDown: boolean;
+  lock: boolean;
+}
+
+export default function (): HeaderVisible {
   const position = useWindowScrollPosition({ throttle: 100 });
   const [lastPosition, setLastPosition] = React.useState(position);
   const [isGoingDown, setIsGoingDown] = React.useState(false);

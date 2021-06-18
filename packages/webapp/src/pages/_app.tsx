@@ -1,11 +1,11 @@
 // import App from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
-import { MainLayout } from "layouts";
-import type { AppProps /*, AppContext */ } from "next/app";
-import theme from "theme";
+import { ChakraProvider } from '@chakra-ui/react';
+import { MainLayout } from 'layouts';
+import type { AppProps /*, AppContext */ } from 'next/app';
+import theme from 'theme';
 
-function App({ Component, pageProps }: AppProps) {
-  if (typeof window === "undefined") return null;
+function App({ Component, pageProps }: AppProps): JSX.Element | null {
+  if (typeof window === 'undefined') return null;
 
   return (
     <ChakraProvider theme={theme}>
