@@ -21,7 +21,7 @@ export function SelectInput({
   variant = 'standard',
   options,
   ...p
-}: SelectInputProps) {
+}: SelectInputProps): JSX.Element {
   const {
     field: { ref, value, ...inputProps },
     fieldState: { invalid, isTouched, isDirty, error },
@@ -32,8 +32,6 @@ export function SelectInput({
     rules: { required: true },
     defaultValue: ''
   });
-
-  console.log(error, value, 'a');
 
   return (
     <Select

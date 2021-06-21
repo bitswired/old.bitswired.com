@@ -1,1 +1,1 @@
-export default () => 'Tags';
+export default (): string => 'Tags';

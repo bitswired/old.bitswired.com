@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import {
   CoreBlogPostFields,
   CreateBlogPostInput,
@@ -9,7 +9,16 @@ import {
 } from '@bitswired-web/graphql';
 import { toast } from 'react-toastify';
 
-export function useGetBlogPosts(id?: number) {
+interface HookCommon {
+  loading: boolean;
+  error: ApolloError;
+}
+
+interface UseGetBlogPosts extends HookCommon {
+  blogPosts: CoreBlogPostFields[];
+}
+
+export function useGetBlogPosts(id?: number): UseGetBlogPosts {
   const variables = id ? { where: { _eq: { id } } } : undefined;
 
   const { data, loading, error } = useQuery<GetBlogPosts>(Queries.GET_BLOGPOSTS, {
@@ -21,11 +30,16 @@ export function useGetBlogPosts(id?: number) {
   return { blogPosts, loading, error };
 }
 
-export function useCreateBlogPost() {
+interface UseCreateBlogPosts extends HookCommon {
+  createBlogPost: (blogPost: CreateBlogPostInput) => void;
+  data: any;
+}
+
+export function useCreateBlogPost(): UseCreateBlogPosts {
   const [mutate, { data, loading, error }] = useMutation(Mutations.CREATE_BLOGPOST, {
     refetchQueries: [{ query: Queries.GET_BLOGPOSTS }],
-    onError: (err) => {
-      toast.error(err.graphQLErrors.map((x) => x.message).join('\n'));
+    onError: (error_) => {
+      toast.error(error_.graphQLErrors.map((x) => x.message).join('\n'));
     }
   });
 
@@ -36,7 +50,12 @@ export function useCreateBlogPost() {
   return { createBlogPost, data, loading, error };
 }
 
-export function useUpdateBlogPost() {
+interface UseUpdateBlogPosts extends HookCommon {
+  updateBlogPost: (blogPost: UpdateBlogPostInput) => void;
+  data: any;
+}
+
+export function useUpdateBlogPost(): UseUpdateBlogPosts {
   const [mutate, { data, loading, error }] = useMutation(Mutations.UPDATE_BLOGPOST, {
     refetchQueries: [{ query: Queries.GET_BLOGPOSTS }]
   });

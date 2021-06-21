@@ -1,13 +1,14 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+
 import theme from '../theme';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
-  }
+  // static async getInitialProps(context) {
+  //   const initialProps = await Document.getInitialProps(context);
+  //   return { ...initialProps };
+  // }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Html lang="en">
         <Head>

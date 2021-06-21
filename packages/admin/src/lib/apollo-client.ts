@@ -1,4 +1,6 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, from, HttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
 import { useMemo } from 'react';
@@ -8,12 +10,45 @@ export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 let apolloClient;
 
 function createApolloClient() {
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+      graphQLErrors.map(({ message, locations, path, extensions }) => {
+        // eslint-disable-next-line no-console
+        console.error(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+        );
+
+        if (extensions?.exception?.status === 401) {
+          window.location.replace('/login');
+        }
+      });
+    }
+    // eslint-disable-next-line no-console
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  });
+  const httpLink = new HttpLink({
+    uri: process.env.APOLLO_URI // Server URL (must be absolute)
+    // credentials: 'no' // Additional fetch() options like `credentials` or `headers`
+  });
+
+  const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    const username = window.sessionStorage.getItem('username');
+    const password = window.sessionStorage.getItem('password');
+    // return the headers to the context so httpLink can read them
+    const b64Token = btoa(username + ':' + password);
+
+    return {
+      headers: {
+        ...headers,
+        authorization: `Bearer ${b64Token}`
+      }
+    };
+  });
+
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    link: new HttpLink({
-      uri: process.env.APOLLO_URI // Server URL (must be absolute)
-      // credentials: 'no' // Additional fetch() options like `credentials` or `headers`
-    }),
+    link: from([errorLink, authLink, httpLink]),
     cache: new InMemoryCache()
   });
 }

@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
+
 import Menu from '../components/menu';
 
 function useMenu() {
@@ -35,7 +36,11 @@ const routes = [
   { path: '/tag', name: 'Tags' }
 ];
 
-export default function MainLayou({ children }) {
+interface MainLayoutProps {
+  children: JSX.Element;
+}
+
+export default function MainLayout({ children }: MainLayoutProps): JSX.Element {
   const classes = useStyles();
   const { isMenuOpen, openMenu, closeMenu } = useMenu();
 

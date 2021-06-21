@@ -1,10 +1,16 @@
+import { CreateBlogPostInput } from '@bitswired-web/graphql';
 import { Paper, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import React from 'react';
+
 import { useCreateBlogPost } from '../../hooks/blog-post';
 
-function CreateForm({ create }) {
+interface CreateFormProps {
+  create: (blogPost: CreateBlogPostInput) => void;
+}
+
+function CreateForm({ create }: CreateFormProps) {
   const [title, setTitle] = React.useState('');
 
   return (
@@ -24,7 +30,7 @@ function CreateForm({ create }) {
   );
 }
 
-export default function CreateBlogPost() {
+export default function CreateBlogPost(): JSX.Element {
   const { createBlogPost } = useCreateBlogPost();
 
   const [isModalOpen, setIsModalOpen] = React.useState(false);

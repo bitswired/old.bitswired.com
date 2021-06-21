@@ -1,10 +1,15 @@
+import { CreateTagInput } from '@bitswired-web/graphql';
 import { Box, Paper, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Modal';
 import React from 'react';
+
 import { useCreateTag } from '../../hooks/tag';
 
-function CreateForm({ create }) {
+interface CreateFormProps {
+  create: (tag: CreateTagInput) => void;
+}
+function CreateForm({ create }: CreateFormProps) {
   const [name, setName] = React.useState('');
 
   return (
@@ -24,7 +29,11 @@ function CreateForm({ create }) {
   );
 }
 
-export default function CreateTag({ component }) {
+interface CreateTagProps {
+  component: JSX.Element;
+}
+
+export default function CreateTag({ component }: CreateTagProps): JSX.Element {
   const { createTag } = useCreateTag();
 
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);

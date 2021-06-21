@@ -1,4 +1,4 @@
-import { BlogPost } from '@bitswired-web/graphql';
+import { CoreBlogPostFields } from '@bitswired-web/graphql';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -9,15 +9,19 @@ import ListItem from '@material-ui/core/ListItem';
 import AddIcon from '@material-ui/icons/Add';
 import pick from 'lodash/pick';
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { Control, useForm } from 'react-hook-form';
 import ReactMarkdown from 'react-markdown';
+
 import { useUpdateBlogPost } from '../../hooks/blog-post';
 import { SwitchInput } from '../input/switch';
 import { TextInput } from '../input/text';
 import CreateTag from '../tag/create';
 import SelectTag from '../tag/select';
 
-function Meta({ control }) {
+interface MetaProps {
+  control: Control<any>;
+}
+function Meta({ control }: MetaProps) {
   return (
     <List>
       <ListItem>
@@ -33,7 +37,7 @@ function Meta({ control }) {
         <TextInput name="slug" label="Slug" control={control} />
       </ListItem>
       <ListItem>
-        <SwitchInput name="published" label="Published" control={control} />
+        <SwitchInput name="published" control={control} />
       </ListItem>
 
       <ListItem>
@@ -56,7 +60,7 @@ function Meta({ control }) {
 }
 
 const components = {
-  img({ src, alt, title, ...p }) {
+  img({ src, alt, title }: any) {
     return (
       <figure>
         <img style={{ width: '100%', objectFit: 'contain' }} src={src} alt={alt} />
@@ -66,7 +70,11 @@ const components = {
   }
 };
 
-function Body({ control }) {
+interface BodyInputProps {
+  control: Control<any>;
+}
+
+function Body({ control }: BodyInputProps) {
   const [isFocused, setIsFocused] = React.useState(true);
   const setFocused = () => {
     setIsFocused(true);
@@ -75,9 +83,7 @@ function Body({ control }) {
     setIsFocused(false);
   };
 
-  const x: HTMLTextAreaElement = document.getElementById('body-input');
-
-  console.log(isFocused ? 'focused' : 'blurred');
+  const x: HTMLTextAreaElement = document.querySelector('#body-input');
 
   return (
     <ClickAwayListener onClickAway={setBlurred}>
@@ -105,10 +111,10 @@ function Body({ control }) {
 }
 
 interface EditBlogPostProps {
-  blogPost: BlogPost;
+  blogPost: CoreBlogPostFields;
 }
 
-export default function EditBlogPost({ blogPost: rawBlogPost }: EditBlogPostProps) {
+export default function EditBlogPost({ blogPost: rawBlogPost }: EditBlogPostProps): JSX.Element {
   const blogPost = pick(rawBlogPost, [
     'title',
     'description',
@@ -117,14 +123,12 @@ export default function EditBlogPost({ blogPost: rawBlogPost }: EditBlogPostProp
     'body',
     'published'
   ]);
-  console.log(blogPost, 'jiii');
 
   const { updateBlogPost } = useUpdateBlogPost();
 
   const { control, handleSubmit } = useForm({ defaultValues: blogPost });
 
   const onSubmit = (values) => {
-    console.log(values);
     updateBlogPost({ id: rawBlogPost.id, ...values });
   };
 

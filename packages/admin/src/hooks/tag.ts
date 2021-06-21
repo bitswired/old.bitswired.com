@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import {
   CoreTagFields,
   CreateTagInput,
@@ -8,9 +8,17 @@ import {
   UpdateTagInput
 } from '@bitswired-web/graphql';
 
-export function useGetTags(id?: number) {
+interface HookCommon {
+  loading: boolean;
+  error: ApolloError;
+}
+
+interface UseGetTags extends HookCommon {
+  tags: CoreTagFields[];
+}
+
+export function useGetTags(id?: number): UseGetTags {
   const variables = id ? { where: { _eq: { id } } } : undefined;
-  console.log(variables);
 
   const { data, loading, error } = useQuery<GetTags>(Queries.GET_TAGS, { variables });
 
@@ -19,7 +27,12 @@ export function useGetTags(id?: number) {
   return { tags, loading, error };
 }
 
-export function useCreateTag() {
+interface UseCreateTag extends HookCommon {
+  createTag: (tag: CreateTagInput) => void;
+  data: any;
+}
+
+export function useCreateTag(): UseCreateTag {
   const [mutate, { data, loading, error }] = useMutation(Mutations.CREATE_TAG, {
     refetchQueries: [{ query: Queries.GET_TAGS }]
   });
@@ -31,7 +44,12 @@ export function useCreateTag() {
   return { createTag, data, loading, error };
 }
 
-export function useUpdateTag() {
+interface UseUpdateTag extends HookCommon {
+  updateTag: (tag: CreateTagInput) => void;
+  data: any;
+}
+
+export function useUpdateTag(): UseUpdateTag {
   const [mutate, { data, loading, error }] = useMutation(Mutations.UPDATE_TAG, {
     refetchQueries: [{ query: Queries.GET_TAGS }]
   });

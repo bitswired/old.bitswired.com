@@ -7,7 +7,13 @@ interface TextInputProps
   variant?: 'standard' | 'outlined' | 'filled';
 }
 
-export function TextInput({ control, rules, name, variant = 'standard', ...p }: TextInputProps) {
+export function TextInput({
+  control,
+  rules,
+  name,
+  variant = 'standard',
+  ...p
+}: TextInputProps): JSX.Element {
   const {
     field: { ref, ...inputProps },
     fieldState: { invalid, isTouched, isDirty, error },

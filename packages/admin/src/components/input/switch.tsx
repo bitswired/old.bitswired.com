@@ -7,7 +7,7 @@ interface TextInputProps
   variant?: 'standard' | 'outlined' | 'filled';
 }
 
-export function SwitchInput({ control, rules, name, ...p }: TextInputProps) {
+export function SwitchInput({ control, rules, name, ...p }: TextInputProps): JSX.Element {
   const {
     field: { ref, value, ...inputProps },
     fieldState: { invalid, isTouched, isDirty, error },

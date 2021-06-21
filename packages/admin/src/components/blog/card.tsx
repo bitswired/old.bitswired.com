@@ -1,4 +1,4 @@
-import { BlogPost } from '@bitswired-web/graphql';
+import { CoreBlogPostFields } from '@bitswired-web/graphql';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,7 +11,7 @@ import Link from 'next/link';
 import React from 'react';
 
 interface BlogPostCardProps {
-  blogPost: BlogPost;
+  blogPost: CoreBlogPostFields;
 }
 
 const useStyles = makeStyles({
@@ -23,10 +23,8 @@ const useStyles = makeStyles({
   }
 });
 
-export function BlogPostCard({ blogPost }: BlogPostCardProps) {
+export function BlogPostCard({ blogPost }: BlogPostCardProps): JSX.Element {
   const classes = useStyles();
-
-  console.log(blogPost);
 
   return (
     <Card className={classes.root}>
