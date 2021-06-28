@@ -5,7 +5,8 @@
     "build": "yarn clean && yarn codegen && tsc --build",
     "codegen": "apollo client:codegen src/interfaces.ts --target=typescript --endpoint=http://localhost:3000/graphql --outputFlat  ",
     "clean": "tsc --build --clean && rimraf src/interfaces.ts",
-    "hook:check": "echo PASS"
+    "hook:check": "echo PASS",
+    "hook:fix": "echo PASS"
   },
   "dependencies": {
     "graphql": "^15.5.0",
