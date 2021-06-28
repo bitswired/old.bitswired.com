@@ -18,7 +18,9 @@ module.exports = {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true)
-    }
+    },
+    // Fix for this issues: https://github.com/styleguidist/react-docgen-typescript/issues/356
+    reactDocgen: 'react-docgen'
   },
   babel: async (options) => {
     options.plugins.push('react-require');
@@ -30,6 +32,9 @@ module.exports = {
     config.resolve.modules.push(path.resolve(__dirname, '../src'));
     return {
       ...config,
+      node: {
+        fs: 'empty'
+      },
       resolve: {
         ...config.resolve,
         alias: {
