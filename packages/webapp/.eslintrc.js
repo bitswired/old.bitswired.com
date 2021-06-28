@@ -32,6 +32,7 @@ module.exports = {
   ],
   rules: {
     'no-console': 'error',
+    '@typescript-eslint/ban-ts-comment': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'error',
     'simple-import-sort/imports': 'error',
