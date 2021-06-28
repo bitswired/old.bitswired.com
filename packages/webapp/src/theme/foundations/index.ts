@@ -33,8 +33,7 @@ export default {
     text: '#000',
     background: '#fff',
     primary: '#1DDD78',
-    secondary: '#0086FF',
-    test: 'black'
+    secondary: '#0086FF'
   },
   textStyles,
   fonts,
