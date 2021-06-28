@@ -2,8 +2,8 @@
   "name": "bitswired",
   "private": true,
   "scripts": {
-    "hook:check": "yarn workspaces foreach -vtp --include '@bitswired-web/*' run  hook:check",
-    "hook:fix": "yarn workspaces foreach -vtp --include '@bitswired-web/*' run  hook:check"
+    "hook:check": "yarn workspaces foreach -vp --include '@bitswired-web/*' run  hook:check",
+    "hook:fix": "yarn workspaces foreach -vp --include '@bitswired-web/*' run  hook:fix"
   },
   "workspaces": [
     "packages/*"
