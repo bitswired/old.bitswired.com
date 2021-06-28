@@ -8,7 +8,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element | null {
   if (typeof window === 'undefined') return null;
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={theme} resetCSS>
       <MainLayout>
         <Component {...pageProps} />
       </MainLayout>
