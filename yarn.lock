@@ -2537,7 +2537,7 @@ __metadata:
     eslint-plugin-sonarjs: ^0.8.0-125
     eslint-plugin-unicorn: ^33.0.1
     eslint-plugin-unused-imports: ^1.1.1
-    graphql: ^15.5.0
+    graphql: ^15.5.1
     lodash: ^4.17.21
     next: ^10.2.3
     prettier: ^2.3.1
@@ -2624,6 +2624,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@bitswired-web/webapp@workspace:packages/webapp"
   dependencies:
+    "@apollo/client": ^3.3.20
     "@babel/core": ^7.14.2
     "@bitswired-web/graphql": "workspace:packages/graphql"
     "@chakra-ui/react": ^1.6.4
@@ -2659,12 +2660,15 @@ __metadata:
     eslint-plugin-unicorn: ^33.0.1
     eslint-plugin-unused-imports: ^1.1.1
     framer-motion: ^4
+    graphql: ^15.5.1
     lodash: ^4.17.21
     next: latest
+    next-mdx-remote: ^3.0.2
     prettier: ^2.3.1
     react: ^17.0.1
     react-awesome-reveal: ^3.7.1
     react-dom: ^17.0.1
+    react-hook-form: ^7.9.0
     react-icons: ^4.2.0
     react-syntax-highlighter: ^15.4.3
     react-visibility-sensor: ^5.1.1
@@ -11630,6 +11634,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esbuild@npm:^0.11.12":
+  version: 0.11.23
+  resolution: "esbuild@npm:0.11.23"
+  bin:
+    esbuild: bin/esbuild
+  checksum: 9226fc3d74f7555c96778c5d9204312c578e9c11b472deebfbab52c4ac58b9efc3a40be529368f6ccbe257d0059c6b8fd142c179824a3227d055d912c7b5a94a
+  languageName: node
+  linkType: hard
+
 "escalade@npm:^3.0.2, escalade@npm:^3.1.1":
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
@@ -13356,6 +13369,13 @@ fsevents@^1.2.7:
   version: 15.5.0
   resolution: "graphql@npm:15.5.0"
   checksum: 789cdcb069a3e00592e779002217a6bc5fd09efad63ee8c4190c4b3ea96c89010e74f085fb1cba876a0bb0e324e01df2eddb84d79dca90a28e582bc425fef9ef
+  languageName: node
+  linkType: hard
+
+"graphql@npm:^15.5.1":
+  version: 15.5.1
+  resolution: "graphql@npm:15.5.1"
+  checksum: 509cdc2fc072e7cd1b5a25cf3fe13838d41892b035434f02419c209608f89e323f5234ca7e2bde77e9371e629339cbd8435f1dbc8c250910e4e9ac0babfa6c64
   languageName: node
   linkType: hard
 
@@ -16724,6 +16744,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"next-mdx-remote@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "next-mdx-remote@npm:3.0.2"
+  dependencies:
+    "@mdx-js/mdx": ^1.6.22
+    "@mdx-js/react": ^1.6.22
+    esbuild: ^0.11.12
+    pkg-dir: ^5.0.0
+  peerDependencies:
+    react: ">=16.x <=17.x"
+    react-dom: ">=16.x <=17.x"
+  checksum: ec7908828a21d55cab40f7584ea93208e72fcf3422b4ad5a6e3d447d7b1a9cc64f1c96aa3f2c432aa7b77c3cbe596ba68269bdd257645a82e86b742e2fa1b4fc
+  languageName: node
+  linkType: hard
+
 "next@npm:^10.2.3, next@npm:latest":
   version: 10.2.3
   resolution: "next@npm:10.2.3"
@@ -18722,6 +18757,15 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ^16.8.0 || ^17
   checksum: 33eb4a8f0ea7eccb22091cf99e55a802b322a1e876ae34a79b4de325a603f48d77fbc8694269bece57542f9abaa54df3947a4c7186a5e830c3f9a11680865bba
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.9.0":
+  version: 7.9.0
+  resolution: "react-hook-form@npm:7.9.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17
+  checksum: 99bbae35ca15ec4462f306a9a5a326d262fadd7518b3542fd0f133170af86d088581536209d3601b3d4ba02b06dfe357b84992b8832930d633cc9b2e4e7ba240
   languageName: node
   linkType: hard
 
