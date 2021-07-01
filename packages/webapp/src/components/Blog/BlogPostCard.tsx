@@ -1,5 +1,4 @@
 import { AspectRatio, Box, Heading, Text } from '@chakra-ui/react';
-import withRipples from 'components/HOC/ripples';
 import LazyImage from 'components/LazyImage';
 
 export interface BlogPostCardProps {
@@ -9,7 +8,12 @@ export interface BlogPostCardProps {
   description: string;
 }
 
-function BlogPostCard({ ratio, title, description, image }: BlogPostCardProps): JSX.Element {
+export default function BlogPostCard({
+  ratio,
+  title,
+  description,
+  image
+}: BlogPostCardProps): JSX.Element {
   return (
     <Box
       cursor="pointer"
@@ -43,4 +47,4 @@ function BlogPostCard({ ratio, title, description, image }: BlogPostCardProps): 
   );
 }
 
-export default withRipples(BlogPostCard, { display: 'block' });
+// export default withRipples(BlogPostCard, { display: 'block' });

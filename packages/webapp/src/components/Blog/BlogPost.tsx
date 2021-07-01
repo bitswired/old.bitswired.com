@@ -4,6 +4,7 @@ import {
   Box,
   Grid,
   GridItem,
+  Heading,
   HStack,
   Image,
   Stack,
@@ -75,16 +76,36 @@ export default function BlogPost({ mdxRendered, blogPost }: BlogPostProps): JSX.
     <>
       <Box>
         {blogPost.image && (
-          <AspectRatio ratio={21 / 9} w="100%">
-            <Image
-              src={blogPost.image}
-              alt="Title image"
-              w="100%"
-              h="100%"
-              objectFit="cover"
-              m="auto"
-            />
-          </AspectRatio>
+          <Box position="relative">
+            <AspectRatio ratio={21 / 9} w="100%">
+              <Image
+                src={blogPost.image}
+                alt="Title image"
+                w="100%"
+                h="100%"
+                objectFit="cover"
+                m="auto"
+              />
+            </AspectRatio>
+
+            <Box
+              // style={{
+              //   backdropFilter: 'blur(20px) saturate(180%)',
+              //   WebkitBackdropFilter: 'blur(20px) saturate(180%)'
+              // }}
+              backdropFilter="blur(5px) saturate(180%)"
+              position="absolute"
+              top={0}
+              right={0}
+              w="80%"
+              m="1em"
+              p="0.5em"
+              shadow="lg">
+              <Heading fontSize={['lg', '3xl', '5xl']} as="h1" color="primary" textAlign="right">
+                {blogPost.title} Common Tech Lead Jdid
+              </Heading>
+            </Box>
+          </Box>
         )}
       </Box>
 
