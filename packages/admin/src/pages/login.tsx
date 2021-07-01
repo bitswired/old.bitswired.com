@@ -37,7 +37,7 @@ export default function LoginPage() {
           </Box>
         </form>
         <Button color="secondary" type="submit" onClick={() => setAuth()}>
-          LOGIN IN
+          LOG IN
         </Button>
       </Paper>
     </Dialog>
