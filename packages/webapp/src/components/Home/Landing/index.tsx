@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { Fade } from 'react-awesome-reveal';
-import urlBuilder from 'utils/static-urls';
+import { IMAGE_HOME, IMAGE_HOME_MOBILE } from 'utils/static-urls';
 
 import Headline from '../Headline';
 import Subline from '../Subline';
@@ -10,17 +10,14 @@ export interface LandingProps {
 }
 
 export default function Landing({ size }: LandingProps): JSX.Element {
-  const mainHome = urlBuilder('', 'home.webp');
-  const mobileHome = urlBuilder('', 'virtual-reality.webp');
-
   return (
     <Box
       id="zdar"
       height="100vh"
       bgImage={
         size === 'sm'
-          ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${mobileHome}')`
-          : `url('${mainHome}')`
+          ? `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${IMAGE_HOME_MOBILE}')`
+          : `url('${IMAGE_HOME}')`
       }
       bgPosition="center -100px"
       bgColor="#1F2C32"
