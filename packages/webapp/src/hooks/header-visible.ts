@@ -7,7 +7,7 @@ interface HeaderVisible {
   lock: boolean;
 }
 
-export default function (): HeaderVisible {
+export default function useHeaderVisible(): HeaderVisible {
   const position = useWindowScrollPosition({ throttle: 100 });
   const [lastPosition, setLastPosition] = React.useState(position);
   const [isGoingDown, setIsGoingDown] = React.useState(false);
