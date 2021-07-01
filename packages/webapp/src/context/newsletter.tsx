@@ -1,8 +1,10 @@
+import { useBoolean } from '@chakra-ui/react';
 import React from 'react';
 
 interface NewsletterContextInterface {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  open: () => void;
+  close: () => void;
 }
 
 export const NewsletterContext = React.createContext<NewsletterContextInterface | null>(null);
@@ -14,10 +16,10 @@ interface NewsletterContextProviderProps {
 export default function NewsletterContextProvider({
   children
 }: NewsletterContextProviderProps): JSX.Element {
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [isOpen, { on, off }] = useBoolean(false);
 
   return (
-    <NewsletterContext.Provider value={{ isOpen, setIsOpen }}>
+    <NewsletterContext.Provider value={{ isOpen, open: on, close: off }}>
       {children}
     </NewsletterContext.Provider>
   );
