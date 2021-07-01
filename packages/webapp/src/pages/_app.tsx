@@ -1,5 +1,6 @@
 // import App from "next/app";
 import { ChakraProvider } from '@chakra-ui/react';
+import ContextsProvider from 'context';
 import { MainLayout } from 'layouts';
 import type { AppProps /*, AppContext */ } from 'next/app';
 import theme from 'theme';
@@ -9,9 +10,11 @@ function App({ Component, pageProps }: AppProps): JSX.Element | null {
 
   return (
     <ChakraProvider theme={theme} resetCSS>
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
+      <ContextsProvider>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
+      </ContextsProvider>
     </ChakraProvider>
   );
 }
