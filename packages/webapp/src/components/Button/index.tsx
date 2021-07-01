@@ -1,15 +1,14 @@
-import { Button as BaseButton } from '@chakra-ui/react';
-import withRipples from 'components/HOC/ripples';
+import { Button as BaseButton, ButtonProps as BaseButtonProps } from '@chakra-ui/react';
 import React from 'react';
 
-export interface ButtonProps {
+export interface ButtonProps extends BaseButtonProps {
   children: string;
   variant?: 'primary-solid' | 'secondary-solid';
   size?: 'sm' | 'md' | 'lg';
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-function Button({ children, ...properties }: ButtonProps): JSX.Element {
+export default function Button({ children, ...properties }: ButtonProps): JSX.Element {
   return (
     <BaseButton
       {...properties}
@@ -22,4 +21,4 @@ function Button({ children, ...properties }: ButtonProps): JSX.Element {
   );
 }
 
-export default withRipples<ButtonProps>(Button, { display: 'inline-block', rounded: 'lg' });
+// export default withRipples<ButtonProps>(Button, { display: 'inline-block', rounded: 'lg' });
