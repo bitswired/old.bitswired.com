@@ -121,12 +121,16 @@ export default function EditBlogPost({ blogPost: rawBlogPost }: EditBlogPostProp
     'image',
     'slug',
     'body',
-    'published'
+    'published',
+    'tags'
   ]);
 
   const { updateBlogPost } = useUpdateBlogPost();
 
-  const { control, handleSubmit } = useForm({ defaultValues: blogPost });
+  const defaultValues = { ...blogPost } as any;
+  defaultValues.tags = defaultValues.tags.map((x) => x.id);
+
+  const { control, handleSubmit } = useForm({ defaultValues });
 
   const onSubmit = (values) => {
     updateBlogPost({ id: rawBlogPost.id, ...values });
