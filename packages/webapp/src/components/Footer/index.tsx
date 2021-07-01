@@ -1,7 +1,9 @@
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react';
 import Button from 'components/Button';
 import { routes } from 'config';
+import { NewsletterContext } from 'context/newsletter';
 import Link from 'next/link';
+import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
 
 interface FooterSectionProps {
@@ -33,7 +35,15 @@ function WireUpTitle() {
 }
 
 function WireUpBody() {
-  return <Button variant="secondary-solid">SIGN UP</Button>;
+  const newsletterContext = React.useContext(NewsletterContext);
+  if (!newsletterContext) return null;
+  const { open } = newsletterContext;
+
+  return (
+    <Button onClick={open} variant="secondary-solid">
+      SIGN UP
+    </Button>
+  );
 }
 
 function SocialsBody() {
