@@ -1,5 +1,6 @@
 import { CoreBlogPostFields, GetBlogPosts } from '@bitswired-web/graphql';
 import { GET_BLOGPOSTS } from '@bitswired-web/graphql/dist/queries';
+import { Box } from '@chakra-ui/react';
 import BlogPost from 'components/Blog/BlogPost';
 import { mdxComponents } from 'components/MDX';
 import { GetStaticPropsContext } from 'next';
@@ -15,18 +16,18 @@ interface BlogPostPageProps {
 
 export default function BlogPostPage({ blogPost, mdxSource }: BlogPostPageProps): JSX.Element {
   return (
-    <BlogPost
-      blogPost={blogPost}
-      mdxRendered={<MDXRemote {...mdxSource} components={mdxComponents} />}
-    />
+    <>
+      <Box mb="75px" />
+      <BlogPost
+        blogPost={blogPost}
+        mdxRendered={<MDXRemote {...mdxSource} components={mdxComponents} />}
+      />
+      <Box mb="100px" />
+    </>
   );
 }
 
-interface A {
-  slug: string;
-}
-
-export async function getStaticProps(context: GetStaticPropsContext<A>) {
+export async function getStaticProps(context: GetStaticPropsContext) {
   if (!context.params) throw new Error('Missing params in context');
   const { slug } = context.params;
 

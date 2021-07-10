@@ -1,4 +1,4 @@
-import { FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
+import { FaDiscord, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
 
 export const routes: Route[] = [
   {
@@ -8,15 +8,15 @@ export const routes: Route[] = [
   {
     path: '/blog',
     name: 'blog'
-  }
+  },
   // {
   //   path: "/resume",
   //   name: "resume",
   // },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  // },
+  {
+    path: '/about',
+    name: 'about'
+  }
 ];
 
 export const socials = [
@@ -34,3 +34,9 @@ export const deoDefaults = {
     site_name: 'Bits Wired'
   }
 };
+
+export const socialsFollow = [
+  { url: 'https://discord.gg/GStmskX2g6', name: 'discord', icon: FaDiscord },
+  { url: 'https://twitter.com/Bitswired', name: 'twitter', icon: FaTwitter },
+  { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
+];

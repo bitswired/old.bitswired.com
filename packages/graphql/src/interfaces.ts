@@ -80,6 +80,30 @@ export interface UpdateBlogPostVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateContact
+// ====================================================
+
+export interface CreateContact_createContact {
+  __typename: "Contact";
+  email: string;
+  firstName: string | null;
+  lastName: string | null;
+}
+
+export interface CreateContact {
+  createContact: CreateContact_createContact;
+}
+
+export interface CreateContactVariables {
+  contact: CreateContactInput;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: CreateTag
 // ====================================================
 
@@ -223,6 +247,22 @@ export interface CoreBlogPostFields {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL fragment: CoreContactFields
+// ====================================================
+
+export interface CoreContactFields {
+  __typename: "Contact";
+  email: string;
+  firstName: string | null;
+  lastName: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL fragment: CoreTagFields
 // ====================================================
 
@@ -245,6 +285,12 @@ export interface CoreTagFields {
 
 export interface CreateBlogPostInput {
   title: string;
+}
+
+export interface CreateContactInput {
+  email: string;
+  firstName?: string | null;
+  lastName?: string | null;
 }
 
 export interface CreateTagInput {

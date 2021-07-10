@@ -2,15 +2,21 @@ import { CoreBlogPostFields, CoreBlogPostFields_tags } from '@bitswired-web/grap
 import {
   AspectRatio,
   Box,
+  Divider,
   Grid,
   GridItem,
   Heading,
   HStack,
-  Image,
+  Link,
   Stack,
   Tag,
-  useBreakpointValue
+  useBreakpointValue,
+  VStack
 } from '@chakra-ui/react';
+import Button from 'components/Button';
+import LazyImage from 'components/LazyImage';
+import { NewsletterContext } from 'context/newsletter';
+import React from 'react';
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -28,6 +34,65 @@ function Tags({ tags }: TagsProps): JSX.Element {
   );
 }
 
+interface SubscribeProps {
+  as: 'button' | 'text';
+}
+
+function Subscribe({ as }: SubscribeProps) {
+  const newsletterContext = React.useContext(NewsletterContext);
+  if (!newsletterContext) return null;
+  const { open } = newsletterContext;
+
+  if (as === 'button')
+    return (
+      <Button onClick={open} size="md" variant="secondary-solid">
+        NEWSLETTER
+      </Button>
+    );
+
+  return (
+    <Link color="primary" fontWeight="bold" textDecor="underline" onClick={open}>
+      Subscribe
+    </Link>
+  );
+}
+
+interface SideProps {
+  blogPost: Omit<CoreBlogPostFields, 'body'>;
+}
+
+function SideFull({ blogPost }: SideProps) {
+  return (
+    <>
+      <BlogPostAuthor />
+
+      <HStack>
+        {/* <Text>TOPICS:</Text> */}
+        {blogPost.tags && <Tags tags={blogPost.tags} />}
+      </HStack>
+
+      <HStack>
+        {/* <Text>NEWSLETTER:</Text> */}
+        <Subscribe as="button" />
+      </HStack>
+    </>
+  );
+}
+
+function SideMin({ blogPost }: SideProps) {
+  return (
+    <VStack spacing="1em" align="stretch">
+      <BlogPostAuthor />
+
+      <Divider />
+
+      <HStack spacing="2em">
+        {blogPost.tags && <Tags tags={blogPost.tags} />}
+        <Subscribe as="text" />
+      </HStack>
+    </VStack>
+  );
+}
 interface BodyProps {
   mdxRendered: JSX.Element;
   blogPost: Omit<CoreBlogPostFields, 'body'>;
@@ -39,27 +104,30 @@ function Body({ mdxRendered, blogPost }: BodyProps) {
     md: `"socials article article article side side"`
   });
 
-  const metaStackDirection = useBreakpointValue<'row' | 'column'>({
-    base: 'row',
-    md: 'column'
+  const metaStackDirection: any = useBreakpointValue({
+    base: { direction: 'row', align: 'center' },
+    md: { direction: 'column', align: 'stretch' }
   });
 
   return (
-    <Grid mt="2em" templateAreas={templateAreas}>
-      <GridItem gridArea="socials"></GridItem>
+    <Grid mt="2em" gap="2em" templateAreas={templateAreas} maxW="2000px" mx="auto">
+      {templateAreas?.includes('socials') && <GridItem gridArea="socials"></GridItem>}
 
       <GridItem gridArea="article">
-        <Box maxW="800px" m="auto">
-          <Box id="prose" as="article">
+        <Box maxW="900px" mx="auto">
+          <Box p="1.5em" id="prose" as="article">
             {mdxRendered}
           </Box>
         </Box>
       </GridItem>
 
-      <GridItem gridArea="side">
-        <Stack direction={metaStackDirection} spacing="2em">
-          <BlogPostAuthor />
-          {blogPost.tags && <Tags tags={blogPost.tags} />}
+      <GridItem gridArea="side" mx="auto">
+        <Stack {...metaStackDirection} spacing="2em" p="1em">
+          {metaStackDirection?.direction === 'column' ? (
+            <SideFull blogPost={blogPost}></SideFull>
+          ) : (
+            <SideMin blogPost={blogPost}></SideMin>
+          )}
         </Stack>
       </GridItem>
     </Grid>
@@ -78,7 +146,7 @@ export default function BlogPost({ mdxRendered, blogPost }: BlogPostProps): JSX.
         {blogPost.image && (
           <Box position="relative">
             <AspectRatio ratio={21 / 9} w="100%">
-              <Image
+              <LazyImage
                 src={blogPost.image}
                 alt="Title image"
                 w="100%"
@@ -88,20 +156,19 @@ export default function BlogPost({ mdxRendered, blogPost }: BlogPostProps): JSX.
               />
             </AspectRatio>
 
-            <Box
-              // style={{
-              //   backdropFilter: 'blur(20px) saturate(180%)',
-              //   WebkitBackdropFilter: 'blur(20px) saturate(180%)'
-              // }}
-              backdropFilter="blur(5px) saturate(180%)"
-              position="absolute"
-              top={0}
-              right={0}
-              w="80%"
-              m="1em"
-              p="0.5em"
-              shadow="lg">
-              <Heading fontSize={['lg', '3xl', '5xl']} as="h1" color="primary" textAlign="right">
+            <Box w="100%" position="absolute" top="40%" overflow="hidden">
+              <Heading
+                backdropFilter="blur(5px) saturate(180%)"
+                bgColor="rgba(0,0,0, 0.3)"
+                shadow="lg"
+                p="0.5em"
+                w="max"
+                maxW="90%"
+                mx="auto"
+                fontSize={['lg', '4xl', '4xl', '7xl']}
+                as="h1"
+                color="white"
+                textAlign="center">
                 {blogPost.title} Common Tech Lead Jdid
               </Heading>
             </Box>

@@ -10,7 +10,7 @@ interface MenuIconResponsiveWrapperProps {
 
 function MenuIconResponsiveWrapper({ onSliderOpen }: MenuIconResponsiveWrapperProps) {
   return (
-    <Box display={['block', 'none', 'none']} cursor="pointer" onClick={onSliderOpen}>
+    <Box display={['block', 'block', 'none']} cursor="pointer" onClick={onSliderOpen}>
       <FaBars />
     </Box>
   );
@@ -33,8 +33,6 @@ export interface HeaderProps {
 }
 
 export default function Header({
-  isGoingDown,
-  lock,
   isSliderOpen,
   onSliderOpen,
   onSliderClose
@@ -42,24 +40,19 @@ export default function Header({
   return (
     <>
       <Flex
+        position="fixed"
         zIndex={1000}
         w="100%"
         h="75px"
-        position="fixed"
+        top={0}
         left={0}
-        top={isGoingDown ? -100 : 0}
         bgColor="black"
         color="white"
         justify="space-between"
         align="center"
         px={8}
-        bg={lock ? 'rgba(0,0,0,0.8)' : 'rgba(0,0,0,0)'}
-        style={{
-          backdropFilter: lock ? 'blur(10px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: lock ? 'blur(10px) saturate(180%)' : 'none'
-        }}
-        transition="color 0.5s, top 0.5s"
-        shadow={lock ? 'dark-lg' : 'none'}>
+        bg="black"
+        transition="color 0.5s, top 0.5s">
         <Logo /> <Spacer /> <NavigationResponsiveWrapper /> <Spacer />
         <MenuIconResponsiveWrapper onSliderOpen={onSliderOpen} />
       </Flex>

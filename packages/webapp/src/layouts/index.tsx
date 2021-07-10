@@ -15,7 +15,7 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
 
   const newsletterContext = React.useContext(NewsletterContext);
   if (!newsletterContext) return null;
-  const { isOpen: isNewsletterModalOpen, close } = newsletterContext;
+  const { isOpen: isNewsletterModalOpen, close, isSubscribed } = newsletterContext;
 
   return (
     <>
@@ -28,7 +28,7 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
       />
       <Box>{children}</Box>
       <Footer />
-      <NewsletterModal isOpen={isNewsletterModalOpen} onClose={close} onSubmit={() => null} />
+      <NewsletterModal isOpen={isNewsletterModalOpen} onClose={close} isSubscribed={isSubscribed} />
     </>
   );
 }

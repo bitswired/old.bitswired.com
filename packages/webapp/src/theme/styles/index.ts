@@ -54,7 +54,8 @@ export default {
         p: {
           lineHeight: '1.7',
           my: 6,
-          color: '#555'
+          color: '#333',
+          fontSize: '1.2em'
         },
 
         blockquote: {

@@ -9,7 +9,7 @@ export default {
 };
 
 const Template: Story<TextInputProps> = (arguments_) => {
-  const { control, handleSubmit } = useForm();
+  const { control } = useForm();
 
   return (
     <form>

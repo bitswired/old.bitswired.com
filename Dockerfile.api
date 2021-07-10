@@ -1,0 +1,38 @@
+FROM node:lts-alpine
+
+WORKDIR /bitwired.com
+
+RUN yarn set version berry
+
+COPY package.json .
+COPY .yarn .
+COPY yarn.lock .
+#COPY .env .
+
+#RUN echo "sed '/^#/d' .env | sed '/^$/d'" > source
+
+
+RUN yarn plugin import workspace-tools
+
+COPY .yarnrc.yml .
+
+
+COPY packages/graphql packages/graphql
+COPY packages/prisma packages/prisma
+COPY packages/api packages/api
+
+RUN yarn workspaces focus --all --production
+RUN yarn add typescript
+
+RUN yarn workspace @bitswired-web/graphql build
+
+RUN yarn workspace @bitswired-web/api build
+
+
+CMD yarn workspace @bitswired-web/api start
+
+
+
+
+
+

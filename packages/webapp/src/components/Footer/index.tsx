@@ -1,10 +1,10 @@
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react';
 import Button from 'components/Button';
+import Follow from 'components/Socials/Follow';
 import { routes } from 'config';
 import { NewsletterContext } from 'context/newsletter';
 import Link from 'next/link';
 import React from 'react';
-import { FaFacebook, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
 
 interface FooterSectionProps {
   title: JSX.Element | string;
@@ -47,25 +47,9 @@ function WireUpBody() {
 }
 
 function SocialsBody() {
-  const p = { color: 'primary', fontSize: '1em', mx: '0.2em' };
-
   return (
     <Flex fontSize="2xl">
-      <Box {...p}>
-        <FaReddit />
-      </Box>
-      <Box {...p}>
-        <FaTwitter />
-      </Box>
-      <Box {...p}>
-        <FaLinkedin />
-      </Box>
-      <Box {...p}>
-        <FaFacebook />
-      </Box>
-      <Box {...p}>
-        <FaInstagram />
-      </Box>
+      <Follow />
     </Flex>
   );
 }

@@ -1,4 +1,4 @@
-import { Box, Image, ImageProps, useBoolean } from '@chakra-ui/react';
+import { Image, ImageProps, useBoolean } from '@chakra-ui/react';
 import { Skeleton } from 'components/Skeleton';
 import delay from 'lodash/delay';
 import React from 'react';
@@ -29,9 +29,9 @@ export default function LazyImage({
       <VisibilitySensor onChange={(isVisible: boolean) => isVisible && setIsVisible.on()}>
         <>
           {!isLoaded && placeholder}
-          <Box as="span" display={isLoaded ? 'block' : 'none'}>
-            {isVisible && <Image onLoad={load} {...props} />}
-          </Box>
+          {isVisible && (
+            <Image onLoad={load} {...props} visibility={isLoaded ? 'visible' : 'hidden'} />
+          )}
         </>
       </VisibilitySensor>
     </>

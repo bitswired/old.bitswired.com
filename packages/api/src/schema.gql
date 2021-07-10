@@ -16,8 +16,20 @@ type BlogPost {
   updatedAt: DateTime!
 }
 
+type Contact {
+  email: String!
+  firstName: String
+  lastName: String
+}
+
 input CreateBlogPostInput {
   title: String!
+}
+
+input CreateContactInput {
+  email: String!
+  firstName: String
+  lastName: String
 }
 
 input CreateTagInput {
@@ -31,6 +43,7 @@ scalar DateTime
 
 type Mutation {
   createBlogPost(blogPost: CreateBlogPostInput!): BlogPost!
+  createContact(contact: CreateContactInput!): Contact!
   createTag(tag: CreateTagInput!): Tag!
   removeBlogPost(id: Int!): BlogPost!
   removeTag(id: Int!): Tag!

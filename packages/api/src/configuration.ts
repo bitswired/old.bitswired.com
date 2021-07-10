@@ -9,14 +9,24 @@ interface DatabaseConfig {
   password: string;
 }
 
-export interface BasicAuth {
+export interface BasicAuthConfig {
   username: string;
   password: string;
 }
 
+export interface HCaptchaConfig {
+  secretKey: string;
+}
+
+export interface EmailConfig {
+  apiKey: string;
+}
+
 export interface Config {
   database: DatabaseConfig;
-  basicAuth: BasicAuth;
+  basicAuth: BasicAuthConfig;
+  hcaptcha: HCaptchaConfig;
+  email: EmailConfig;
 }
 
 export default (): Config => {
@@ -34,6 +44,12 @@ export default (): Config => {
     basicAuth: {
       username: process.env.BASIC_AUTH_USERNAME,
       password: process.env.BASIC_AUTH_PASSWORD,
+    },
+    hcaptcha: {
+      secretKey: process.env.HCAPTCHA_SECRET_KEY,
+    },
+    email: {
+      apiKey: process.env.SENDINBLUE_API_KEY,
     },
   };
   return config;

@@ -23,6 +23,7 @@
     "@chakra-ui/theme-tools": "^1.1.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@hcaptcha/react-hcaptcha": "^0.3.6",
     "@react-hook/mouse-position": "^4.1.0",
     "@rehooks/window-scroll-position": "^1.0.1",
     "framer-motion": "^4",

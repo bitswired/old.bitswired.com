@@ -1,4 +1,14 @@
-import { Drawer, DrawerBody, DrawerContent, DrawerOverlay, Stack, Text } from '@chakra-ui/react';
+import {
+  Center,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  Stack,
+  Text
+} from '@chakra-ui/react';
+import Logo from 'components/Logo';
+import Follow from 'components/Socials/Follow';
 import { routes } from 'config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -24,7 +34,8 @@ function NavigationMobileItem({ route, isActive }: NavigationItemProps) {
             }
       }
       transition="all 0.3s"
-      cursor="pointer">
+      cursor="pointer"
+      fontSize={{ base: 'xl', md: '4xl' }}>
       <Link href={route.path}>{route.name}</Link>
     </Text>
   );
@@ -56,7 +67,9 @@ export default function NavigationSlider({
             WebkitBackdropFilter: 'blur(20px) saturate(180%)'
           }}
           onClick={onSliderClose}>
-          <DrawerBody>
+          <DrawerBody position="relative">
+            <Logo />
+
             <Stack
               m="auto"
               w="max-content"
@@ -68,6 +81,10 @@ export default function NavigationSlider({
                 <NavigationMobileItem key={x.name} route={x} isActive={base === x.path} />
               ))}
             </Stack>
+
+            <Center w="100%" position="absolute" bottom="25%" left={0}>
+              <Follow />
+            </Center>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

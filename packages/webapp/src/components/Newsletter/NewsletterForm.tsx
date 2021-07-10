@@ -1,23 +1,21 @@
-import { VStack } from '@chakra-ui/react';
+import { Stack, VStack } from '@chakra-ui/react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';
-import { useForm } from 'react-hook-form';
+import useNewsletterForm from 'hooks/newsletter-form';
+import React from 'react';
 
 function isEmail(email: string) {
   const re = /\S+@\S+\.\S+/;
   return re.test(email) || `${email} is not a valid email`;
 }
 
-export interface NewsletterFormProps {
-  onSubmit: () => void;
-}
-
-export default function NewsletterForm({ onSubmit }: NewsletterFormProps): JSX.Element {
-  const { control, handleSubmit } = useForm();
+export default function NewsletterForm(): JSX.Element {
+  const { control, onError, onExpire, onVerify, handleSubmit, captchaRef } = useNewsletterForm();
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit}>
         <VStack>
           <TextInput
             size="md"
@@ -25,22 +23,27 @@ export default function NewsletterForm({ onSubmit }: NewsletterFormProps): JSX.E
             placeholder="Email"
             name="email"
             rules={{ required: 'Email required', validate: { isEmail } }}
+            borderColor="primary"
           />
 
-          <TextInput
-            size="md"
-            control={control}
-            name="firstName"
-            placeholder="First Name"
-            rules={{ required: 'First name required' }}
-          />
-          <TextInput
-            size="md"
-            control={control}
-            name="lastName"
-            placeholder="Last Name"
-            rules={{ required: 'Last name required' }}
-          />
+          <Stack w="100%" direction={['column', 'row']}>
+            <TextInput
+              size="md"
+              control={control}
+              name="firstName"
+              placeholder="First Name"
+              rules={{ required: 'First name required' }}
+              borderColor="primary"
+            />
+            <TextInput
+              size="md"
+              control={control}
+              name="lastName"
+              placeholder="Last Name"
+              rules={{ required: 'Last name required' }}
+              borderColor="primary"
+            />
+          </Stack>
         </VStack>
 
         <br />
@@ -48,6 +51,15 @@ export default function NewsletterForm({ onSubmit }: NewsletterFormProps): JSX.E
         <Button variant="secondary-solid" type="submit">
           Wire Up
         </Button>
+
+        <HCaptcha
+          sitekey="acc1764f-11de-455c-8547-1c5ce7bd8e35"
+          onError={onError}
+          onExpire={onExpire}
+          onVerify={onVerify}
+          ref={captchaRef}
+          size="invisible"
+        />
       </form>
     </>
   );

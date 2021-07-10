@@ -1,5 +1,6 @@
 import { CoreBlogPostFields, GetBlogPosts } from '@bitswired-web/graphql';
 import { GET_BLOGPOSTS } from '@bitswired-web/graphql/dist/queries';
+import { Box } from '@chakra-ui/react';
 import BlogPostGrid from 'components/Blog/BlogPostGrid';
 import React from 'react';
 import apolloClient from 'utils/apollo-client';
@@ -8,7 +9,13 @@ interface BlogPostLandingPageProps {
   blogPosts: CoreBlogPostFields[];
 }
 export default function BlogLandingPage({ blogPosts }: BlogPostLandingPageProps): JSX.Element {
-  return <BlogPostGrid blogPostSums={blogPosts as any} />;
+  return (
+    <>
+      <Box mb="100px" />
+      <BlogPostGrid blogPostSums={blogPosts as any} />
+      <Box mb="100px" />
+    </>
+  );
 }
 
 export async function getStaticProps() {

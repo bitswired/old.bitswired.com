@@ -5,10 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthModule } from './auth/auth.module';
 import { BlogPostsModule } from './blog-posts/blog-posts.module';
 import { BlogPostEntity } from './blog-posts/entities/blog-post.entity';
 import configuration from './configuration';
+import { ContactModule } from './contacts/contact.module';
 import { TagEntity } from './tags/entities/tag.entity';
 import { TagsModule } from './tags/tags.module';
 
@@ -37,7 +37,7 @@ import { TagsModule } from './tags/tags.module';
     }),
     BlogPostsModule,
     TagsModule,
-    AuthModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,12 +1,14 @@
 import {
   CreateBlogPostVariables,
   CreateTagVariables,
+  CreateContactVariables,
   GetBlogPostsVariables,
   GetTagsVariables,
   Mutations,
   Queries,
   UpdateBlogPostVariables,
   UpdateTagVariables,
+  CreateContact,
 } from '@bitswired-web/graphql';
 import { PrismaClient } from '@bitswired-web/prisma';
 import { INestApplication } from '@nestjs/common';
@@ -59,4 +61,8 @@ export const appCreateTag = appGqlQuery<CreateTagVariables>(
 
 export const appUpdateTag = appGqlQuery<UpdateTagVariables>(
   Mutations.UPDATE_TAG,
+);
+
+export const appCreateContact = appGqlQuery<CreateContactVariables>(
+  Mutations.CREATE_CONTACT,
 );
