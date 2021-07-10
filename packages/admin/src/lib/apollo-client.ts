@@ -26,8 +26,9 @@ function createApolloClient() {
     // eslint-disable-next-line no-console
     if (networkError) console.log(`[Network error]: ${networkError}`);
   });
+
   const httpLink = new HttpLink({
-    uri: process.env.APOLLO_URI // Server URL (must be absolute)
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_URL // Server URL (must be absolute)
     // credentials: 'no' // Additional fetch() options like `credentials` or `headers`
   });
 

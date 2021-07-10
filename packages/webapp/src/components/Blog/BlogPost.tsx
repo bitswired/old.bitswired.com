@@ -169,7 +169,7 @@ export default function BlogPost({ mdxRendered, blogPost }: BlogPostProps): JSX.
                 as="h1"
                 color="white"
                 textAlign="center">
-                {blogPost.title} Common Tech Lead Jdid
+                {blogPost.title}
               </Heading>
             </Box>
           </Box>
