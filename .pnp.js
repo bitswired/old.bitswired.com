@@ -4379,7 +4379,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@bitswired-web/webapp", "workspace:packages/webapp"],
             ["@apollo/client", "virtual:b37c141843b7fb1288c649db5f30d8125a2a3c718832b626eae1559381da03c85b0788936da6a940cdad6eb09b4efd529fa345206377275598b5a0c6ca9f53d0#npm:3.3.20"],
             ["@babel/core", "npm:7.14.6"],
-            ["@bitswired-web/graphql", "workspace:packages/graphql"],
             ["@chakra-ui/react", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:1.6.4"],
             ["@chakra-ui/theme-tools", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:1.1.7"],
             ["@emotion/react", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:11.4.0"],

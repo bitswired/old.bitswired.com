@@ -2627,7 +2627,6 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.3.20
     "@babel/core": ^7.14.2
-    "@bitswired-web/graphql": "workspace:packages/graphql"
     "@chakra-ui/react": ^1.6.4
     "@chakra-ui/theme-tools": ^1.1.7
     "@emotion/react": ^11

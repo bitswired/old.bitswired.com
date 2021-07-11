@@ -1,4 +1,3 @@
-import { CoreBlogPostFields, CoreBlogPostFields_tags } from '@bitswired-web/graphql';
 import {
   AspectRatio,
   Box,
@@ -21,13 +20,13 @@ import React from 'react';
 import BlogPostAuthor from './BlogPostAuthor';
 
 interface TagsProps {
-  tags: CoreBlogPostFields_tags[];
+  tags: any;
 }
 
 function Tags({ tags }: TagsProps): JSX.Element {
   return (
     <HStack>
-      {tags.map((tag) => (
+      {tags.map((tag: any) => (
         <Tag key={tag.id}>{tag.name}</Tag>
       ))}
     </HStack>
@@ -58,7 +57,7 @@ function Subscribe({ as }: SubscribeProps) {
 }
 
 interface SideProps {
-  blogPost: Omit<CoreBlogPostFields, 'body'>;
+  blogPost: any;
 }
 
 function SideFull({ blogPost }: SideProps) {
@@ -95,7 +94,7 @@ function SideMin({ blogPost }: SideProps) {
 }
 interface BodyProps {
   mdxRendered: JSX.Element;
-  blogPost: Omit<CoreBlogPostFields, 'body'>;
+  blogPost: any;
 }
 
 function Body({ mdxRendered, blogPost }: BodyProps) {
@@ -136,7 +135,7 @@ function Body({ mdxRendered, blogPost }: BodyProps) {
 
 export interface BlogPostProps {
   mdxRendered: JSX.Element;
-  blogPost: Omit<CoreBlogPostFields, 'body'>;
+  blogPost: any;
 }
 
 export default function BlogPost({ mdxRendered, blogPost }: BlogPostProps): JSX.Element {

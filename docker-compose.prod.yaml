@@ -24,6 +24,8 @@ services:
       dockerfile: docker/Dockerfile.webapp
     restart: "unless-stopped"
     env_file: .env
+    ports:
+      - "3002:3002"
 
   postgres:
     image: postgres:alpine
