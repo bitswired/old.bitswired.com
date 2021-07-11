@@ -1,7 +1,9 @@
 generated
 
 
+
 # compiled output
+/out
 /dist
 /node_modules
 

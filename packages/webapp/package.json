@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next -p $WEBAPP_PORT",
     "build": "next build",
+    "export": "next export",
     "start": "next start -p $WEBAPP_PORT",
     "type-check": "tsc",
     "storybook": "start-storybook -p 6006",
