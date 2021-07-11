@@ -8,8 +8,8 @@ services:
       - "443:443"
     volumes:
       - $PWD/docker/Caddyfile:/etc/caddy/Caddyfile
-      - $PWD/docker/certificate.pem:/ssl/certificate.pem
-      - $PWD/docker/key.pem:/ssl/key.pem
+      - $PWD/docker/certificate.pem:/etc/ssl/certs/certificate.pem
+      - $PWD/docker/key.pem:/etc/ssl/private/key.pem
 
   api:
     build:
