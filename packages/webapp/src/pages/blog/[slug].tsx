@@ -18,11 +18,6 @@ interface BlogPostPageProps {
 }
 
 export default function BlogPostPage({ meta, mdxSource }: BlogPostPageProps): JSX.Element {
-  console.log(meta);
-  console.log(meta);
-  console.log(meta);
-  console.log(meta);
-  console.log(meta);
   return (
     <>
       <Box mb="75px" />
