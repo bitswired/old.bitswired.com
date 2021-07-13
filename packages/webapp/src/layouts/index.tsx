@@ -3,14 +3,12 @@ import Footer from 'components/Footer';
 import Header from 'components/Header';
 import NewsletterModal from 'components/Newsletter/NewsletterModal';
 import { NewsletterContext } from 'context/newsletter';
-import useHeaderVisible from 'hooks/header-visible';
 import React from 'react';
 
 interface MainLayoutProps {
   children: JSX.Element[] | JSX.Element;
 }
 export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
-  const { isGoingDown, lock } = useHeaderVisible();
   const { isOpen: isSliderOpen, onOpen: onSliderOpen, onClose: onSliderClose } = useDisclosure();
 
   const newsletterContext = React.useContext(NewsletterContext);
@@ -20,8 +18,6 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
   return (
     <>
       <Header
-        isGoingDown={isGoingDown}
-        lock={lock}
         isSliderOpen={isSliderOpen}
         onSliderOpen={onSliderOpen}
         onSliderClose={onSliderClose}

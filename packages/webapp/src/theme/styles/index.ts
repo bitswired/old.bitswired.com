@@ -52,10 +52,10 @@ export default {
           fontWeight: 'bold'
         },
         p: {
-          lineHeight: '1.7',
+          lineHeight: '1.5',
           my: 6,
           color: '#333',
-          fontSize: '1.2em'
+          fontSize: '1.05em'
         },
 
         blockquote: {

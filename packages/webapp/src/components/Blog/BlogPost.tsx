@@ -20,14 +20,14 @@ import React from 'react';
 import BlogPostAuthor from './BlogPostAuthor';
 
 interface TagsProps {
-  tags: any;
+  tags: string[];
 }
 
 function Tags({ tags }: TagsProps): JSX.Element {
   return (
     <HStack>
-      {tags.map((tag: any) => (
-        <Tag key={tag.id}>{tag.name}</Tag>
+      {tags.map((tag) => (
+        <Tag key={tag}>{tag}</Tag>
       ))}
     </HStack>
   );
@@ -57,17 +57,17 @@ function Subscribe({ as }: SubscribeProps) {
 }
 
 interface SideProps {
-  blogPost: any;
+  meta: BlogPostMeta;
 }
 
-function SideFull({ blogPost }: SideProps) {
+function SideFull({ meta }: SideProps) {
   return (
     <>
       <BlogPostAuthor />
 
       <HStack>
         {/* <Text>TOPICS:</Text> */}
-        {blogPost.tags && <Tags tags={blogPost.tags} />}
+        <Tags tags={meta.tags} />
       </HStack>
 
       <HStack>
@@ -78,7 +78,7 @@ function SideFull({ blogPost }: SideProps) {
   );
 }
 
-function SideMin({ blogPost }: SideProps) {
+function SideMin({ meta }: SideProps) {
   return (
     <VStack spacing="1em" align="stretch">
       <BlogPostAuthor />
@@ -86,7 +86,7 @@ function SideMin({ blogPost }: SideProps) {
       <Divider />
 
       <HStack spacing="2em">
-        {blogPost.tags && <Tags tags={blogPost.tags} />}
+        <Tags tags={meta.tags} />
         <Subscribe as="text" />
       </HStack>
     </VStack>
@@ -94,10 +94,10 @@ function SideMin({ blogPost }: SideProps) {
 }
 interface BodyProps {
   mdxRendered: JSX.Element;
-  blogPost: any;
+  meta: BlogPostMeta;
 }
 
-function Body({ mdxRendered, blogPost }: BodyProps) {
+function Body({ mdxRendered, meta }: BodyProps) {
   const templateAreas = useBreakpointValue({
     base: `"side" "article"`,
     md: `"socials article article article side side"`
@@ -123,9 +123,9 @@ function Body({ mdxRendered, blogPost }: BodyProps) {
       <GridItem gridArea="side" mx="auto">
         <Stack {...metaStackDirection} spacing="2em" p="1em">
           {metaStackDirection?.direction === 'column' ? (
-            <SideFull blogPost={blogPost}></SideFull>
+            <SideFull meta={meta}></SideFull>
           ) : (
-            <SideMin blogPost={blogPost}></SideMin>
+            <SideMin meta={meta}></SideMin>
           )}
         </Stack>
       </GridItem>
@@ -135,47 +135,45 @@ function Body({ mdxRendered, blogPost }: BodyProps) {
 
 export interface BlogPostProps {
   mdxRendered: JSX.Element;
-  blogPost: any;
+  meta: BlogPostMeta;
 }
 
-export default function BlogPost({ mdxRendered, blogPost }: BlogPostProps): JSX.Element {
+export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Element {
   return (
     <>
       <Box>
-        {blogPost.image && (
-          <Box position="relative">
-            <AspectRatio ratio={21 / 9} w="100%">
-              <LazyImage
-                src={blogPost.image}
-                alt="Title image"
-                w="100%"
-                h="100%"
-                objectFit="cover"
-                m="auto"
-              />
-            </AspectRatio>
+        <Box position="relative">
+          <AspectRatio ratio={21 / 9} w="100%">
+            <LazyImage
+              src={meta.image}
+              alt="Title image"
+              w="100%"
+              h="100%"
+              objectFit="cover"
+              m="auto"
+            />
+          </AspectRatio>
 
-            <Box w="100%" position="absolute" top="40%" overflow="hidden">
-              <Heading
-                backdropFilter="blur(5px) saturate(180%)"
-                bgColor="rgba(0,0,0, 0.3)"
-                shadow="lg"
-                p="0.5em"
-                w="max"
-                maxW="90%"
-                mx="auto"
-                fontSize={['lg', '4xl', '4xl', '7xl']}
-                as="h1"
-                color="white"
-                textAlign="center">
-                {blogPost.title}
-              </Heading>
-            </Box>
+          <Box w="100%" position="absolute" top="40%" overflow="hidden">
+            <Heading
+              backdropFilter="blur(5px) saturate(180%)"
+              bgColor="rgba(0,0,0, 0.3)"
+              shadow="lg"
+              p="0.5em"
+              w="max"
+              maxW="90%"
+              mx="auto"
+              fontSize={['lg', '4xl', '4xl', '7xl']}
+              as="h1"
+              color="white"
+              textAlign="center">
+              {meta.title}
+            </Heading>
           </Box>
-        )}
+        </Box>
       </Box>
 
-      <Body blogPost={blogPost} mdxRendered={mdxRendered}></Body>
+      <Body meta={meta} mdxRendered={mdxRendered}></Body>
     </>
   );
 }

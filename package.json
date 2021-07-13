@@ -17,5 +17,8 @@
     "open@7.4.2": {
       "unplugged": true
     }
+  },
+  "dependencies": {
+    "@cloudflare/wrangler": "^1.17.0"
   }
 }

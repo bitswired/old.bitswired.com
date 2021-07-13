@@ -25,8 +25,6 @@ function NavigationResponsiveWrapper() {
 }
 
 export interface HeaderProps {
-  isGoingDown: boolean;
-  lock: boolean;
   isSliderOpen: boolean;
   onSliderOpen: () => void;
   onSliderClose: () => void;

@@ -37,8 +37,6 @@ const Template: Story<HeaderProps> = (arguments_) => <Header {...arguments_} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  isGoingDown: false,
-  lock: true,
   isSliderOpen: false,
   ...actionsData
 };
