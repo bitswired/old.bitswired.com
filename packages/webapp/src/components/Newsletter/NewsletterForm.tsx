@@ -1,4 +1,4 @@
-import { Stack, VStack } from '@chakra-ui/react';
+import { Box, Center, Spinner, Stack, VStack } from '@chakra-ui/react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';
@@ -11,10 +11,11 @@ function isEmail(email: string) {
 }
 
 export default function NewsletterForm(): JSX.Element {
-  const { control, onError, onExpire, onVerify, handleSubmit, captchaRef } = useNewsletterForm();
+  const { control, onError, onExpire, onVerify, handleSubmit, captchaRef, loading } =
+    useNewsletterForm();
 
   return (
-    <>
+    <Box position="relative">
       <form onSubmit={handleSubmit}>
         <VStack>
           <TextInput
@@ -61,6 +62,19 @@ export default function NewsletterForm(): JSX.Element {
           size="invisible"
         />
       </form>
-    </>
+      {loading && (
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          w="100%"
+          h="100%"
+          bgColor="rgba(255, 255, 255, 0.5)">
+          <Center>
+            <Spinner w="200px" h="200px" color="primary" emptyColor="secondary" />
+          </Center>
+        </Box>
+      )}
+    </Box>
   );
 }

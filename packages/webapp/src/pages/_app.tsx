@@ -3,18 +3,21 @@ import { ChakraProvider } from '@chakra-ui/react';
 import ContextsProvider from 'context';
 import { MainLayout } from 'layouts';
 import type { AppProps /*, AppContext */ } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import theme from 'theme';
 
-function App({ Component, pageProps }: AppProps): JSX.Element | null {
-  // if (typeof window === 'undefined') return null;
+const queryClient = new QueryClient();
 
+function App({ Component, pageProps }: AppProps): JSX.Element | null {
   return (
     <ChakraProvider theme={theme} resetCSS>
-      <ContextsProvider>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
-      </ContextsProvider>
+      <QueryClientProvider client={queryClient}>
+        <ContextsProvider>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </ContextsProvider>
+      </QueryClientProvider>
     </ChakraProvider>
   );
 }

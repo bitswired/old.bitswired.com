@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
-import { NewsletterContext } from 'context/newsletter';
+import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { FaChalkboard, FaEnvelope, FaUsers } from 'react-icons/fa';
@@ -7,10 +7,6 @@ import { FaChalkboard, FaEnvelope, FaUsers } from 'react-icons/fa';
 import FeatureCard from '../FeatureCard';
 
 export default function Features(): JSX.Element | null {
-  const newsletterContext = React.useContext(NewsletterContext);
-  if (!newsletterContext) return null;
-  const { open } = newsletterContext;
-
   return (
     <Flex direction={['column', 'column', 'row']} justify="space-evenly" p={16}>
       <Fade duration={1000} direction="left" triggerOnce>
@@ -31,11 +27,12 @@ export default function Features(): JSX.Element | null {
         <FeatureCard title="Newsletter" icon={<FaEnvelope />}>
           <>
             We will share new content from Bits Wired and other websites, interesting papers and
-            resources.
-            <Box as="span" color="primary" cursor="pointer" onClick={open}>
-              {' '}
-              Subscribe!
-            </Box>
+            resources.{' '}
+            <NewsletterSubscribeAction display="inline">
+              <Box as="span" color="primary" textDecor="underline" cursor="pointer">
+                Subscribe!
+              </Box>
+            </NewsletterSubscribeAction>
           </>
         </FeatureCard>
       </Fade>
