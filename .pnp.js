@@ -3126,6 +3126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:16.3.1"],
             ["@types/react", "npm:17.0.11"],
             ["@types/react-dom", "npm:17.0.7"],
+            ["@types/react-stickynode", "npm:3.0.2"],
             ["@types/react-syntax-highlighter", "npm:13.5.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:4.27.0"],
             ["@typescript-eslint/parser", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:4.27.0"],
@@ -3158,6 +3159,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-hook-form", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:7.9.0"],
             ["react-icons", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:4.2.0"],
             ["react-query", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:3.18.1"],
+            ["react-stickynode", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:3.1.0"],
             ["react-syntax-highlighter", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:15.4.3"],
             ["react-visibility-sensor", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:5.1.1"],
             ["storybook-addon-next-router", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:2.0.4"],
@@ -8051,6 +8053,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/react-stickynode", [
+        ["npm:3.0.2", {
+          "packageLocation": "./.yarn/cache/@types-react-stickynode-npm-3.0.2-3185d6b466-2791798d38.zip/node_modules/@types/react-stickynode/",
+          "packageDependencies": [
+            ["@types/react-stickynode", "npm:3.0.2"],
+            ["@types/react", "npm:17.0.11"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/react-syntax-highlighter", [
         ["npm:11.0.5", {
           "packageLocation": "./.yarn/cache/@types-react-syntax-highlighter-npm-11.0.5-90d671364b-a94068eee2.zip/node_modules/@types/react-syntax-highlighter/",
@@ -12870,6 +12882,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/etag-npm-1.8.1-54a3b989d9-f18341a3c1.zip/node_modules/etag/",
           "packageDependencies": [
             ["etag", "npm:1.8.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["eventemitter3", [
+        ["npm:3.1.2", {
+          "packageLocation": "./.yarn/cache/eventemitter3-npm-3.1.2-a68b03e1ea-fa1a206c4e.zip/node_modules/eventemitter3/",
+          "packageDependencies": [
+            ["eventemitter3", "npm:3.1.2"]
           ],
           "linkType": "HARD",
         }]
@@ -17826,6 +17847,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["performance-now", [
+        ["npm:2.1.0", {
+          "packageLocation": "./.yarn/cache/performance-now-npm-2.1.0-45e3ce7e49-bb4ebed0b0.zip/node_modules/performance-now/",
+          "packageDependencies": [
+            ["performance-now", "npm:2.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["picomatch", [
         ["npm:2.3.0", {
           "packageLocation": "./.yarn/cache/picomatch-npm-2.3.0-5e60e6c82d-80113a0fb7.zip/node_modules/picomatch/",
@@ -18458,6 +18488,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/queue-microtask-npm-1.2.3-fcc98e4e2d-0f88d794d4.zip/node_modules/queue-microtask/",
           "packageDependencies": [
             ["queue-microtask", "npm:1.2.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["raf", [
+        ["npm:3.4.1", {
+          "packageLocation": "./.yarn/cache/raf-npm-3.4.1-c25d48d76e-567b0160be.zip/node_modules/raf/",
+          "packageDependencies": [
+            ["raf", "npm:3.4.1"],
+            ["performance-now", "npm:2.1.0"]
           ],
           "linkType": "HARD",
         }]
@@ -19179,6 +19219,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:17.0.2"],
             ["shallowequal", "npm:1.1.0"],
             ["throttle-debounce", "npm:3.0.1"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react",
+            "react-dom",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-stickynode", [
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/react-stickynode-npm-3.1.0-b7766cc0f5-164ad72b97.zip/node_modules/react-stickynode/",
+          "packageDependencies": [
+            ["react-stickynode", "npm:3.1.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:3.1.0", {
+          "packageLocation": "./.yarn/$$virtual/react-stickynode-virtual-8907a923fa/0/cache/react-stickynode-npm-3.1.0-b7766cc0f5-164ad72b97.zip/node_modules/react-stickynode/",
+          "packageDependencies": [
+            ["react-stickynode", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:3.1.0"],
+            ["@types/react", "npm:17.0.11"],
+            ["@types/react-dom", "npm:17.0.7"],
+            ["classnames", "npm:2.3.1"],
+            ["core-js", "npm:3.14.0"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:17.0.2"],
+            ["react-dom", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:17.0.2"],
+            ["shallowequal", "npm:1.1.0"],
+            ["subscribe-ui-event", "npm:2.0.7"]
           ],
           "packagePeers": [
             "@types/react-dom",
@@ -21000,6 +21071,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@types/stylis",
             "stylis"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["subscribe-ui-event", [
+        ["npm:2.0.7", {
+          "packageLocation": "./.yarn/cache/subscribe-ui-event-npm-2.0.7-e78aa13f09-6f93e283d4.zip/node_modules/subscribe-ui-event/",
+          "packageDependencies": [
+            ["subscribe-ui-event", "npm:2.0.7"],
+            ["eventemitter3", "npm:3.1.2"],
+            ["lodash", "npm:4.17.21"],
+            ["raf", "npm:3.4.1"]
           ],
           "linkType": "HARD",
         }]

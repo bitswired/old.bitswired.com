@@ -5,7 +5,9 @@ interface Route {
 
 interface BlogPostMeta {
   title: string;
+  description: string;
   image: string;
+  readMinutes: number;
   tags: string[];
   slug: string;
   published: boolean;

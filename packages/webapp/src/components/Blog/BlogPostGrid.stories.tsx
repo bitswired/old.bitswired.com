@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Story } from '@storybook/react';
 
 import BlogPostGrid, { BlogPostGridProps } from './BlogPostGrid';
@@ -11,40 +12,68 @@ const Template: Story<BlogPostGridProps> = (arguments_) => <BlogPostGrid {...arg
 
 export const Default = Template.bind({});
 Default.args = {
-  blogPostSums: [
+  metas: [
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=1'
     },
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=2'
     },
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=3'
     },
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=4'
     },
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=5'
     },
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=6'
     },
     {
-      title: 'Test',
-      description: 'Test',
+      title: 'Test Article',
+      description: '',
+      readMinutes: 10,
+      tags: ['Typesript', 'React'],
+      slug: 'tt-tt',
+      published: true,
       image: 'https://source.unsplash.com/random?sig=7'
     }
   ]

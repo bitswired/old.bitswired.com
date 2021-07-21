@@ -42,22 +42,44 @@ export default {
         h1: {
           fontFamily: 'sans',
           fontSize: ['2xl', '5xl'],
-          my: 4,
+          my: '1em',
           fontWeight: 'bold'
         },
         h2: {
           fontFamily: 'sans',
           fontSize: ['2xl', '4xl'],
-          my: 4,
+          my: '1em',
+          fontWeight: 'bold'
+        },
+        h3: {
+          fontFamily: 'sans',
+          fontSize: ['xl', '2xl'],
+          my: '0.7em',
+          fontWeight: 'bold'
+        },
+        h4: {
+          fontFamily: 'sans',
+          fontSize: ['lg', 'xl'],
+          my: '0.5m',
           fontWeight: 'bold'
         },
         p: {
           lineHeight: '1.5',
-          my: 6,
+          mb: 6,
           color: '#333',
           fontSize: '1.05em'
         },
-
+        ul: {
+          listStylePosition: 'inside',
+          ml: '2em'
+        },
+        ol: {
+          listStylePosition: 'inside',
+          ml: '2em'
+        },
+        li: {
+          my: '0.5em'
+        },
         blockquote: {
           fontFamily: 'serif',
           background: '#f9f9f9',

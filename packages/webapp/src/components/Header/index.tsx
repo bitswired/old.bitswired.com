@@ -48,6 +48,7 @@ export default function Header({
         color="white"
         justify="space-between"
         align="center"
+        shadow="2xl"
         px={8}
         bg="black"
         transition="color 0.5s, top 0.5s">

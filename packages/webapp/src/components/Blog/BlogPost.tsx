@@ -1,21 +1,24 @@
 import {
   AspectRatio,
   Box,
-  Divider,
-  Grid,
-  GridItem,
   Heading,
   HStack,
+  Icon,
   Link,
-  Stack,
   Tag,
+  Text,
   useBreakpointValue,
-  VStack
+  VStack,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
+import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import LazyImage from 'components/LazyImage';
-import { NewsletterContext } from 'context/newsletter';
 import React from 'react';
+import { AttentionSeeker } from 'react-awesome-reveal';
+import { FaClock, FaTags } from 'react-icons/fa';
+import Sticky from 'react-stickynode';
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -27,7 +30,9 @@ function Tags({ tags }: TagsProps): JSX.Element {
   return (
     <HStack>
       {tags.map((tag) => (
-        <Tag key={tag}>{tag}</Tag>
+        <Tag bgColor="lightblue" key={tag}>
+          {tag}
+        </Tag>
       ))}
     </HStack>
   );
@@ -38,21 +43,21 @@ interface SubscribeProps {
 }
 
 function Subscribe({ as }: SubscribeProps) {
-  const newsletterContext = React.useContext(NewsletterContext);
-  if (!newsletterContext) return null;
-  const { open } = newsletterContext;
-
   if (as === 'button')
     return (
-      <Button onClick={open} size="md" variant="secondary-solid">
-        NEWSLETTER
-      </Button>
+      <NewsletterSubscribeAction display="inline-block">
+        <Button size="md" variant="secondary-solid">
+          Subscribe
+        </Button>
+      </NewsletterSubscribeAction>
     );
 
   return (
-    <Link color="primary" fontWeight="bold" textDecor="underline" onClick={open}>
-      Subscribe
-    </Link>
+    <NewsletterSubscribeAction display="inline">
+      <Link color="primary" fontWeight="bold" textDecor="underline">
+        Subscribe
+      </Link>
+    </NewsletterSubscribeAction>
   );
 }
 
@@ -63,33 +68,64 @@ interface SideProps {
 function SideFull({ meta }: SideProps) {
   return (
     <>
-      <BlogPostAuthor />
+      <VStack bgColor="#EEE" spacing="2em" p="1em" rounded="md" align="left" w="max">
+        <Box>
+          <BlogPostAuthor />
+        </Box>
 
-      <HStack>
-        {/* <Text>TOPICS:</Text> */}
-        <Tags tags={meta.tags} />
-      </HStack>
+        <HStack>
+          <Icon as={FaTags} />
+          <Tags tags={meta.tags} />
+        </HStack>
 
-      <HStack>
-        {/* <Text>NEWSLETTER:</Text> */}
-        <Subscribe as="button" />
-      </HStack>
+        <HStack>
+          <Icon as={FaClock} />
+          <Text>{meta.readMinutes} minutes</Text>
+        </HStack>
+      </VStack>
+
+      <Sticky enabled={true} top={100}>
+        <VStack bgColor="#EEE" spacing="2em" p="1em" rounded="md">
+          <Text colot="primary" textTransform="uppercase" fontWeight="bold">
+            Subscribe to get updates
+          </Text>
+
+          <Text>Bitswired newsletter</Text>
+
+          <AttentionSeeker>
+            <Subscribe as="button" />
+          </AttentionSeeker>
+        </VStack>
+      </Sticky>
     </>
   );
 }
 
 function SideMin({ meta }: SideProps) {
   return (
-    <VStack spacing="1em" align="stretch">
-      <BlogPostAuthor />
+    <Wrap bg="#EEE" p="1em" rounded="md" spacing="2em" w="100%" align="center">
+      <WrapItem>
+        <BlogPostAuthor />
+      </WrapItem>
 
-      <Divider />
+      <WrapItem>
+        <HStack>
+          <Icon as={FaTags} />
+          <Tags tags={meta.tags} />
+        </HStack>
+      </WrapItem>
 
-      <HStack spacing="2em">
-        <Tags tags={meta.tags} />
+      <WrapItem>
+        <HStack>
+          <Icon as={FaClock} />
+          <Text>{meta.readMinutes} minutes</Text>
+        </HStack>
+      </WrapItem>
+
+      <WrapItem>
         <Subscribe as="text" />
-      </HStack>
-    </VStack>
+      </WrapItem>
+    </Wrap>
   );
 }
 interface BodyProps {
@@ -98,38 +134,34 @@ interface BodyProps {
 }
 
 function Body({ mdxRendered, meta }: BodyProps) {
-  const templateAreas = useBreakpointValue({
-    base: `"side" "article"`,
-    md: `"socials article article article side side"`
-  });
+  const layout = useBreakpointValue({ base: 'mobile', md: 'full' });
 
-  const metaStackDirection: any = useBreakpointValue({
-    base: { direction: 'row', align: 'center' },
-    md: { direction: 'column', align: 'stretch' }
-  });
-
-  return (
-    <Grid mt="2em" gap="2em" templateAreas={templateAreas} maxW="2000px" mx="auto">
-      {templateAreas?.includes('socials') && <GridItem gridArea="socials"></GridItem>}
-
-      <GridItem gridArea="article">
-        <Box maxW="900px" mx="auto">
+  if (layout === 'mobile')
+    return (
+      <VStack>
+        <HStack spacing="2em" p="1em">
+          <SideMin meta={meta}></SideMin>
+        </HStack>
+        <Box maxW="900px" mx="auto" w="100%">
           <Box p="1.5em" id="prose" as="article">
             {mdxRendered}
           </Box>
         </Box>
-      </GridItem>
+      </VStack>
+    );
 
-      <GridItem gridArea="side" mx="auto">
-        <Stack {...metaStackDirection} spacing="2em" p="1em">
-          {metaStackDirection?.direction === 'column' ? (
-            <SideFull meta={meta}></SideFull>
-          ) : (
-            <SideMin meta={meta}></SideMin>
-          )}
-        </Stack>
-      </GridItem>
-    </Grid>
+  return (
+    <HStack align="start" maxW="2000px" mx="auto">
+      <Box maxW="900px" mx="auto">
+        <Box p="1.5em" id="prose" as="article">
+          {mdxRendered}
+        </Box>
+      </Box>
+
+      <VStack spacing="2em" p="1em" pt="3em" align="stretch">
+        <SideFull meta={meta}></SideFull>
+      </VStack>
+    </HStack>
   );
 }
 
@@ -143,7 +175,7 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
     <>
       <Box>
         <Box position="relative">
-          <AspectRatio ratio={21 / 9} w="100%">
+          <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%">
             <LazyImage
               src={meta.image}
               alt="Title image"

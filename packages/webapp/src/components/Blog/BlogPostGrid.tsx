@@ -1,21 +1,16 @@
 import { Box } from '@chakra-ui/react';
+import Link from 'next/link';
 
 import BlogPostCard from './BlogPostCard';
 
-interface BlogPosthSum {
-  title: string;
-  description: string;
-  image: string;
-}
-
 interface CellProps {
   width: string | number;
-  blogPostSum: BlogPosthSum;
+  meta: BlogPostMeta;
   ratio: number;
 }
 
-function Cell({ width, blogPostSum, ratio }: CellProps) {
-  if (!blogPostSum) return null;
+function Cell({ width, meta, ratio }: CellProps) {
+  if (!meta) return null;
 
   return (
     <Box
@@ -23,29 +18,33 @@ function Cell({ width, blogPostSum, ratio }: CellProps) {
       display="inline-block"
       w={['100%', '50%', width]}
       verticalAlign="middle"
-      mt="5vh"
+      mt="10vh"
       px="5vw">
-      <BlogPostCard {...blogPostSum} ratio={ratio} />
+      <Link href={`/blog/${meta.slug}`}>
+        <a href={`/blog/${meta.slug}`}>
+          <BlogPostCard meta={meta} ratio={ratio} />
+        </a>
+      </Link>
     </Box>
   );
 }
 
 export interface BlogPostGridProps {
-  blogPostSums: BlogPosthSum[];
+  metas: BlogPostMeta[];
 }
 
-export default function BlogPostGrid({ blogPostSums }: BlogPostGridProps): JSX.Element {
+export default function BlogPostGrid({ metas }: BlogPostGridProps): JSX.Element {
   return (
     <Box>
-      <Cell blogPostSum={blogPostSums[0]} width="60%" ratio={4 / 3} />
-      <Cell blogPostSum={blogPostSums[1]} width="40%" ratio={4 / 3} />
+      <Cell meta={metas[0]} width="60%" ratio={4 / 3} />
+      <Cell meta={metas[1]} width="40%" ratio={4 / 3} />
 
-      <Cell blogPostSum={blogPostSums[2]} width="50%" ratio={16 / 9} />
-      <Cell blogPostSum={blogPostSums[3]} width="50%" ratio={16 / 9} />
+      <Cell meta={metas[2]} width="50%" ratio={16 / 9} />
+      <Cell meta={metas[3]} width="50%" ratio={16 / 9} />
 
-      <Cell blogPostSum={blogPostSums[4]} width="33%" ratio={4 / 3} />
-      <Cell blogPostSum={blogPostSums[5]} width="33%" ratio={4 / 3} />
-      <Cell blogPostSum={blogPostSums[6]} width="33%" ratio={4 / 3} />
+      <Cell meta={metas[4]} width="33%" ratio={4 / 3} />
+      <Cell meta={metas[5]} width="33%" ratio={4 / 3} />
+      <Cell meta={metas[6]} width="33%" ratio={4 / 3} />
     </Box>
   );
 }

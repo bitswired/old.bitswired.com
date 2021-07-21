@@ -23,7 +23,9 @@ export default function CodeBlock({ children, className }: CodeBlockProps): JSX.
       style={prism}
       customStyle={{
         backgroundColor: '#EEE',
-        fontSize: '16px'
+
+        fontSize: '16px',
+        width: '100%'
       }}>
       {children}
     </SyntaxHighlighter>

@@ -2,7 +2,7 @@ import { Box, Flex, Text, useBreakpointValue } from '@chakra-ui/react';
 import MeAvatar from 'components/Me/MeAvatar';
 
 export default function BlogPostAuthor(): JSX.Element {
-  const avatarSize = useBreakpointValue({ base: 'lg', sm: 'xl', lg: 'xl' });
+  const avatarSize = useBreakpointValue({ base: 'lg', sm: 'lg', lg: 'lg' });
   const primaryFontSize = useBreakpointValue({ base: 'sm', md: 'md', lg: 'lg' });
   const secondaryFontSize = useBreakpointValue({ base: 'sm', md: 'md', lg: 'lg' });
 

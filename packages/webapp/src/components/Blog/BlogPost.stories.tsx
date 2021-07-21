@@ -20,7 +20,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quam risus, lu
 Curabitur libero dui, posuere ut lorem in, dictum faucibus magna. Nunc a vehicula felis. Donec iaculis lorem eget dignissim feugiat. Pellentesque ullamcorper convallis consectetur. Phasellus placerat, dui ut rhoncus elementum, ante eros convallis metus, blandit fermentum purus ex nec dui. Duis rhoncus gravida erat ut viverra. Curabitur urna mi, vestibulum non lacus et, fermentum tempor risus. Pellentesque in augue quam.
 
 
-<Figure src="https://wallpapercave.com/wp/wp4676582.jpg" alt="image" title="Title" />
+<Figure ratio={16 / 9} src="https://wallpapercave.com/wp/wp4676582.jpg" alt="image" title="Title" />
 
 
 ## Test 2
@@ -59,6 +59,8 @@ export const Default = Template.bind({});
 Default.args = {
   meta: {
     title: 'Test Article',
+    description: '',
+    readMinutes: 10,
     image: 'https://wallpaper.dog/large/526372.jpg',
     tags: ['Typesript', 'React'],
     slug: 'tt-tt',

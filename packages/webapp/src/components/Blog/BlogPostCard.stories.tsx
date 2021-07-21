@@ -17,7 +17,13 @@ const Template: Story<BlogPostCardProps> = (arguments_) => (
 export const Default = Template.bind({});
 Default.args = {
   ratio: 1,
-  title: 'Test Title',
-  image: 'https://source.unsplash.com/random',
-  description: 'Test descriptino test akdsjfn a;sdkf aksdjfn jafdsafkads'
+  meta: {
+    title: 'Test Article',
+    description: '',
+    readMinutes: 10,
+    image: 'https://wallpaper.dog/large/526372.jpg',
+    tags: ['Typesript', 'React'],
+    slug: 'tt-tt',
+    published: true
+  }
 };

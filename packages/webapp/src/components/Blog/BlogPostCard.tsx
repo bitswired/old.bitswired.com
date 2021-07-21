@@ -1,19 +1,12 @@
-import { AspectRatio, Box, Heading, Text } from '@chakra-ui/react';
+import { AspectRatio, Box, Text } from '@chakra-ui/react';
 import LazyImage from 'components/LazyImage';
 
 export interface BlogPostCardProps {
   ratio: number;
-  title: string;
-  image: string;
-  description: string;
+  meta: BlogPostMeta;
 }
 
-export default function BlogPostCard({
-  ratio,
-  title,
-  description,
-  image
-}: BlogPostCardProps): JSX.Element {
+export default function BlogPostCard({ ratio, meta }: BlogPostCardProps): JSX.Element {
   return (
     <Box
       cursor="pointer"
@@ -25,15 +18,6 @@ export default function BlogPostCard({
           transform: 'scale(0.95)'
         }
       }}>
-      <Box w="100%" overflow="hidden">
-        <Heading as="h2" display="inline">
-          {title}
-        </Heading>
-        <Text display="inline" mx="0.5em">
-          --
-        </Text>
-        <Text display="inline">{description}</Text>
-      </Box>
       <AspectRatio
         className="taz"
         width="100%"
@@ -41,8 +25,23 @@ export default function BlogPostCard({
         overflow="hidden"
         rounded="md"
         transition="transform 0.1s">
-        <LazyImage w="100%" h="100%" objectFit="cover" transition="transform 0.1s" src={image} />
+        <LazyImage
+          w="100%"
+          h="100%"
+          objectFit="cover"
+          transition="transform 0.1s"
+          src={meta.image}
+        />
       </AspectRatio>
+      <Box w="100%" overflow="hidden" p="1em">
+        <Text display="inline" fontWeight="bold">
+          {meta.title}
+        </Text>
+        <Text display="inline" mx="0.5em">
+          -
+        </Text>
+        <Text display="inline">{meta.description}</Text>
+      </Box>
     </Box>
   );
 }

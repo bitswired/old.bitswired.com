@@ -22,7 +22,7 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
         onSliderOpen={onSliderOpen}
         onSliderClose={onSliderClose}
       />
-      <Box>{children}</Box>
+      <Box my="75px">{children}</Box>
       <Footer />
       <NewsletterModal isOpen={isNewsletterModalOpen} onClose={close} isSubscribed={isSubscribed} />
     </>
