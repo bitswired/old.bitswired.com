@@ -1,23 +1,13 @@
 import { Story } from '@storybook/react';
 
-import Landing, { LandingProps } from '.';
+import Landing from '.';
 
 export default {
   title: 'Home/Landing',
-  component: Landing,
-  argTypes: {
-    size: {
-      control: {
-        type: 'radio',
-        options: ['sm', 'md', 'lg']
-      }
-    }
-  }
+  component: Landing
 };
 
-const Template: Story<LandingProps> = (arguments_) => <Landing {...arguments_} />;
+const Template: Story = (arguments_) => <Landing {...arguments_} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  size: 'lg'
-};
+Default.args = {};

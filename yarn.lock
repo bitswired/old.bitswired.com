@@ -1944,6 +1944,7 @@ __metadata:
     next: latest
     next-compose-plugins: ^2.2.1
     next-mdx-remote: ^3.0.2
+    next-seo: ^4.26.0
     prettier: ^2.3.1
     react: ^17.0.1
     react-awesome-reveal: ^3.7.1
@@ -12056,6 +12057,17 @@ fsevents@^1.2.7:
     react: ">=16.x <=17.x"
     react-dom: ">=16.x <=17.x"
   checksum: ec7908828a21d55cab40f7584ea93208e72fcf3422b4ad5a6e3d447d7b1a9cc64f1c96aa3f2c432aa7b77c3cbe596ba68269bdd257645a82e86b742e2fa1b4fc
+  languageName: node
+  linkType: hard
+
+"next-seo@npm:^4.26.0":
+  version: 4.26.0
+  resolution: "next-seo@npm:4.26.0"
+  peerDependencies:
+    next: ^8.1.1-canary.54 || >=9.0.0
+    react: ">=16.0.0"
+    react-dom: ">=16.0.0"
+  checksum: 5276a4a69ecc85c4ead7436d4df25b01380dfa23185f7e32c82f88b2d69191f4753eec0114bc9d7e2a97b1c724abc0501190c2d90213b8b79bc4884e550d41af
   languageName: node
   linkType: hard
 

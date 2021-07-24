@@ -3152,6 +3152,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["next", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:10.2.3"],
             ["next-compose-plugins", "npm:2.2.1"],
             ["next-mdx-remote", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:3.0.2"],
+            ["next-seo", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:4.26.0"],
             ["prettier", "npm:2.3.1"],
             ["react", "npm:17.0.2"],
             ["react-awesome-reveal", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:3.8.1"],
@@ -16982,6 +16983,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@types/react-dom",
             "@types/react",
+            "react-dom",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["next-seo", [
+        ["npm:4.26.0", {
+          "packageLocation": "./.yarn/cache/next-seo-npm-4.26.0-f3073241f6-5276a4a69e.zip/node_modules/next-seo/",
+          "packageDependencies": [
+            ["next-seo", "npm:4.26.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:4.26.0", {
+          "packageLocation": "./.yarn/$$virtual/next-seo-virtual-ece2568373/0/cache/next-seo-npm-4.26.0-f3073241f6-5276a4a69e.zip/node_modules/next-seo/",
+          "packageDependencies": [
+            ["next-seo", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:4.26.0"],
+            ["@types/next", null],
+            ["@types/react", "npm:17.0.11"],
+            ["@types/react-dom", "npm:17.0.7"],
+            ["next", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:10.2.3"],
+            ["react", "npm:17.0.2"],
+            ["react-dom", "virtual:e703f18b8e5eb36701830b8c58d590936394016f9fe9c87fc934542e28e8af67cf3b41c98f86d86c19098aaf17ec9915a56cbb80325c3c1f887ef3a397cdefa0#npm:17.0.2"]
+          ],
+          "packagePeers": [
+            "@types/next",
+            "@types/react-dom",
+            "@types/react",
+            "next",
             "react-dom",
             "react"
           ],

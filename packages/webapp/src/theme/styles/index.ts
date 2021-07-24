@@ -65,7 +65,7 @@ export default {
         },
         p: {
           lineHeight: '1.5',
-          mb: 6,
+          my: 6,
           color: '#333',
           fontSize: '1.05em'
         },

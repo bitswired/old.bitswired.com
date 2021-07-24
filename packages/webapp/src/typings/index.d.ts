@@ -11,4 +11,7 @@ interface BlogPostMeta {
   tags: string[];
   slug: string;
   published: boolean;
+  datePublished: string;
+  dateModified: string;
+  images: string[];
 }

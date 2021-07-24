@@ -1,4 +1,13 @@
-import { AspectRatio, Box, Code, CodeProps, Link, LinkProps } from '@chakra-ui/react';
+import {
+  AspectRatio,
+  Box,
+  Center,
+  Code,
+  CodeProps,
+  Link,
+  LinkProps,
+  ResponsiveValue
+} from '@chakra-ui/react';
 import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
 import LazyImage from 'components/LazyImage';
 import NextLink from 'next/link';
@@ -9,22 +18,33 @@ interface MDXImageProps {
   title: string;
   ratio: number;
   width: string;
+  maxWidth?: string;
+  objectFit: ResponsiveValue<any>;
 }
 
-function MDXImage({ src, alt, title, ratio, width }: MDXImageProps): JSX.Element {
+function MDXImage({
+  src,
+  alt,
+  title,
+  ratio,
+  width,
+  maxWidth,
+  objectFit = 'cover'
+}: MDXImageProps): JSX.Element {
   return (
     <Box as="figure">
-      <AspectRatio ratio={ratio} width={width}>
-        <LazyImage
-          mx="auto"
-          src={src}
-          alt={alt}
-          w="100%"
-          objectFit="cover"
-          substituteHeight="400px"
-        />
-      </AspectRatio>
-
+      <Center>
+        <AspectRatio ratio={ratio} width={width} maxW={maxWidth}>
+          <LazyImage
+            mx="auto"
+            src={src}
+            alt={alt}
+            w="100%"
+            objectFit={objectFit}
+            substituteHeight="400px"
+          />
+        </AspectRatio>
+      </Center>
       <Box as="figcaption">{title}</Box>
     </Box>
   );

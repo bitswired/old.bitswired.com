@@ -15,7 +15,7 @@ export default function resolveStaticAsset(type: string, asset: string): string 
 
 export const IMAGE_HOME = resolveStaticAsset('general', 'home');
 
-export const IMAGE_HOME_MOBILE = resolveStaticAsset('general', 'virtual-reality');
+export const IMAGE_HOME_MOBILE = resolveStaticAsset('general', 'home-mobile');
 
 export const IMAGE_WIREUP = resolveStaticAsset('general', 'wireup');
 

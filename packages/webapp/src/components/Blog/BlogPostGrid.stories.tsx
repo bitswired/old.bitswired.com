@@ -20,7 +20,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=1'
+      image: 'https://source.unsplash.com/random?sig=1',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     },
     {
       title: 'Test Article',
@@ -29,7 +32,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=2'
+      image: 'https://source.unsplash.com/random?sig=2',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     },
     {
       title: 'Test Article',
@@ -38,7 +44,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=3'
+      image: 'https://source.unsplash.com/random?sig=3',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     },
     {
       title: 'Test Article',
@@ -47,7 +56,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=4'
+      image: 'https://source.unsplash.com/random?sig=4',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     },
     {
       title: 'Test Article',
@@ -56,7 +68,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=5'
+      image: 'https://source.unsplash.com/random?sig=5',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     },
     {
       title: 'Test Article',
@@ -65,7 +80,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=6'
+      image: 'https://source.unsplash.com/random?sig=6',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     },
     {
       title: 'Test Article',
@@ -74,7 +92,10 @@ Default.args = {
       tags: ['Typesript', 'React'],
       slug: 'tt-tt',
       published: true,
-      image: 'https://source.unsplash.com/random?sig=7'
+      image: 'https://source.unsplash.com/random?sig=7',
+      datePublished: '2020-01-01',
+      dateModified: '2020-01-01',
+      images: ['test']
     }
   ]
 };

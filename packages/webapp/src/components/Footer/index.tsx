@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Center, SimpleGrid, Text } from '@chakra-ui/react';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import Follow from 'components/Socials/Follow';
@@ -44,9 +44,9 @@ function WireUpBody() {
 
 function SocialsBody() {
   return (
-    <Flex fontSize="2xl">
+    <Center>
       <Follow />
-    </Flex>
+    </Center>
   );
 }
 

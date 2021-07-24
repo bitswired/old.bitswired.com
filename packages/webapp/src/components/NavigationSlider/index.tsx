@@ -1,18 +1,46 @@
 import {
-  Center,
+  Box,
+  Button,
+  Divider,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
-  Stack,
-  Text
+  HStack,
+  Text,
+  VStack
 } from '@chakra-ui/react';
+import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Logo from 'components/Logo';
 import Follow from 'components/Socials/Follow';
 import { routes } from 'config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+
+function Actions() {
+  return (
+    <VStack spacing="2em">
+      <HStack>
+        <Text color="white">Fortnightly curated content</Text>
+        <NewsletterSubscribeAction>
+          <Button size="sm" variant="secondary-solid">
+            SUBSCRIBE
+          </Button>
+        </NewsletterSubscribeAction>
+      </HStack>
+
+      <Box>
+        <Text display="inline" color="white">
+          Not yet a member?
+        </Text>{' '}
+        <Text display="inline" color="primary" textDecoration="underline">
+          Join the Discord
+        </Text>
+      </Box>
+    </VStack>
+  );
+}
 
 interface NavigationItemProps {
   route: Route;
@@ -70,21 +98,27 @@ export default function NavigationSlider({
           <DrawerBody position="relative">
             <Logo />
 
-            <Stack
-              m="auto"
-              w="max-content"
-              textAlign="center"
-              mt="32"
-              align="center"
-              justify="center">
-              {routes.map((x) => (
-                <NavigationMobileItem key={x.name} route={x} isActive={base === x.path} />
-              ))}
-            </Stack>
+            <VStack spacing="4em">
+              <VStack
+                m="auto"
+                w="max-content"
+                textAlign="center"
+                mt={16}
+                align="center"
+                justify="center">
+                {routes.map((x) => (
+                  <NavigationMobileItem key={x.name} route={x} isActive={base === x.path} />
+                ))}
+              </VStack>
 
-            <Center w="100%" position="absolute" bottom="25%" left={0}>
+              <Divider />
+
+              <Actions />
+
+              <Divider />
+
               <Follow />
-            </Center>
+            </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

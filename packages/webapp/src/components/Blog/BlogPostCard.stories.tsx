@@ -24,6 +24,9 @@ Default.args = {
     image: 'https://wallpaper.dog/large/526372.jpg',
     tags: ['Typesript', 'React'],
     slug: 'tt-tt',
-    published: true
+    published: true,
+    datePublished: '2020-01-01',
+    dateModified: '2020-01-01',
+    images: ['test']
   }
 };

@@ -38,5 +38,5 @@ export const deoDefaults = {
 export const socialsFollow = [
   { url: 'https://discord.gg/GStmskX2g6', name: 'discord', icon: FaDiscord },
   { url: 'https://twitter.com/Bitswired', name: 'twitter', icon: FaTwitter },
-  { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
+  // { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
 ];

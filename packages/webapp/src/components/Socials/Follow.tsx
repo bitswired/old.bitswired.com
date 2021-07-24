@@ -6,13 +6,14 @@ import React from 'react';
 interface SocialIconProps {
   as: React.FunctionComponent;
   url: string;
+  fontSize?: string;
 }
 
-function SocialIcon({ as, url }: SocialIconProps): JSX.Element {
+export function SocialIcon({ as, url, fontSize = '32px' }: SocialIconProps): JSX.Element {
   return (
     <LinkBox>
       <LinkOverlay href={url} isExternal>
-        <Icon color="primary" fontSize="32px" as={as} />
+        <Icon color="primary" fontSize={fontSize} as={as} />
       </LinkOverlay>
     </LinkBox>
   );
