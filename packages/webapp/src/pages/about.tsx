@@ -1,4 +1,19 @@
-import { Box, Heading, HStack, Icon, Text, VStack } from '@chakra-ui/react';
+/* eslint-disable react/no-unescaped-entities */
+import {
+  Box,
+  Heading,
+  HStack,
+  Icon,
+  Link,
+  LinkBox,
+  LinkOverlay,
+  ListItem,
+  Text,
+  UnorderedList,
+  VStack,
+  Wrap
+} from '@chakra-ui/react';
+import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import {
@@ -7,14 +22,32 @@ import {
   FaCode,
   FaDiscord,
   FaEnvelope,
+  FaExternalLinkAlt,
   FaGlobe,
-  FaHistory,
   FaLinkedin,
   FaNewspaper,
-  FaUniversity,
-  FaUser,
-  FaUsers
+  FaUser
 } from 'react-icons/fa';
+
+interface AccentProps {
+  children: string;
+  bold?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
+}
+function Accent({ children, primary = false, secondary = false, bold = false }: AccentProps) {
+  let color;
+  if (primary) color = 'primary';
+  else if (secondary) color = 'secondary';
+
+  const fontWeight = bold ? 'bold' : 'normal';
+
+  return (
+    <Box as="span" color={color} fontWeight={fontWeight}>
+      {children}
+    </Box>
+  );
+}
 
 interface SectionProps {
   id: string;
@@ -32,7 +65,7 @@ function Section({ id, title, variant, icon, children }: SectionProps) {
   return (
     <Box id={id} bgColor={bgColor} color={color} p="2em">
       <VStack maxW="70ch" align="left" m="auto" spacing="2em">
-        <HStack align="center" color={headingColor}>
+        <HStack align="center" color={headingColor} spacing="1em">
           <Icon as={icon} fontSize="7xl" />
           <Heading as="h2">{title}</Heading>
         </HStack>
@@ -86,76 +119,111 @@ export default function AboutPage(): JSX.Element {
         }}
       />
 
-      {/* <Center>
-        <Heading as="h1" mt="1em">
-          About
-        </Heading>
-      </Center>
-
-      <Divider my="1em" /> */}
-
       <VStack align="stretch">
         <Section id="me" title="Me" variant="light" icon={FaUser}>
           <Box>
             <Text>
               I am a French, 28 years old machine learning engineer based in Switzerland. I studied
-              at EPFL where I first got a Bachelor degree in Computer Science/Communcation Systems,
-              and then a Master degree in Data Science.
+              at EPFL where I first got a Bachelor's degree in Computer Science/Communication
+              Systems, and then a Master's degree in Data Science.
             </Text>
             <br />
-            {/* <Text>
-                My main subject of interest are Artificial Intelligence, Computer Graphics and Web
-                Development. My goal with this website is to share with you this passion, help you
-                getting starting in these fields.
-              </Text> */}
+            <Text>
+              I currently work at Visium, an AI startup where we build state-of-the-art artificial
+              intelligence solutions to empower the digital transformation of businesses.
+            </Text>
             <br />
-            <Text>I did one intership at a research</Text>
+            <Text>
+              My main interests are in artificial intelligence, computer graphics, and web
+              development (back-end and front-end).
+            </Text>
           </Box>
 
-          <VStack align="left">
-            <HStack>
-              <Icon as={FaEnvelope} />
-              <Text>jimi.vaubien@bitswired.com</Text>
-            </HStack>
+          <VStack align={['center', 'stretch']}>
+            <LinkBox>
+              <HStack color="primary" w="20ch">
+                <Icon as={FaEnvelope} fontSize="2xl" />
+                <LinkOverlay textDecoration="underline" href={`mailto:${infos.contactEmail}`}>
+                  Contact me by email
+                </LinkOverlay>
+              </HStack>
+            </LinkBox>
 
-            <HStack>
-              <Icon as={FaLinkedin} />
-              <Text>jimi.vaubien@bitswired.com</Text>
-            </HStack>
-
-            <HStack>
-              <Icon as={FaUsers} />
-              <Text>jimi.vaubien@bitswired.com</Text>
-            </HStack>
-
-            <HStack>
-              <Icon as={FaUniversity} />
-              <Text>jimi.vaubien@bitswired.com</Text>
-            </HStack>
+            <LinkBox>
+              <HStack color="secondary" w="20ch">
+                <Icon as={FaLinkedin} fontSize="2xl" />
+                <LinkOverlay textDecoration="underline" isExternal href={infos.linkedInProfile}>
+                  Find me on LinkedIn
+                </LinkOverlay>
+              </HStack>
+            </LinkBox>
           </VStack>
         </Section>
 
         <Section id="bitswired" title="Bitswired" variant="dark" icon={FaGlobe}>
           <Text>
-            I am a French, 28 years old machine learning engineer based in Switzerland. I studied at
-            EPFL where I first got a Bachelor degree in Computer Science/Communcation Systems, and
-            then a Master degree in Data Science.
+            I'm creating Bitswired to share my enthusiasm for digital technologies and related
+            sciences. From programming to artificial intelligence and more!
           </Text>
+
+          <Text>Let's build a community to learn and discover together!</Text>
+
+          <Text>What can you expect?</Text>
+
+          <UnorderedList pl="1em">
+            <ListItem>
+              <Accent primary bold>
+                Regular articles
+              </Accent>{' '}
+              about AI, programming, tutorials, in-depth guides ...
+            </ListItem>
+            <ListItem>
+              <Accent primary bold>
+                Community-driven
+              </Accent>{' '}
+              content to get you involved in the process.
+            </ListItem>
+            <ListItem>
+              A{' '}
+              <Accent primary bold>
+                Discord community
+              </Accent>{' '}
+              and{' '}
+              <Accent primary bold>
+                Newsletter
+              </Accent>{' '}
+              for tech enthusiasts.
+            </ListItem>
+          </UnorderedList>
+
           <br />
-          <Text>
-            My main subject of interest are Artificial Intelligence, Computer Graphics and Web
-            Development. My goal with this website is to share with you this passion, help you
-            getting starting in these fields.
-          </Text>
         </Section>
 
         <Section id="newsletter" title="Newsletter" variant="light" icon={FaEnvelope}>
           <Text>
-            The Bitswired newsletter is a mean to interact directly with you, sharing a curated
-            digest of high-valued, useful information. It will follow a main weekly schedule.
+            The Bitswired newsletter is a means to interact directly with you.{' '}
+            <Accent secondary bold>
+              Learning never ends!
+            </Accent>
+          </Text>
+          <Text>
+            I'm constantly looking for cutting-edge technologies, trying new tools, and reading
+            papers. I will share my findings with you regularly via a{' '}
+            <Accent secondary bold>
+              curated digest
+            </Accent>{' '}
+            of valuable information. It is published{' '}
+            <Accent secondary bold>
+              every two weeks
+            </Accent>
+            .
           </Text>
 
-          <VStack>
+          <Text>
+            It won't be a no-reply email, so I invite you to answer to spark interesting
+            conversations.
+          </Text>
+          <Wrap m="auto" justify="center">
             <NewsletterFeature
               icon={FaBrain}
               title="Paper of the Week"
@@ -180,27 +248,35 @@ export default function AboutPage(): JSX.Element {
               description="Bla vla val"
               color="secondary"
             />
-            <NewsletterFeature
+            {/* <NewsletterFeature
               icon={FaHistory}
               title="Bitswired Week"
               description="Bla vla val"
               color="primary"
-            />
-          </VStack>
+            /> */}
+          </Wrap>
         </Section>
 
         <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>
           <Text>
-            I am a French, 28 years old machine learning engineer based in Switzerland. I studied at
-            EPFL where I first got a Bachelor degree in Computer Science/Communcation Systems, and
-            then a Master degree in Data Science.
+            The{' '}
+            <Link href={infos.discrodInvite} isExternal textDecor="underline" color="primary">
+              Bitswired discord community <Icon as={FaExternalLinkAlt} fontSize="0.7em" />
+            </Link>{' '}
+            is a place for us to connect, learn together and share our passion for digital
+            technologies!
           </Text>
+
+          <UnorderedList pl="1em">
+            <ListItem>
+              {' '}
+              If you are learning programming, data science, AI, ... come ask questions
+            </ListItem>
+            <ListItem> Participate to weekly challenges for fun, unlock roles</ListItem>
+          </UnorderedList>
           <br />
-          <Text>
-            My main subject of interest are Artificial Intelligence, Computer Graphics and Web
-            Development. My goal with this website is to share with you this passion, help you
-            getting starting in these fields.
-          </Text>
+          <br />
+          <br />
         </Section>
       </VStack>
     </>

@@ -19,6 +19,13 @@ export const routes: Route[] = [
   }
 ];
 
+export const infos = {
+  discrodInvite: 'https://discord.gg/5fzZgatdwZ',
+  linkedInProfile: 'https://www.linkedin.com/in/jimi-vaubien',
+  twitterProfile: 'https://twitter.com/Bitswired',
+  contactEmail: 'contact@bitswired.com'
+};
+
 export const socials = [
   { url: 'https://reddit.com', name: 'reddit', icon: <FaReddit /> },
   { url: 'https://twitter.com', name: 'twitter', icon: <FaTwitter /> },
@@ -36,7 +43,7 @@ export const deoDefaults = {
 };
 
 export const socialsFollow = [
-  { url: 'https://discord.gg/GStmskX2g6', name: 'discord', icon: FaDiscord },
-  { url: 'https://twitter.com/Bitswired', name: 'twitter', icon: FaTwitter },
+  { url: infos.discrodInvite, name: 'discord', icon: FaDiscord },
+  { url: infos.twitterProfile, name: 'twitter', icon: FaTwitter }
   // { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
 ];

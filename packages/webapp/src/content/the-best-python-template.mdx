@@ -41,7 +41,7 @@ Installing third-party libraries is an essential step in any programming project
 enough. It should be possible to version control the library you use and install the project with
 all its dependencies on any computer. You also want isolation to avoid mixing dependencies between
 different projects. Indeed if you have different projects depending on the same library but with a
-different versions, you don't want them to conflict with each other.
+different version, you don't want them to conflict with each other.
 
 The standard way to tackle these problems in Python are **Pypi** (to install packages) and **virtual
 environments** (for isolation). The typical workflow is:
@@ -58,10 +58,10 @@ This provides you:
 - **Reproducibility (somehow)**: you can reinstall all the dependencies when you download the
   project, but you are not guaranteed to reach the same state at another point in time
 
-2 problems still remains:
+2 problems remain:
 
 - **Dependency mix**: you get a `requirements.txt` file mixed with your dependencies as well as
-  pacakges required by these dependencies. It's a mess to track easily the packages you really
+  packages required by these dependencies. It's a mess to track easily the packages you really
   depend on
 - **Week reproducibility**: you are not guaranteed to reach the same project dependencies state if
   you reinstall your project later because `pip freeze` does not lock dependencies
@@ -74,8 +74,8 @@ file. It solves the 2 problems mentioned above.
 
 - **Clean dependencies**: in your `pyproject.toml` file you only specify the direct dependency for
   your project. It will never get mixed with dependency from other packages
-- **Strong reproducibility**: poetry introduces a **lock file** `poetry.clock` to your project. In
-  this file all dependencies are locked to the version resolved at the installation. You are
+- **Strong reproducibility**: poetry introduces a **lock file** `poetry.lock` to your project. In
+  this file, all dependencies are locked to the version resolved at the installation. You are
   guaranteed to have the same dependency state for your project whenever you're installing it
 
 ## Issue #2: Code Quality and CI/CD
@@ -93,7 +93,7 @@ be automatic.
 
 ### Solution
 
-A good solution here cover 5 points.
+A good solution here covers 5 points.
 
 #### 1. Static Type Checking
 
@@ -110,9 +110,9 @@ conforming to type-annotations, but this investment will pay sooner than you can
 To format python code, my favorite tools are **Black** and **Isort**. They come with a predefined
 set of rules which are a great default and you can easily customize them in the `pyproject.toml`
 configuration. Black will help you format your code, i.e., breaking too-long lines, enforcing
-newlines between functions and so on. Isort will help you keep your imports sorted with seperation
-betwwen python built-ins, first-party and third-party dependencies. It's better to keep it
-consistent accorss all files in your project.
+newlines between functions, and so on. Isort will help you keep your imports sorted with separation
+between python built-ins, first-party and third-party dependencies. It's better to keep it
+consistent across all files in your project.
 
 <Figure
   ratio={16 / 9}
@@ -140,36 +140,36 @@ fixture. I might come back to Pytest in another article.
 #### 5. CI/CD
 
 Most likely, you are using a tool like GitHub to save your git repository remotely. Ideally, you
-want to run all your code qualtiy checks before any code is merged to your master branch to avoid
+want to run all your code quality checks before any code is merged to your master branch to avoid
 codebase deterioration over time. We have 2 complementary ways to do it:
 
 1. Pre-commit hooks: these are scripts run before each commit locally, they will run all your code
-   quality tools and deny the commit if the code doe not pass. This is an easy way to enforce
-   best-practices at every commit
-2. GitHub actions: these are scripts run automatically by GitHub on certain triggers. For instance
+   quality tools and deny the commit if the code doesn't pass. This is an easy way to enforce best
+   practices at every commit
+2. GitHub actions: these are scripts run automatically by GitHub on certain triggers. For instance,
    when you **open a pull request**, GitHub will build your code in a container and run all your
    code checks. It will prevent you to merge the pull request into master if the checks did not pass
 
 Using a combination of both is the recommended way. Indeed pre-commit hooks are fast since they run
-locally, you don't need to wait for GitHub remotely. However, nothiung guarantees you that every
-developper run the pre-commit hooks before pushing code. So having the GitHub actions checking your
-code is the ultimate gurantee that all code merged on master lives up to your quality standards
+locally, you don't need to wait for GitHub remotely. However, nothing guarantees you that every
+developer runs the pre-commit hooks before pushing code. So having the GitHub actions checking your
+code is the ultimate guarantee that all code merged on master lives up to your quality standards.
 
 In the solution proposed here, I use a Python library `pre-commit` to automatically run all the
-checking tools before each commit. Finally I set up a GitHub action to run pre-commit before merging
-pull request into master to ultimately enforce the code qualtiy.
+checking tools before each commit. Finally, I set up a GitHub action to run pre-commit before
+merging a pull request into master to ultimately enforce the code qualtiy.
 
 ## Issue #3: Packaging
 
 ### Problem
 
 Awesome, you have a project ready to be packaged and published to pipy! But wait, you first need to
-get it publish-ready and go through a list of steps that can be cumbersome [see here][packaging].
+get it publish-ready and go through a list of steps that can be cumbersome ([see here][packaging]).
 
 ### Solution
 
 Again poetry helps us there. It's super simple to build your package and publish it. You mainly have
-2 commands to use: poetry build and poetry publish. Never be afraid to publish your package.
+2 commands to use: `poetry build` and `poetry publish`. Never be afraid to publish your package.
 
 ## Bonus: VSCode Integration
 
@@ -179,28 +179,28 @@ you to enable this feature for all your projects. You can control the level of s
 checking, so you can adopt it progressively. It will catch tons of potential errors in your code
 just by checking the types.
 
-Also, for all the tools mentioned before, Mypy, Black, Isort and Flake8, there are **plugins**
+Also, for all the tools mentioned before, Mypy, Black, Isort, and Flake8, there are **plugins**
 available in the VSCode marketplace.
 
 Finally, to **integrate Poetry and VScode smoothly**, you need to tell VSCode the location of your
-Python interpreter. Since Poetry manage it for you, run `poetry run which python` to get the
-absolute path. Then in VSCode press Ctrl+P, type Select Python interpreter and put the path.
+Python interpreter. Since Poetry manages it for you, run `poetry run which python` to get the
+absolute path. Then in VSCode press Ctrl+P, type Select Python interpreter, and put the path.
 
 ## The Best Python Template To Start
 
 Implementing all these good practices can feel too demanding especially if you are a beginner.
-However, I definitely encourage you to apply these good practices as **early** as possible in your
-coding habits. It will overall make you a better coder, producing better quality code, and avoiding
+However, I encourage you to apply these good practices as **early** as possible in your coding
+habits. It will overall make you a better coder, producing better quality code, and avoiding
 easy-to-catch pitfalls and bugs. Even for an advanced programmer, it can be cumbersome to do it
 again and again for every project.
 
 _Setting up these tools is not the most exciting part, but a necessary step toward success._
 
 So I've made your life easier! I created a [GitHub template repository][github repo] addressing all
-the issues. It's really **easy to use**, when you create a new Python project, start it from my
-GitHub template. You will only have to run poetry install to get all the dev dependencies required
-for the tooling: **linting**, **formating**, **type checking**. You will also have **poetry** to
-handle your dependencies and **be ready to ship high-quality code in no time!** Check it out.
+the issues. It's **easy to use**, when you create a new Python project, start it from my GitHub
+template. You will only have to run poetry install to get all the dev dependencies required for the
+tooling: **linting**, **formating**, **type checking**. You will also have **poetry** to handle your
+dependencies and **be ready to ship high-quality code in no time!** Check it out.
 
 <Figure
   ratio={1}
