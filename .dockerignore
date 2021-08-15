@@ -1,0 +1,13 @@
+.yarn/cache
+.yarn/unplugged
+.yarn/plugins
+.yarn/install-state.gz
+.yarn/build-state.yml
+
+**/node_modules
+**/.next
+**/.storybook
+**/dist
+
+Dockerfile*
+docker-compose*

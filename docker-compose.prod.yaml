@@ -1,0 +1,34 @@
+version: "3.1"
+
+services:
+  caddy:
+    image: caddy:alpine
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    volumes:
+      - $PWD/docker/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/docker/certificate.pem:/etc/ssl/certs/certificate.pem
+      - $PWD/docker/key.pem:/etc/ssl/private/key.pem
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    restart: "unless-stopped"
+    env_file: .env
+
+  webapp:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.webapp
+    restart: "unless-stopped"
+    env_file: .env
+    ports:
+      - "3002:3002"
+
+  postgres:
+    image: postgres:alpine
+    restart: "no"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
