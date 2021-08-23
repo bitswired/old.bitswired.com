@@ -7,14 +7,14 @@ import {
   DrawerContent,
   DrawerOverlay,
   HStack,
+  Link,
   Text,
   VStack
 } from '@chakra-ui/react';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Logo from 'components/Logo';
 import Follow from 'components/Socials/Follow';
-import { routes } from 'config';
-import Link from 'next/link';
+import { infos, routes } from 'config';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -34,9 +34,15 @@ function Actions() {
         <Text display="inline" color="white">
           Not yet a member?
         </Text>{' '}
-        <Text display="inline" color="primary" textDecoration="underline">
+        <Link
+          href={infos.discrodInvite}
+          title="Discord invitation"
+          isExternal
+          display="inline"
+          color="primary"
+          textDecoration="underline">
           Join the Discord
-        </Text>
+        </Link>
       </Box>
     </VStack>
   );
