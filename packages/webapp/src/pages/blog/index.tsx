@@ -9,9 +9,9 @@ interface BlogPostLandingPageProps {
 }
 export default function BlogLandingPage({ metas }: BlogPostLandingPageProps): JSX.Element {
   const url = 'https://www.bitswired.com/blog';
-  const title = 'Blog';
+  const title = 'Bitswired Blog - Learn Together.';
   const description =
-    'Bitswired blog. Articles about artificial intelligence, computer graphics, web development and more';
+    'Bitswired blog. Articles about artificial intelligence, computer graphics, web development and more.';
   return (
     <>
       <NextSeo

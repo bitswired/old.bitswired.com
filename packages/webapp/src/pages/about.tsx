@@ -96,10 +96,10 @@ function NewsletterFeature({ icon, title, color }: NewsletterFeatureProps) {
 }
 
 export default function AboutPage(): JSX.Element {
-  const url = 'https://www.bitswired.com';
-  const title = 'Home';
+  const url = 'https://www.bitswired.com/about';
+  const title = 'About Bitswired - More than a blog, a Newsletter and a Community';
   const description =
-    'Bitswired website. Artificial intelligence, computer graphics, web development and more';
+    'Bitswired is a website where I share AI, coding, and tech-related content. Subscribe to the newsletter and join the Discord community.';
 
   return (
     <>
