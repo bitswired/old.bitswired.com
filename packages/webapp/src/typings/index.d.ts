@@ -15,3 +15,5 @@ interface BlogPostMeta {
   dateModified: string;
   images: string[];
 }
+
+type CodeLanguage = 'tsx' | 'jsx' | 'ts' | 'js' | 'python';

@@ -1,4 +1,6 @@
+import { Icon } from '@chakra-ui/react';
 import { FaDiscord, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
+import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';
 
 export const routes: Route[] = [
   {
@@ -32,6 +34,14 @@ export const socials = [
   { url: 'https://linkedin.com', name: 'linkedin', icon: <FaLinkedin /> },
   { url: 'https://instagram.com', name: 'instagram', icon: <FaInstagram /> }
 ];
+
+export const progLangIcons: Record<CodeLanguage, JSX.Element> = {
+  tsx: <Icon as={SiTypescript} />,
+  ts: <Icon as={SiTypescript} />,
+  js: <Icon as={SiJavascript} />,
+  jsx: <Icon as={SiJavascript} />,
+  python: <Icon as={SiPython} />
+};
 
 export const deoDefaults = {
   openGraph: {
