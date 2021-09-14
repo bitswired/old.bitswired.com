@@ -2,7 +2,7 @@ export default {
   Button: {
     baseStyle: {
       fontWeight: 'bold',
-      textTransform: 'uppercase'
+      _focus: { boxShadow: 'none' }
     },
 
     sizes: {
@@ -23,11 +23,27 @@ export default {
     variants: {
       'primary-solid': {
         color: 'white',
-        bg: 'primary'
+        bg: 'primary',
+        textTransform: 'uppercase'
       },
       'secondary-solid': {
         color: 'white',
-        bg: 'secondary'
+        bg: 'secondary',
+        textTransform: 'uppercase'
+      },
+      'primary-link': {
+        textTransform: 'capitalize',
+        color: 'primary',
+        _hover: {
+          bgColor: 'gray.100'
+        }
+      },
+      'secondary-link': {
+        textTransform: 'capitalize',
+        color: 'seondary',
+        _hover: {
+          bgColor: 'gray.100'
+        }
       }
     },
 
