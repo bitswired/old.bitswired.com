@@ -3,7 +3,7 @@ import React from 'react';
 
 export interface ButtonProps extends BaseButtonProps {
   children: string;
-  variant?: 'primary-solid' | 'secondary-solid';
+  variant?: 'primary-solid' | 'secondary-solid' | 'primary-link' | 'secondary-link';
   size?: 'sm' | 'md' | 'lg';
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -12,7 +12,6 @@ export default function Button({ children, ...properties }: ButtonProps): JSX.El
   return (
     <BaseButton
       {...properties}
-      boxShadow="none !important"
       onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
         properties.onClick && properties.onClick(e);
       }}>
