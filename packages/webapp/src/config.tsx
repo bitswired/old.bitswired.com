@@ -35,7 +35,7 @@ export const socials = [
   { url: 'https://instagram.com', name: 'instagram', icon: <FaInstagram /> }
 ];
 
-export const progLangIcons: Record<CodeLanguage, JSX.Element> = {
+export const codeLanguageIcons: Record<CodeLanguage, JSX.Element> = {
   tsx: <Icon as={SiTypescript} />,
   ts: <Icon as={SiTypescript} />,
   js: <Icon as={SiJavascript} />,
