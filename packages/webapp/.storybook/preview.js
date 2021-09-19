@@ -4,6 +4,7 @@ import { withNextRouter } from 'storybook-addon-next-router';
 import { addDecorator } from '@storybook/react';
 
 import { ChakraProvider } from '@chakra-ui/react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -24,10 +25,14 @@ addDecorator(
   })
 );
 
+const queryClient = new QueryClient();
+
 export const decorators = [
   (Story) => (
     <ChakraProvider resetCSS theme={theme}>
-      <Story />
+      <QueryClientProvider client={queryClient}>
+        <Story />
+      </QueryClientProvider>
     </ChakraProvider>
   )
 ];

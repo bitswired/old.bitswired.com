@@ -1,5 +1,7 @@
 const withPlugins = require('next-compose-plugins');
 
+console.log(process.env.ANALYZE);
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 });
@@ -13,8 +15,8 @@ const withMDX = require('@next/mdx')({
 });
 
 module.exports = withPlugins([
-  [withBundleAnalyzer],
   withMDX({
     pageExtensions: ['js', 'ts', 'tsx', 'mdx']
-  })
+  }),
+  [withBundleAnalyzer]
 ]);

@@ -1,9 +1,18 @@
 import { Box, useDisclosure } from '@chakra-ui/react';
-import Footer from 'components/Footer';
+// import Footer from 'components/Footer';
 import Header from 'components/Header';
-import NewsletterModal from 'components/Newsletter/NewsletterModal';
+//import NewsletterModal from 'components/Newsletter/NewsletterModal';
 import { NewsletterContext } from 'context/newsletter';
+import dynamic from 'next/dynamic';
 import React from 'react';
+
+const DynamicNewsletterModal = dynamic(() => import('components/Newsletter/NewsletterModal'), {
+  ssr: false
+});
+
+const DynamicFooter = dynamic(() => import('components/Footer'), {
+  ssr: false
+});
 
 interface MainLayoutProps {
   children: JSX.Element[] | JSX.Element;
@@ -23,8 +32,12 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
         onSliderClose={onSliderClose}
       />
       <Box mt="75px">{children}</Box>
-      <Footer />
-      <NewsletterModal isOpen={isNewsletterModalOpen} onClose={close} isSubscribed={isSubscribed} />
+      <DynamicFooter />
+      <DynamicNewsletterModal
+        isOpen={isNewsletterModalOpen}
+        onClose={close}
+        isSubscribed={isSubscribed}
+      />
     </>
   );
 }

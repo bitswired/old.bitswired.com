@@ -29,7 +29,7 @@ function NavigationItem({ route, isActive }: HeaderNavItemProps) {
   );
 }
 
-export default function Navigation() {
+export default function Navigation(): JSX.Element {
   const { pathname } = useRouter();
   const baseMatch = pathname.match(/(\/\w*)/);
   if (baseMatch === null) throw new Error('Invalid pathname');

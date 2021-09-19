@@ -11,13 +11,22 @@ import {
   Link,
   LinkProps,
   ResponsiveValue,
-  VStack,
-  Wrap,
-  WrapItem
+  VStack
 } from '@chakra-ui/react';
-import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
-import LazyImage from 'components/LazyImage';
+import LineChartDynamic from 'components/Charts/LineChart/dynamic';
+// import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
+import { CodeBlockProps } from 'components/CodeBlock';
+// import LazyImage from 'components/LazyImage';
+import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
+
+const DynamicCodeBlock = dynamic(() => import('components/CodeBlock'), {
+  ssr: false
+});
+
+const DynamicLazyImage = dynamic(() => import('components/LazyImage'), {
+  ssr: false
+});
 
 interface MDXImageProps {
   src: string;
@@ -42,7 +51,7 @@ function MDXImage({
     <Box as="figure">
       <Center>
         <AspectRatio ratio={ratio} width={width} maxW={maxWidth}>
-          <LazyImage
+          <DynamicLazyImage
             mx="auto"
             src={src}
             alt={alt}
@@ -55,10 +64,6 @@ function MDXImage({
       <Box as="figcaption">{title}</Box>
     </Box>
   );
-}
-
-function MDXCodeBlock(props: CodeBlockProps): JSX.Element {
-  return <CodeBlock {...props} />;
 }
 
 function MDXLink(props: LinkProps): JSX.Element {
@@ -119,15 +124,23 @@ function InfoWarnBlockBuilder(type: 'info' | 'warning') {
   };
 }
 
+function LineC(props) {
+  return <LineChartDynamic {...props} />;
+}
+
+function CodeBlock(props: CodeBlockProps) {
+  return <DynamicCodeBlock {...props} />;
+}
+
 export const mdxComponents = {
+  LineC,
   InfoWarnSection: InfoWarnSection,
   InfoBlock: InfoWarnBlockBuilder('info'),
   WarnBlock: InfoWarnBlockBuilder('warning'),
-  Wrap: Wrap,
-  VStack: VStack,
-  WrapItem: WrapItem,
+  Box,
+  VStack,
   Figure: MDXImage,
-  code: MDXCodeBlock,
+  code: CodeBlock,
   inlineCode: MDXInlineCodeBlock,
   a: MDXLink
 };

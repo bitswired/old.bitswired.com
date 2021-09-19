@@ -1,8 +1,8 @@
-// import App from "next/app";
 import { ChakraProvider } from '@chakra-ui/react';
 import ContextsProvider from 'context';
 import { MainLayout } from 'layouts';
 import type { AppProps /*, AppContext */ } from 'next/app';
+// import App from 'next/app';
 import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import theme from 'theme';

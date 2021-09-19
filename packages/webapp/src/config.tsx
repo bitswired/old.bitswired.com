@@ -2,6 +2,8 @@ import { Icon } from '@chakra-ui/react';
 import { FaDiscord, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
 import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';
 
+export const staticsBaseUrl = 'https://statics.bitswired.com';
+
 export const routes: Route[] = [
   {
     path: '/',

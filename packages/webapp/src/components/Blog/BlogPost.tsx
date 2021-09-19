@@ -4,6 +4,7 @@ import {
   Heading,
   HStack,
   Icon,
+  Image,
   Link,
   Tag,
   Text,
@@ -14,11 +15,16 @@ import {
 } from '@chakra-ui/react';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
-import LazyImage from 'components/LazyImage';
+import dynamic from 'next/dynamic';
+//import LazyImage from 'components/LazyImage';
 import React from 'react';
 import { AttentionSeeker } from 'react-awesome-reveal';
 import { FaClock, FaTags } from 'react-icons/fa';
-import Sticky from 'react-stickynode';
+//import Sticky from 'react-stickynode';
+
+const DynamicSticky = dynamic(() => import('react-stickynode'), {
+  ssr: false
+});
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -84,7 +90,7 @@ function SideFull({ meta }: SideProps) {
         </HStack>
       </VStack>
 
-      <Sticky enabled={true} top={100}>
+      <DynamicSticky enabled={true} top={100}>
         <VStack bgColor="#EEE" spacing="2em" p="1em" rounded="md">
           <Text colot="primary" textTransform="uppercase" fontWeight="bold">
             Subscribe to get updates
@@ -96,7 +102,7 @@ function SideFull({ meta }: SideProps) {
             <Subscribe as="button" />
           </AttentionSeeker>
         </VStack>
-      </Sticky>
+      </DynamicSticky>
     </>
   );
 }
@@ -176,7 +182,7 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
       <Box>
         <Box position="relative">
           <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%">
-            <LazyImage
+            <Image
               src={meta.image}
               alt="Title image"
               w="100%"

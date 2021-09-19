@@ -34,11 +34,11 @@ function CollapseCode({ children }: CollapseCodeProps) {
       <Button size="sm" variant="primary-link" onClick={onToggle}>
         {isOpen ? (
           <>
-            collapse <Icon as={FaChevronUp} mt="-5px" />
+            Collapse <Icon as={FaChevronUp} mt="-3px" />
           </>
         ) : (
           <>
-            expand <Icon as={FaChevronDown} mt="-5px" />
+            Expand <Icon as={FaChevronDown} mt="-3px" />
           </>
         )}
       </Button>

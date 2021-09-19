@@ -63,7 +63,7 @@ function Section({ id, title, variant, icon, children }: SectionProps) {
   const headingColor = variant === 'light' ? 'secondary' : 'primary';
 
   return (
-    <Box id={id} bgColor={bgColor} color={color} p="2em">
+    <Box as="section" id={id} bgColor={bgColor} color={color} p="2em" h="100vh">
       <VStack maxW="70ch" align="left" m="auto" spacing="2em">
         <HStack align="center" color={headingColor} spacing="1em">
           <Icon as={icon} fontSize="7xl" />

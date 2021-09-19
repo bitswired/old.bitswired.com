@@ -28,21 +28,18 @@ need it later, read it from the cache instead of re-computing.
 Python's standard libary provides decorators to easily cache functions. `@cache` and `@lru_cache`
 from the [functools][functools] module.
 
-**Cache Size** <br/>
-A cache typically lives in a storage with a significantly fast access compared to time to compute
-the results. It will often be your RAM, which is limited in size. Tradeoff: the bigger your cache,
-the more costly computation you can save, but the more space it will use.
+**Cache Size** <br/> A cache typically lives in a storage with a significantly fast access compared
+to time to compute the results. It will often be your RAM, which is limited in size. Tradeoff: the
+bigger your cache, the more costly computation you can save, but the more space it will use.
 
-**Eviction Policy** <br/>
-Most of the time, you want to limit the maximum size in your cache. You do so via an **eviction
-policy**. It's a strategy to choose which element to throw in the cache when it reaches its
-capacity. A simple one is the Last Recently Used (LRU) policy, which removes the oldest cache
-entries.
+**Eviction Policy** <br/> Most of the time, you want to limit the maximum size in your cache. You do
+so via an **eviction policy**. It's a strategy to choose which element to throw in the cache when it
+reaches its capacity. A simple one is the Last Recently Used (LRU) policy, which removes the oldest
+cache entries.
 
-**Cache Freshness** <br/>
-Remember that element in the cache are not re-computed. If for a same imput, you computation output
-will change in the future (e.g. a webpage with a game leaderboard ), you need to remove "perempted"
-elements from the cache.
+**Cache Freshness** <br/> Remember that element in the cache are not re-computed. If for a same
+imput, you computation output will change in the future (e.g. a webpage with a game leaderboard ),
+you need to remove the stale elements from the cache.
 
 ---
 
@@ -60,12 +57,14 @@ elements from the cache.
 
 ---
 
-## Example
+## In Practice
 
 Here we take as an example the [Fibonacci sequence] [fibo] computation. We implement the recursive
 definition which gets quickly slow as the input number grows.
 
-f(n) = f(n-1) + f(n)
+Here is the recursion: f(n) = f(n-1) + f(n)
+
+If we develop a few term for n=10:
 
 1. f(10) = f(9) + f(8)
 2. f(10) = (f(8) + f(7)) + (f(7) + f(6))
@@ -90,9 +89,9 @@ As you can observe, we repeat over and over the same computations. An easy way t
 is to have a cache: we will never compute more than once for a given input.
 
 In the following snippet, we create 2 cached functions using `functools` decorators. These functions
-just call the recursive implementation, but they use a cache to avoid re-computing. First
-we use the `@cache` decorator, which uses an unbounded cache. Then we use the `@lru_cache` decorator
-with a max size of 5. `@lru_cache(maxsize=None)` is equivalent to `@cache`.
+just call the recursive implementation, but they use a cache to avoid re-computing. First we use the
+`@cache` decorator, which uses an unbounded cache. Then we use the `@lru_cache` decorator with a max
+size of 5. `@lru_cache(maxsize=None)` is equivalent to `@cache`.
 
 ```python
 ---
@@ -133,17 +132,7 @@ if __name__ == "__main__":
     )
 
     lru_cache_timer = Timer(lambda: recur_fibo_lru_cache(N))
-    lru_cache_time = lru_cache_timer.t<InfoWarnSection>
-  <InfoBlock>
-      Costly repeated computations&
-      Real-time performace requirements
-
-  </InfoBlock>
-  <WarnBlock>
-      Memory can blow up if the cache size in unbounded&
-      Freshness can be an issue in some cases
-  </WarnBlock>
-</InfoWarnSection>imeit(number=TIMEIT_REPEAT)
+    lru_cache_time = lru_cache_timer.timeit(number=TIMEIT_REPEAT)
     print(
         f"Execution time with LRU cache: {lru_cache_time:.2e}",
     )
@@ -162,3 +151,7 @@ if __name__ == "__main__":
   https://github.com/bitswired/bitsof/blob/master/python/bits_of_python/caching/cache.py
 [fibo]: https://en.wikipedia.org/wiki/Fibonacci_number
 [functools]: https://docs.python.org/3/library/functools.html
+
+<Box w="100%" h="300px">
+  <LineC xLabel="Execution time" yLabel="N" />
+</Box>

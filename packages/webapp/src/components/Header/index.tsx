@@ -1,8 +1,13 @@
 import { Box, Flex, Spacer } from '@chakra-ui/react';
 import Logo from 'components/Logo';
 import Navigation from 'components/Navigation';
-import NavigationSlider from 'components/NavigationSlider';
+// import NavigationSlider from 'components/NavigationSlider';
+import dynamic from 'next/dynamic';
 import { FaBars } from 'react-icons/fa';
+
+const DynamicNavigationSlider = dynamic(() => import('components/NavigationSlider'), {
+  ssr: false
+});
 
 interface MenuIconResponsiveWrapperProps {
   onSliderOpen: () => void;
@@ -55,7 +60,7 @@ export default function Header({
         <Logo /> <Spacer /> <NavigationResponsiveWrapper /> <Spacer />
         <MenuIconResponsiveWrapper onSliderOpen={onSliderOpen} />
       </Flex>
-      <NavigationSlider isOpen={isSliderOpen} onSliderClose={onSliderClose} />
+      <DynamicNavigationSlider isOpen={isSliderOpen} onSliderClose={onSliderClose} />
     </>
   );
 }
