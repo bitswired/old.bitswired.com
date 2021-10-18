@@ -1,9 +1,9 @@
-import { Box, Center, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Center, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
+import InternalLink from 'components/InternalLink';
 import Follow from 'components/Socials/Follow';
 import { routes } from 'config';
-import Link from 'next/link';
 import React from 'react';
 
 interface FooterSectionProps {
@@ -55,7 +55,7 @@ function PagesBody() {
     <Box color="white">
       {routes.map((route) => (
         <Box key={route.name} textAlign="center" _hover={{ color: 'secondary' }}>
-          <Link href={route.path}>{route.name}</Link>
+          <InternalLink href={route.path}>{route.name}</InternalLink>
         </Box>
       ))}
     </Box>
@@ -75,10 +75,13 @@ export default function Footer(): JSX.Element {
       p={16}
       textAlign={['center', 'center', 'left']}>
       <FooterSection title={<WireUpTitle />} body={<WireUpBody />} />
-
       <FooterSection title="Socials" body={<SocialsBody />} />
-
       <FooterSection title="Pages" body={<PagesBody />} />
+      <GridItem colSpan={[1, 1, 3]}>
+        <Center w="100%">
+          <Text color="#AAA">Copyright © 2021 Bitswired. All Rights Reserved.</Text>
+        </Center>
+      </GridItem>
     </SimpleGrid>
   );
 }

@@ -1,6 +1,6 @@
 import { Flex, Text } from '@chakra-ui/react';
+import InternalLink from 'components/InternalLink';
 import { routes } from 'config';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -24,7 +24,7 @@ function NavigationItem({ route, isActive }: HeaderNavItemProps) {
       }
       transition="all 0.3s"
       cursor="pointer">
-      <Link href={route.path}>{route.name}</Link>
+      <InternalLink href={route.path}>{route.name}</InternalLink>
     </Text>
   );
 }

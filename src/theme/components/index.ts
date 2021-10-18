@@ -2,7 +2,10 @@ export default {
   Button: {
     baseStyle: {
       fontWeight: 'bold',
-      _focus: { boxShadow: 'none' }
+      _focus: { boxShadow: 'none', outline: 'none' },
+      verticalAlign: 'baseline',
+      alignItems: 'start',
+      alignContent: 'start'
     },
 
     sizes: {
@@ -35,14 +38,14 @@ export default {
         textTransform: 'capitalize',
         color: 'primary',
         _hover: {
-          bgColor: 'gray.100'
+          bgColor: 'gray.200'
         }
       },
       'secondary-link': {
         textTransform: 'capitalize',
-        color: 'seondary',
+        color: 'secondary',
         _hover: {
-          bgColor: 'gray.100'
+          bgColor: 'gray.200'
         }
       }
     },
@@ -50,6 +53,17 @@ export default {
     defaultProps: {
       size: 'md',
       variant: 'primary-solid'
+    }
+  },
+
+  Tag: {
+    baseStyle: {
+      display: 'none',
+      fontWeight: 'bold',
+      _focus: { boxShadow: 'none', outline: 'none' },
+      verticalAlign: 'baseline',
+      alignItems: 'start',
+      alignContent: 'start'
     }
   },
 

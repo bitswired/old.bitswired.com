@@ -13,10 +13,6 @@ export const routes: Route[] = [
     path: '/blog',
     name: 'blog'
   },
-  // {
-  //   path: "/resume",
-  //   name: "resume",
-  // },
   {
     path: '/about',
     name: 'about'
@@ -59,3 +55,13 @@ export const socialsFollow = [
   { url: infos.twitterProfile, name: 'twitter', icon: FaTwitter }
   // { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
 ];
+
+// TODO : Proper url
+export const LOGO_URL = 'https://www.bitswired.com';
+
+export const SLOGAN = 'Embrace the Data Era!';
+
+export const BLOG_URL = 'https://www.bitswired.com/blog';
+
+export const BLOG_HEADLINE = 'Embrace the Data Era!';
+export const BLOG_DESCRIPTION = 'Data, AI and Digital Technologies';

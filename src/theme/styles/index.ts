@@ -4,11 +4,13 @@ export default {
   styles: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
     global: (properties: any) => ({
-      // "*": {
-      //   outline: "1px solid red",
-      // },
+      '*': {
+        // outline: '1px solid red'
+        outline: 0
+      },
       html: {
-        fontSize: { base: '16px', sm: '18px', md: '20px' }
+        fontSize: { base: '16px', sm: '18px', md: '18px' },
+        scrollBehavior: 'initial !important'
       },
       'html, body': {
         fontFamily: 'sans',
@@ -41,41 +43,50 @@ export default {
         fontFamily: 'serif',
         h1: {
           fontFamily: 'sans',
-          fontSize: ['2xl', '5xl'],
+          // fontSize: ['2xl', '5xl'],
+          fontSize: ['2.8em', '3.2rem'],
           my: '1em',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          lineHeight: 1.1
         },
         h2: {
           fontFamily: 'sans',
-          fontSize: ['2xl', '4xl'],
+          // fontSize: ['2xl', '4xl'],
+          fontSize: '2.4rem',
           my: '1em',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          lineHeight: 1.1
         },
         h3: {
           fontFamily: 'sans',
-          fontSize: ['xl', '2xl'],
+          // fontSize: ['xl', '2xl'],
+          fontSize: '1.8rem',
           my: '0.7em',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          lineHeight: 1.1
         },
         h4: {
           fontFamily: 'sans',
-          fontSize: ['lg', 'xl'],
+          // fontSize: ['lg', 'xl'],
+          fontSize: '1.4rem',
           my: '0.5m',
-          fontWeight: 'bold'
+          fontWeight: 'bold',
+          lineHeight: 1.1
         },
         p: {
-          lineHeight: '1.5',
-          my: 6,
-          color: '#333',
-          fontSize: '1.05em'
+          lineHeight: '1.7',
+          my: '1em',
+          color: '#272727',
+          fontSize: '1em'
+          // fontWeight: '300'
         },
         ul: {
           listStylePosition: 'inside',
-          ml: '2em'
+          ml: '1em'
         },
         ol: {
           listStylePosition: 'inside',
-          ml: '2em'
+          ml: '1em'
         },
         li: {
           my: '0.5em'

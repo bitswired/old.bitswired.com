@@ -16,10 +16,10 @@ import {
 import LineChartDynamic from 'components/Charts/LineChart/dynamic';
 // import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
 import { CodeBlockProps } from 'components/CodeBlock';
+import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
 // import LazyImage from 'components/LazyImage';
 import dynamic from 'next/dynamic';
-import NextLink from 'next/link';
 import { FaExclamationCircle, FaLightbulb } from 'react-icons/fa';
 
 const DynamicCodeBlock = dynamic(() => import('components/CodeBlock'), {
@@ -72,11 +72,11 @@ function MDXLink(props: LinkProps): JSX.Element {
   if (props.href?.startsWith('/')) {
     const { href, ...p } = props;
     return (
-      <NextLink href={href} passHref>
+      <InternalLink href={href} passHref>
         <Link color="secondary" textDecoration="underline" {...p}>
           {props.children}
         </Link>
-      </NextLink>
+      </InternalLink>
     );
   } else
     return (
@@ -87,26 +87,21 @@ function MDXLink(props: LinkProps): JSX.Element {
 }
 
 function MDXInlineCodeBlock({ children }: CodeProps): JSX.Element {
-  return <Code bgColor="#EEE">{children}</Code>;
+  return (
+    <Code bgColor="#EEE" color="black" >
+      {children}
+    </Code>
+  );
 }
 
 interface InfoWarnSectionProps {
   children: JSX.Element;
 }
 
-function InfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element {
+function BitsOfInfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element {
   return (
     // <Flex direction={['column', 'row']} w="100%" justify="space-between">
-    <Flex
-      direction={['column', 'row']}
-      w="100%"
-      justify="space-between"
-      bg="black"
-      color="white"
-      rounded="lg"
-      py="2em"
-      px="2em"
-      sx={{ h2: { my: '0.5em !important' } }}>
+    <Flex direction={['column', 'row']} w="100%" justify="space-between">
       {children}
     </Flex>
   );
@@ -116,19 +111,20 @@ interface InfoWarnBlockProps {
   children: string;
 }
 
-function InfoWarnBlockBuilder(type: 'info' | 'warning') {
+function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
   return function InfoWarnBlock({ children }: InfoWarnBlockProps) {
     const title = type === 'info' ? 'Application' : 'Pitfalls';
     const B = type === 'info' ? FaLightbulb : FaExclamationCircle;
 
     return (
       <Box w={['100%', '49%']}>
-        <Heading as="h2">{title}</Heading>
+        <Heading as="h3">{title}</Heading>
 
         <VStack>
           {children.split('&').map((text: string) => (
             <HStack key="text" w="100%" align="flex-start">
-              <Icon as={B} color={type === 'info' ? 'primary' : 'secondary'} mt="0.25em" />
+              {/* <Icon as={B} color={type === 'info' ? 'primary' : 'secondary'} mt="0.25em" /> */}
+              <Icon as={B} color="black" mt="0.25em" />
               <Box>{text.trim()}</Box>
             </HStack>
           ))}
@@ -136,6 +132,37 @@ function InfoWarnBlockBuilder(type: 'info' | 'warning') {
       </Box>
     );
   };
+}
+
+interface BitsOfNutshellProps {
+  children: JSX.Element;
+}
+
+function BitsOfNutshell({ children }: BitsOfNutshellProps): JSX.Element {
+  return (
+    <Box>
+      <Heading as="h2">Summary</Heading>
+      {children}
+    </Box>
+  );
+}
+
+interface BitsOfSummaryProps {
+  children: JSX.Element;
+}
+
+function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
+  return (
+    <VStack
+      bgGradient="linear( primary, secondary)"
+      color="black"
+      rounded="lg"
+      py="2em"
+      px="2em"
+      sx={{ h2: { my: '0.5em !important' } }}>
+      {children}
+    </VStack>
+  );
 }
 
 function LineC(props: any) {
@@ -148,9 +175,11 @@ function CodeBlock(props: CodeBlockProps) {
 
 export const mdxComponents = {
   LineC,
-  InfoWarnSection: InfoWarnSection,
-  InfoBlock: InfoWarnBlockBuilder('info'),
-  WarnBlock: InfoWarnBlockBuilder('warning'),
+  BitsOfSummary,
+  BitsOfNutshell,
+  BitsOfInfoWarnSection,
+  BitsOfInfoBlock: BitsOfInfoWarnBlockBuilder('info'),
+  BitsOfWarnBlock: BitsOfInfoWarnBlockBuilder('warning'),
   Box,
   VStack,
   Figure: MDXImage,

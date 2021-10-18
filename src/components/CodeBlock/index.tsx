@@ -31,16 +31,12 @@ function CollapseCode({ children }: CollapseCodeProps) {
 
   return (
     <Box bgColor="#f6f6f6">
-      <Button size="sm" variant="primary-link" onClick={onToggle}>
-        {isOpen ? (
-          <>
-            Collapse <Icon as={FaChevronUp} mt="-3px" />
-          </>
-        ) : (
-          <>
-            Expand <Icon as={FaChevronDown} mt="-3px" />
-          </>
-        )}
+      <Button
+        size="sm"
+        variant="primary-link"
+        onClick={onToggle}
+        rightIcon={isOpen ? <FaChevronUp /> : <FaChevronDown />}>
+        {isOpen ? 'Collapse' : 'Expand'}
       </Button>
       <Collapse in={isOpen} animateOpacity>
         {children}
@@ -64,9 +60,9 @@ function Code({ children, language }: CodeProps) {
         marginTop: 0,
         backgroundColor: '#f6f6f6',
         lineHeight: '3px',
-        fontSize: '0.8em',
+        // fontSize: '0.8em',
         width: '100%',
-        borderLeft: 'solid #BBB 0.5rem'
+        borderLeft: 'solid #BBB 0.5rem',
       }}>
       {children}
     </SyntaxHighlighter>
@@ -91,7 +87,6 @@ export default function CodeBlock({ children, className }: CodeBlockProps): JSX.
         alignItems="center"
         bgColor="#f6f6f6"
         p="0.5em"
-        w="max"
         borderBottom="solid #BBB 1px"
         borderLeft="solid #BBB 0.5rem"
         fontFamily="sans">

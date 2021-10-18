@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Divider,
   Drawer,
   DrawerBody,
@@ -12,6 +11,8 @@ import {
   VStack
 } from '@chakra-ui/react';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
+import Button from 'components/Button';
+import InternalLink from 'components/InternalLink';
 import Logo from 'components/Logo';
 import Follow from 'components/Socials/Follow';
 import { infos, routes } from 'config';
@@ -70,7 +71,7 @@ function NavigationMobileItem({ route, isActive }: NavigationItemProps) {
       transition="all 0.3s"
       cursor="pointer"
       fontSize={{ base: 'xl', md: '4xl' }}>
-      <Link href={route.path}>{route.name}</Link>
+      <InternalLink href={route.path}>{route.name}</InternalLink>
     </Text>
   );
 }

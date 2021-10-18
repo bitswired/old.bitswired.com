@@ -8,6 +8,7 @@ interface BlogPostMeta {
   description: string;
   image: string;
   readMinutes: number;
+  category: string;
   tags: string[];
   slug: string;
   published: boolean;

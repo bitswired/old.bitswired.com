@@ -1,10 +1,11 @@
 import BlogPost from 'components/Blog/BlogPost';
 import { mdxComponents } from 'components/MDX';
+import { infos } from 'config';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { NextSeo } from 'next-seo';
-import { BlogJsonLd } from 'next-seo';
 import React from 'react';
+import { TechArticleJsonLd } from 'rich-results';
 import { getAllPosts } from 'utils/admin';
 
 interface BlogPostPageProps {
@@ -24,22 +25,28 @@ export default function BlogPostPage({ meta, mdxSource }: BlogPostPageProps): JS
           url,
           title: meta.title,
           description: meta.description,
-          images: meta.images.map(() => ({ url })),
-          site_name: 'Bitswired'
+          images: meta.images.map((x) => ({ url: x })),
+          site_name: 'Bitswired',
+          article: {
+            publishedTime: meta.datePublished,
+            modifiedTime: meta.dateModified,
+            section: meta.category,
+            authors: [infos.linkedInProfile],
+            tags: meta.tags
+          }
         }}
         twitter={{
-          handle: '@Bitswired',
-          site: '@Bitswired'
+          handle: '@bitswired',
+          site: '@bitswired'
         }}
       />
-      <BlogJsonLd
+      <TechArticleJsonLd
         url={url}
-        title={meta.title}
-        images={meta.images}
+        headline={meta.title}
+        description={meta.description}
+        image={meta.images}
         datePublished={meta.datePublished}
         dateModified={meta.dateModified}
-        authorName="Jimi Vaubien"
-        description={meta.description}
       />
       <BlogPost meta={meta} mdxRendered={<MDXRemote {...mdxSource} components={mdxComponents} />} />
     </>

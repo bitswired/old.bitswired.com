@@ -2,8 +2,13 @@ import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 const fonts = {
   mono: `'Menlo', monospace`,
-  sans: "'Karla', sans-serif",
-  serif: "'Lora', serif;"
+  //sans: "'Karla', sans-serif",
+  //sans: "'Open Sans', sans-serif",
+  orbitron: "'Orbitron', sans-serif",
+  serif: "'Open Sans', sans-serif",
+  sans: "'Open Sans', sans-serif"
+  // serif: "'Sans', sans-serif"
+  // serif: "'Lora', serif;"
 };
 
 const breakpoints = createBreakpoints({
@@ -32,8 +37,12 @@ export default {
   colors: {
     text: '#000',
     background: '#fff',
+    // primary: '#00AA55',
+    // primary: '#16A085',
     primary: '#1DDD78',
-    secondary: '#0086FF'
+    // primary: '#00C05E',
+    // secondary: '#0086FF'
+    secondary: '#0B88EE'
   },
   textStyles,
   fonts,

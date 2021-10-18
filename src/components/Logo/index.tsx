@@ -1,14 +1,12 @@
-import { Box } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Image } from '@chakra-ui/react';
+import InternalLink from 'components/InternalLink';
 
 export default function Logo(): JSX.Element {
   return (
-    <Link href="/">
+    <InternalLink href="/">
       <a href="/">
-        <Box fontSize="3xl" color="primary">
-          Bitswired
-        </Box>
+        <Image src="logo/bitswired-logo.svg" h="1.8rem" my="0.5em" />
       </a>
-    </Link>
+    </InternalLink>
   );
 }

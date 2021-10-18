@@ -5,16 +5,30 @@ description:
   toleverage caching easily in Python.
 readMinutes: 10
 image: https://statics.bitswired.com/images-opti/blog/gears.webp
+category: Programming
 tags: [Python, Caching]
 slug: bitsof-python-builtin-caching
 published: true
-datePublished: '2020-01-01'
-dateModified: '2020-01-01'
+datePublished: '2019-01-01'
+dateModified: '2019-01-01'
 images:
   - https://statics.bitswired.com/images-opti/blog/gears.webp
 ---
 
-# Bits of Python
+<BitsOfSummary>
+  <BitsOfNutshell>
+    In a nutshell: caching is an easy way to improve performance when costly computations can be
+    reused. You can achive it easily in Python using @cache and @lru_cache decorators
+  </BitsOfNutshell>
+  <BitsOfInfoWarnSection>
+    <BitsOfInfoBlock>
+      Costly repeated computations& Real-time performace requirements
+    </BitsOfInfoBlock>
+    <BitsOfWarnBlock>
+      Memory can blow up if the cache size in unbounded& Freshness can be an issue in some cases
+    </BitsOfWarnBlock>
+  </BitsOfInfoWarnSection>
+</BitsOfSummary>
 
 Find the code related to this _Bits of ..._ [on GitHub][github repo].
 
@@ -28,32 +42,24 @@ need it later, read it from the cache instead of re-computing.
 Python's standard libary provides decorators to easily cache functions. `@cache` and `@lru_cache`
 from the [functools][functools] module.
 
-**Cache Size** <br/> A cache typically lives in a storage with a significantly fast access compared
-to time to compute the results. It will often be your RAM, which is limited in size. Tradeoff: the
-bigger your cache, the more costly computation you can save, but the more space it will use.
+### Cache Size
 
-**Eviction Policy** <br/> Most of the time, you want to limit the maximum size in your cache. You do
-so via an **eviction policy**. It's a strategy to choose which element to throw in the cache when it
-reaches its capacity. A simple one is the Last Recently Used (LRU) policy, which removes the oldest
-cache entries.
+A cache typically lives in a storage with a significantly fast access compared to time to compute
+the results. It will often be your RAM, which is limited in size. Tradeoff: the bigger your cache,
+the more costly computation you can save, but the more space it will use.
 
-**Cache Freshness** <br/> Remember that element in the cache are not re-computed. If for a same
-imput, you computation output will change in the future (e.g. a webpage with a game leaderboard ),
-you need to remove the stale elements from the cache.
+### Eviction Policy
 
----
+Most of the time, you want to limit the maximum size in your cache. You do so via an **eviction
+policy**. It's a strategy to choose which element to throw in the cache when it reaches its
+capacity. A simple one is the Last Recently Used (LRU) policy, which removes the oldest cache
+entries.
 
-<InfoWarnSection>
-  <InfoBlock>
-      Costly repeated computations&
-      Real-time performace requirements
+### Cache Freshness
 
-  </InfoBlock>
-  <WarnBlock>
-      Memory can blow up if the cache size in unbounded&
-      Freshness can be an issue in some cases
-  </WarnBlock>
-</InfoWarnSection>
+Remember that element in the cache are not re-computed. If for a same imput, you computation output
+will change in the future (e.g. a webpage with a game leaderboard ), you need to remove the stale
+elements from the cache.
 
 ---
 

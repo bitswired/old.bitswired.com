@@ -49,7 +49,6 @@ export default function Header({
         h="75px"
         top={0}
         left={0}
-        bgColor="black"
         color="white"
         justify="space-between"
         align="center"

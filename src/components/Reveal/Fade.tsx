@@ -8,7 +8,7 @@ type Direction = 'left' | 'right' | 'center';
 export interface FadeProps {
   children: JSX.Element;
   direction?: Direction;
-  frac: number;
+  frac?: number;
   triggerOnce?: boolean;
 }
 
@@ -48,11 +48,12 @@ export function Fade({
   }, [inView, triggerOnce]);
 
   return (
-    <Box ref={ref}>
+    <Box ref={ref} w="100%">
       <MotionBox
+        w="100%"
         variants={variants[direction]}
         animate={reveal ? 'inView' : 'outView'}
-        transition={{ type: 'spring', bounce: 0.3, duration: 1.5 }}>
+        transition={{ type: 'spring', damping: 15 }}>
         {children}
       </MotionBox>
     </Box>

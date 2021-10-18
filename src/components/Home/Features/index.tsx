@@ -13,23 +13,21 @@ export default function Features(): JSX.Element | null {
       <Fade direction="left" frac={frac} triggerOnce>
         {/* <FeatureCard title="Spreading Knowledge" icon={<FaChalkboard />}> */}
         <FeatureCard title="Spreading Knowledge" icon={<FaChalkboard />}>
-          As a machine learning engineer, I will share computer science knowledge, and real-life
-          work stories. We learn together.
+          Data, AI, Visualization, Web ... Bitswired mission is to keep learning and educating about
+          these pillars of our modern digital era.
         </FeatureCard>
       </Fade>
 
       <Fade direction="center" frac={frac} triggerOnce>
         <FeatureCard title="Community Driven" icon={<FaUsers />}>
-          We will regularly ask the community to vote for the next topics. You have direct impact on
-          the content.
+          Building an involved community to learn together! You have direct impact on the content.
         </FeatureCard>
       </Fade>
 
       <Fade direction="right" frac={frac} triggerOnce>
         <FeatureCard title="Newsletter" icon={<FaEnvelope />}>
           <>
-            We will share new content from Bits Wired and other websites, interesting papers and
-            resources.{' '}
+            Sharing new content from Bitswired and other websites, interesting papers and resources.{' '}
             <NewsletterSubscribeAction display="inline">
               <Box as="span" color="primary" textDecor="underline" cursor="pointer">
                 Subscribe!

@@ -17,15 +17,15 @@ import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import {
-  FaBlog,
   FaBrain,
   FaCode,
   FaDiscord,
   FaEnvelope,
+  FaEnvelopeOpenText,
   FaExternalLinkAlt,
   FaGlobe,
   FaLinkedin,
-  FaNewspaper,
+  FaScroll,
   FaUser
 } from 'react-icons/fa';
 
@@ -63,8 +63,8 @@ function Section({ id, title, variant, icon, children }: SectionProps) {
   const headingColor = variant === 'light' ? 'secondary' : 'primary';
 
   return (
-    <Box as="section" id={id} bgColor={bgColor} color={color} p="2em" h="100vh">
-      <VStack maxW="70ch" align="left" m="auto" spacing="2em">
+    <Box as="section" id={id} bgColor={bgColor} color={color} p="2em">
+      <VStack pt="50px" maxW="70ch" align="left" m="auto" spacing="2em">
         <HStack align="center" color={headingColor} spacing="1em">
           <Icon as={icon} fontSize="7xl" />
           <Heading as="h2">{title}</Heading>
@@ -83,15 +83,19 @@ interface NewsletterFeatureProps {
   color: 'primary' | 'secondary';
 }
 
-function NewsletterFeature({ icon, title, color }: NewsletterFeatureProps) {
+function NewsletterFeature({ icon, title, description, color }: NewsletterFeatureProps) {
   return (
-    <HStack spacing="1em">
-      <Icon as={icon} fontSize="4xl" color={color} />
-      <Text w="20ch" fontWeight="bold" color={color} fontSize="xl">
-        {title}
+    <VStack w={['100%', '48%']} p="1em">
+      <HStack spacing="1em">
+        <Icon as={icon} fontSize="4xl" color={color} />
+        <Text w="15ch" fontWeight="bold" color={color} fontSize="xl">
+          {title}
+        </Text>
+      </HStack>
+      <Text textAlign={['center', 'left']} fontSize="sm" w={['35ch', '100%']}>
+        {description}
       </Text>
-      {/* <Text fontSize="sm">{description}</Text> */}
-    </HStack>
+    </VStack>
   );
 }
 
@@ -141,7 +145,7 @@ export default function AboutPage(): JSX.Element {
 
           <VStack align={['center', 'stretch']}>
             <LinkBox>
-              <HStack color="primary" w="20ch">
+              <HStack color="primary" w="22ch">
                 <Icon as={FaEnvelope} fontSize="2xl" />
                 <LinkOverlay textDecoration="underline" href={`mailto:${infos.contactEmail}`}>
                   Contact me by email
@@ -150,7 +154,7 @@ export default function AboutPage(): JSX.Element {
             </LinkBox>
 
             <LinkBox>
-              <HStack color="secondary" w="20ch">
+              <HStack color="secondary" w="22ch">
                 <Icon as={FaLinkedin} fontSize="2xl" />
                 <LinkOverlay textDecoration="underline" isExternal href={infos.linkedInProfile}>
                   Find me on LinkedIn
@@ -223,38 +227,36 @@ export default function AboutPage(): JSX.Element {
             It won't be a no-reply email, so I invite you to answer to spark interesting
             conversations.
           </Text>
-          <Wrap m="auto" justify="center">
-            <NewsletterFeature
-              icon={FaBrain}
-              title="Paper of the Week"
-              description="Bla vla val"
-              color="primary"
-            />
-            <NewsletterFeature
-              icon={FaBlog}
-              title="Articles of the Week"
-              description="Bla vla val"
-              color="secondary"
-            />
-            <NewsletterFeature
-              icon={FaCode}
-              title="Tools of the Week"
-              description="Bla vla val"
-              color="primary"
-            />
-            <NewsletterFeature
-              icon={FaNewspaper}
-              title="News of the Week"
-              description="Bla vla val"
-              color="secondary"
-            />
-            {/* <NewsletterFeature
-              icon={FaHistory}
-              title="Bitswired Week"
-              description="Bla vla val"
-              color="primary"
-            /> */}
-          </Wrap>
+
+          <VStack rounded="lg" bgColor="gray.200" p="1em" spacing="1em">
+            <Heading>Features</Heading>
+            <Wrap m="auto" justify="center">
+              <NewsletterFeature
+                icon={FaBrain}
+                title="Bits of Research"
+                description="1 highlighted research paper, with comments and executive summary."
+                color="secondary"
+              />
+              <NewsletterFeature
+                icon={FaScroll}
+                title="Bits of Tech"
+                description="2 selected articles to stay on top of our modern data era."
+                color="secondary"
+              />
+              <NewsletterFeature
+                icon={FaCode}
+                title="Bits of Code"
+                description="1 highlighted library, framework or tool introduced in the blink of an eye."
+                color="secondary"
+              />
+              <NewsletterFeature
+                icon={FaEnvelopeOpenText}
+                title="Bits of News"
+                description="Several news covering important events around the digital technologies world."
+                color="secondary"
+              />
+            </Wrap>
+          </VStack>
         </Section>
 
         <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>

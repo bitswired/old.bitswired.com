@@ -4,7 +4,6 @@ import {
   Heading,
   HStack,
   Icon,
-  Link,
   Tag,
   Text,
   useBreakpointValue,
@@ -18,7 +17,7 @@ import LazyImage from 'components/LazyImage';
 import { AttentionSeeker } from 'components/Reveal/AttentionSeeker';
 //import LazyImage from 'components/LazyImage';
 import React from 'react';
-import { FaClock, FaTags } from 'react-icons/fa';
+import { FaBell, FaClock, FaEdit, FaTags } from 'react-icons/fa';
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -30,7 +29,7 @@ function Tags({ tags }: TagsProps): JSX.Element {
   return (
     <HStack>
       {tags.map((tag) => (
-        <Tag bgColor="lightblue" key={tag}>
+        <Tag bgColor="lightblue" key={tag} size="md">
           {tag}
         </Tag>
       ))}
@@ -46,7 +45,7 @@ function Subscribe({ as }: SubscribeProps) {
   if (as === 'button')
     return (
       <NewsletterSubscribeAction display="inline-block">
-        <Button size="md" variant="secondary-solid">
+        <Button size="md" variant="secondary-solid" rightIcon={<FaBell />}>
           Subscribe
         </Button>
       </NewsletterSubscribeAction>
@@ -54,9 +53,9 @@ function Subscribe({ as }: SubscribeProps) {
 
   return (
     <NewsletterSubscribeAction display="inline">
-      <Link color="primary" fontWeight="bold" textDecor="underline">
+      <Button size="sm" variant="secondary-link" rightIcon={<FaBell />} iconSpacing="0.2em">
         Subscribe
-      </Link>
+      </Button>
     </NewsletterSubscribeAction>
   );
 }
@@ -68,7 +67,7 @@ interface SideProps {
 function SideFull({ meta }: SideProps) {
   return (
     <>
-      <VStack bgColor="#EEE" spacing="2em" p="1em" rounded="md" align="left" w="max">
+      <VStack bgColor="#EEE" spacing="1em" p="1em" rounded="md" align="left" w="max">
         <Box>
           <BlogPostAuthor />
         </Box>
@@ -80,7 +79,12 @@ function SideFull({ meta }: SideProps) {
 
         <HStack>
           <Icon as={FaClock} />
-          <Text>{meta.readMinutes} minutes</Text>
+          <Text fontSize="sm">{meta.readMinutes} minutes</Text>
+        </HStack>
+
+        <HStack>
+          <Icon as={FaEdit} />
+          <Text fontSize="sm">{meta.datePublished}</Text>
         </HStack>
       </VStack>
 
@@ -102,7 +106,7 @@ function SideFull({ meta }: SideProps) {
 function SideMin({ meta }: SideProps) {
   return (
     <Wrap bg="#EEE" p="1em" rounded="md" spacing="2em" w="100%" align="center">
-      <WrapItem>
+      <WrapItem w="100%">
         <BlogPostAuthor />
       </WrapItem>
 
@@ -114,9 +118,16 @@ function SideMin({ meta }: SideProps) {
       </WrapItem>
 
       <WrapItem>
-        <HStack>
-          <Icon as={FaClock} />
-          <Text>{meta.readMinutes} minutes</Text>
+        <HStack spacing="1em">
+          <HStack align="center" spacing={1}>
+            <Icon fontSize="sm" as={FaClock} />
+            <Text fontSize="sm">{meta.readMinutes} minutes</Text>
+          </HStack>
+
+          <HStack align="center" spacing={1}>
+            <Icon fontSize="sm" as={FaEdit} />
+            <Text fontSize="sm">{meta.datePublished}</Text>
+          </HStack>
         </HStack>
       </WrapItem>
 
@@ -141,7 +152,11 @@ function Body({ mdxRendered, meta }: BodyProps) {
           <SideMin meta={meta}></SideMin>
         </HStack>
         <Box maxW="900px" mx="auto" w="100%">
-          <Box p="1.5em" id="prose" as="article">
+          <Box px="1.5em" id="prose" as="article">
+            <Text fontSize="1em" opacity={0.5} mb="-1em !important">
+              {meta.category}
+            </Text>
+            <Heading as="h1">{meta.title}</Heading>
             {mdxRendered}
           </Box>
         </Box>
@@ -151,12 +166,16 @@ function Body({ mdxRendered, meta }: BodyProps) {
   return (
     <HStack align="start" maxW="2000px" mx="auto">
       <Box maxW="900px" mx="auto">
-        <Box p="1.5em" id="prose" as="article">
+        <Box p="1.5em" py="1em" id="prose" as="article">
+          <Text fontSize="1em" opacity={0.5} mb="-1em !important">
+            {meta.category}
+          </Text>
+          <Heading as="h1">{meta.title}</Heading>
           {mdxRendered}
         </Box>
       </Box>
 
-      <VStack spacing="2em" p="1em" pt="3em" align="stretch">
+      <VStack spacing="2em" p="1em" pt="3em" align="stretch" pr="3em">
         <SideFull meta={meta}></SideFull>
       </VStack>
     </HStack>
@@ -173,7 +192,7 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
     <>
       <Box>
         <Box position="relative">
-          <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%">
+          <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%" bg="black">
             <LazyImage
               src={meta.image}
               alt="Title image"
@@ -181,13 +200,16 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
               h="100%"
               objectFit="cover"
               m="auto"
+              opacity={0.5}
             />
           </AspectRatio>
 
           <Box w="100%" position="absolute" top="40%" overflow="hidden">
-            <Heading
+            <Text
+              lineHeight={1.1}
+              fontWeight="bold"
               backdropFilter="blur(5px) saturate(180%)"
-              bgColor="rgba(0,0,0, 0.3)"
+              bgColor="rgba(0,0,0, 0.5)"
               shadow="lg"
               p="0.5em"
               w="max"
@@ -198,7 +220,7 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
               color="white"
               textAlign="center">
               {meta.title}
-            </Heading>
+            </Text>
           </Box>
         </Box>
       </Box>

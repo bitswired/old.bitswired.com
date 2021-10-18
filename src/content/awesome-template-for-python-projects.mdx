@@ -1,10 +1,11 @@
 ---
-title: Awesome Template for Python Projects
+title: Perfect Template to Start Python Projects
 description:
   Python is great but lacks structure. I detail the issues and provide a GitHub template repository
   to solve the issue.
 readMinutes: 20
 image: https://statics.bitswired.com/images-opti/blog/code.webp
+category: Programming
 tags: [Python, Template, Best-Practices]
 slug: awesome-template-for-python-projects
 published: true
@@ -14,9 +15,7 @@ images:
   - https://statics.bitswired.com/images-opti/blog/code.webp
 ---
 
-## TLDR
-
-_Python is a great language with a lot of libraries available. From gaming to artificial
+**TLDR** - _Python is a great language with a lot of libraries available. From gaming to artificial
 intelligence, even backend or automation. There is one main catch, the lack of structure and easy
 mess due to the dynamic types. In this article, I identify all these problems and give you a
 solution for each. Finally, I share with you a Github template repository to **start your new Python
@@ -145,7 +144,7 @@ codebase deterioration over time. We have 2 complementary ways to do it:
 
 1. Pre-commit hooks: these are scripts run before each commit locally, they will run all your code
    quality tools and deny the commit if the code doesn't pass. This is an easy way to enforce best
-   practices at every commi  width: string;
+   practices at every commi width: string;
 2. GitHub actions: these are scripts run automatically by GitHub on certain triggers. For instance,
    when you **open a pull request**, GitHub will build your code in a container and run all your
    code checks. It will prevent you to merge the pull request into master if the checks did not pass

@@ -23,6 +23,7 @@ Default.args = {
     readMinutes: 10,
     image: 'https://wallpaper.dog/large/526372.jpg',
     tags: ['Typesript', 'React'],
+    category: 'Programming',
     slug: 'tt-tt',
     published: true,
     datePublished: '2020-01-01',
