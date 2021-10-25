@@ -17,6 +17,7 @@ import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 import {
+  FaAtom,
   FaBrain,
   FaCode,
   FaDiscord,
@@ -25,7 +26,6 @@ import {
   FaExternalLinkAlt,
   FaGlobe,
   FaLinkedin,
-  FaScroll,
   FaUser
 } from 'react-icons/fa';
 
@@ -238,7 +238,7 @@ export default function AboutPage(): JSX.Element {
                 color="secondary"
               />
               <NewsletterFeature
-                icon={FaScroll}
+                icon={FaAtom}
                 title="Bits of Tech"
                 description="2 selected articles to stay on top of our modern data era."
                 color="secondary"

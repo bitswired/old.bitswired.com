@@ -200,7 +200,7 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
               h="100%"
               objectFit="cover"
               m="auto"
-              opacity={0.5}
+              opacity={0.6}
             />
           </AspectRatio>
 
