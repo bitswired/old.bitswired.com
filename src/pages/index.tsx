@@ -19,6 +19,7 @@ export default function LandingPage({ featuredPosts }: LandingPageProps): JSX.El
     'Artificial Intelligence, Programming, ... and much more! Tutorials, In-depth guides, Research papers ... Join the community!';
   return (
     <>
+
       <NextSeo
         title={title}
         description={description}
