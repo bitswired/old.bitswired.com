@@ -46,7 +46,8 @@ export default function BlogLandingPage({ metas }: BlogPostLandingPageProps): JS
             fontFamily="orbitron"
             fontSize="2rem"
             bgGradient="linear(to-l, primary, secondary)"
-            bgClip="text">
+            bgClip="text"
+          >
             Bitswired Blog
           </Heading>
         </VStack>
@@ -60,6 +61,6 @@ export default function BlogLandingPage({ metas }: BlogPostLandingPageProps): JS
 export async function getStaticProps() {
   const posts = await getAllPosts();
   return {
-    props: { metas: posts.map((x: any) => x.data) }
+    props: { metas: posts.map((x: any) => x.meta) }
   };
 }

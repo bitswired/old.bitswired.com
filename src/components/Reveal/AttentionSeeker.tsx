@@ -33,7 +33,8 @@ export function AttentionSeeker({ children }: FadeProps): JSX.Element {
         variants={fromLeft}
         animate={inView ? 'inView' : 'outView'}
         // transition={{ duration: 0.5 }}
-        transition={{ type: 'spring', bounce: 0.3, duration: 0.2, delay: 0.2 }}>
+        transition={{ type: 'spring', bounce: 0.3, duration: 0.2, delay: 0.2 }}
+      >
         {children}
       </MotionBox>
     </Box>

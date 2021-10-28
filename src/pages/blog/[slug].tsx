@@ -56,12 +56,12 @@ export default function BlogPostPage({ meta, mdxSource }: BlogPostPageProps): JS
 export async function getStaticProps({ params }: any) {
   const posts = await getAllPosts();
 
-  const { data, content }: any = posts.find((p: any) => p.data.slug === params.slug);
+  const { meta, content, data }: any = posts.find((p: any) => p.meta.slug === params.slug);
 
-  const mdxSource = await serialize(content);
+  const mdxSource = await serialize(content, { scope: { data } });
 
   return {
-    props: { meta: data, mdxSource }
+    props: { meta, mdxSource, data }
   };
 }
 
@@ -70,7 +70,7 @@ export async function getStaticPaths() {
   return {
     paths: posts.map((x: any) => ({
       params: {
-        slug: x.data.slug
+        slug: x.meta.slug
       }
     })),
     fallback: false

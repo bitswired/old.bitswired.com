@@ -35,7 +35,8 @@ function CollapseCode({ children }: CollapseCodeProps) {
         size="sm"
         variant="primary-link"
         onClick={onToggle}
-        rightIcon={isOpen ? <FaChevronUp /> : <FaChevronDown />}>
+        rightIcon={isOpen ? <FaChevronUp /> : <FaChevronDown />}
+      >
         {isOpen ? 'Collapse' : 'Expand'}
       </Button>
       <Collapse in={isOpen} animateOpacity>
@@ -62,8 +63,9 @@ function Code({ children, language }: CodeProps) {
         lineHeight: '3px',
         // fontSize: '0.8em',
         width: '100%',
-        borderLeft: 'solid #BBB 0.5rem',
-      }}>
+        borderLeft: 'solid #BBB 0.5rem'
+      }}
+    >
       {children}
     </SyntaxHighlighter>
   );
@@ -89,7 +91,8 @@ export default function CodeBlock({ children, className }: CodeBlockProps): JSX.
         p="0.5em"
         borderBottom="solid #BBB 1px"
         borderLeft="solid #BBB 0.5rem"
-        fontFamily="sans">
+        fontFamily="sans"
+      >
         <Box color="primary">{codeLanguageIcons[language]}</Box>
         {meta.filename && <Box fontSize="0.8em">{meta.filename}</Box>}
         {meta.title && (

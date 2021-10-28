@@ -53,7 +53,8 @@ export function Fade({
         w="100%"
         variants={variants[direction]}
         animate={reveal ? 'inView' : 'outView'}
-        transition={{ type: 'spring', damping: 15 }}>
+        transition={{ type: 'spring', damping: 15 }}
+      >
         {children}
       </MotionBox>
     </Box>

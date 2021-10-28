@@ -13,7 +13,8 @@ const Template: Story<NavigationSliderProps> = (arguments_) => (
     w="100%"
     h="500px"
     bg="url('https://i.pinimg.com/originals/a4/e2/6e/a4e26e77ff64fce4348ebbef946cfba4.jpg')"
-    bgSize="cover">
+    bgSize="cover"
+  >
     <NavigationSlider {...arguments_} />
   </Box>
 );

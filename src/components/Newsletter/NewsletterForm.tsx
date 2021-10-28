@@ -69,7 +69,8 @@ export default function NewsletterForm(): JSX.Element {
           left={0}
           w="100%"
           h="100%"
-          bgColor="rgba(255, 255, 255, 0.5)">
+          bgColor="rgba(255, 255, 255, 0.5)"
+        >
           <Center>
             <Spinner w="200px" h="200px" color="primary" emptyColor="secondary" />
           </Center>

@@ -5,8 +5,10 @@ import { jsonLdScriptProps } from 'react-schemaorg';
 import { Blog, Brand, Organization, Person, TechArticle, WithContext } from 'schema-dts';
 import { IMAGE_ME } from 'utils/static-urls';
 
+const context = 'https://schema.org';
+
 const JIMZER: WithContext<Person> = {
-  '@context': 'https://schema.org',
+  '@context': context,
   '@type': 'Person',
   name: 'Jimi Vaubien',
   alumniOf: {
@@ -20,7 +22,7 @@ const JIMZER: WithContext<Person> = {
 };
 
 const BRAND: WithContext<Brand> = {
-  '@context': 'https://schema.org',
+  '@context': context,
   '@type': 'Brand',
   name: 'Bitswired',
   logo: LOGO_URL,
@@ -28,7 +30,7 @@ const BRAND: WithContext<Brand> = {
 };
 
 const BITSWIRED: WithContext<Organization> = {
-  '@context': 'https://schema.org',
+  '@context': context,
   '@type': 'Organization',
   name: 'Bitswired',
   brand: BRAND,
@@ -53,7 +55,7 @@ export function TechArticleJsonLd(props: TechArticleJsonLdProps): JSX.Element {
     <Head>
       <script
         {...jsonLdScriptProps<TechArticle>({
-          '@context': 'https://schema.org',
+          '@context': context,
           '@type': 'TechArticle',
           url: props.url,
           headline: props.headline,
@@ -74,11 +76,12 @@ export function BlogJsonLd(): JSX.Element {
     <Head>
       <script
         {...jsonLdScriptProps<Blog>({
-          '@context': 'https://schema.org',
+          '@context': context,
           '@type': 'Blog',
           url: BLOG_URL,
           headline: BLOG_HEADLINE,
           description: BLOG_DESCRIPTION,
+          // TODO: fix that
           datePublished: '2021-09-01',
           // dateModified: "2021-09-01",
           author: JIMZER,

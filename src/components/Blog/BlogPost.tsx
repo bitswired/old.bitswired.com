@@ -218,7 +218,8 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
               fontSize={['2xl', '4xl', '4xl', '7xl']}
               as="h1"
               color="white"
-              textAlign="center">
+              textAlign="center"
+            >
               {meta.title}
             </Text>
           </Box>

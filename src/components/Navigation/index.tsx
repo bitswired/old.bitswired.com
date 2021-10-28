@@ -23,7 +23,8 @@ function NavigationItem({ route, isActive }: HeaderNavItemProps) {
             }
       }
       transition="all 0.3s"
-      cursor="pointer">
+      cursor="pointer"
+    >
       <InternalLink href={route.path}>{route.name}</InternalLink>
     </Text>
   );

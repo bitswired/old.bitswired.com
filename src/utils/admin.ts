@@ -28,8 +28,9 @@ const metaSchema = Joi.object({
 });
 
 interface ParsedPost {
-  data: any;
+  meta: any;
   content: any;
+  data: any;
 }
 
 export async function getAllPosts(): Promise<ParsedPost[]> {
@@ -37,18 +38,26 @@ export async function getAllPosts(): Promise<ParsedPost[]> {
 
   const tasks: Promise<ParsedPost>[] = posts.map(async (p: any) => {
     const fullpath = path.join(CONTENT_PATH, p);
-    const fileContents = await fs.readFile(fullpath, 'utf8');
+
+    const mdxPath = `${fullpath}/index.mdx`;
+    const dataPath = `${fullpath}/data.json`;
+
+    const postData = JSON.parse(await fs.readFile(dataPath, 'utf8'));
+
+    const fileContents = await fs.readFile(mdxPath, 'utf8');
     const { data, content } = matter(fileContents);
     const d = metaSchema.validate(data, { convert: true });
     if (d.error) throw new Error(d.error);
-    return { data: d.value, content };
+
+    return { meta: d.value, content, data: postData };
   });
+
   return _.chain(await Promise.all(tasks))
-    .filter((x) => x.data.published)
-    .sortBy((x) => Date.parse(x.data.datePublished))
+    .filter((x) => x.meta.published)
+    .sortBy((x) => Date.parse(x.meta.datePublished))
     .value();
 }
 
 export function getFeaturedPost(parsedPosts: ParsedPost[]) {
-  return parsedPosts.slice(0, 3).map((x) => x.data);
+  return parsedPosts.slice(0, 3).map((x) => x.meta);
 }

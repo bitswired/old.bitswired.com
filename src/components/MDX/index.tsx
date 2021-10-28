@@ -13,6 +13,8 @@ import {
   ResponsiveValue,
   VStack
 } from '@chakra-ui/react';
+import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
+import { LineChartProps } from 'components/Charts/LineChart';
 import LineChartDynamic from 'components/Charts/LineChart/dynamic';
 // import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
 import { CodeBlockProps } from 'components/CodeBlock';
@@ -23,6 +25,10 @@ import dynamic from 'next/dynamic';
 import { FaExclamationCircle, FaLightbulb } from 'react-icons/fa';
 
 const DynamicCodeBlock = dynamic(() => import('components/CodeBlock'), {
+  ssr: false
+});
+
+const DynamicLinLogLineChart = dynamic(() => import('oneoff-components/LinLogLineChart'), {
   ssr: false
 });
 
@@ -88,7 +94,7 @@ function MDXLink(props: LinkProps): JSX.Element {
 
 function MDXInlineCodeBlock({ children }: CodeProps): JSX.Element {
   return (
-    <Code bgColor="#EEE" color="black" >
+    <Code bgColor="#EEE" color="black">
       {children}
     </Code>
   );
@@ -159,7 +165,8 @@ function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
       rounded="lg"
       py="2em"
       px="2em"
-      sx={{ h2: { my: '0.5em !important' } }}>
+      sx={{ h2: { my: '0.5em !important' } }}
+    >
       {children}
     </VStack>
   );
@@ -171,6 +178,10 @@ function LineC(props: any) {
 
 function CodeBlock(props: CodeBlockProps) {
   return <DynamicCodeBlock {...props} />;
+}
+
+function LinLogLineChart(props: LineChartProps) {
+  return <DynamicLinLogLineChart {...props} />;
 }
 
 export const mdxComponents = {
@@ -185,5 +196,21 @@ export const mdxComponents = {
   Figure: MDXImage,
   code: CodeBlock,
   inlineCode: MDXInlineCodeBlock,
-  a: MDXLink
+  a: MDXLink,
+  table: ({ children }) => (
+    <Box p="1em" my="1em" rounded="md" border="solid #CCC 1px">
+      {/* <Table variant="striped" colorScheme="teal" rounded="lg" w="100%"> */}
+      <Table variant="striped" rounded="lg" w="100%" size="sm">
+        {children}
+      </Table>
+    </Box>
+  ),
+  thead: Thead,
+  tbody: Tbody,
+  tfoot: Tfoot,
+  tr: Tr,
+  th: Th,
+  td: Td,
+  LinLogLineChart
+  // table: Table,
 };

@@ -61,7 +61,8 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
           initial="hidden"
           animate="enter"
           exit="exit"
-          mt="75px">
+          mt="75px"
+        >
           {children}
         </MotionBox>
       </AnimatePresence>

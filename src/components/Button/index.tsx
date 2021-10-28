@@ -18,7 +18,8 @@ export default function Button({ children, ...properties }: ButtonProps): JSX.El
       {...properties}
       onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
         properties.onClick && properties.onClick(e);
-      }}>
+      }}
+    >
       {children}
     </MotionButton>
   );
