@@ -165,8 +165,7 @@ function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
       rounded="lg"
       py="2em"
       px="2em"
-      sx={{ h2: { my: '0.5em !important' } }}
-    >
+      sx={{ h2: { my: '0.5em !important' } }}>
       {children}
     </VStack>
   );
@@ -197,7 +196,7 @@ export const mdxComponents = {
   code: CodeBlock,
   inlineCode: MDXInlineCodeBlock,
   a: MDXLink,
-  table: ({ children }) => (
+  table: ({ children }: any) => (
     <Box p="1em" my="1em" rounded="md" border="solid #CCC 1px">
       {/* <Table variant="striped" colorScheme="teal" rounded="lg" w="100%"> */}
       <Table variant="striped" rounded="lg" w="100%" size="sm">

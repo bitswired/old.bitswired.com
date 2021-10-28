@@ -61,8 +61,8 @@ export type LineChartProps = {
 };
 
 const defaultProps = {
-  xScale: { type: 'linear' },
-  yScale: { type: 'linear' }
+  xScale: { type: 'linear' as ScaleType },
+  yScale: { type: 'linear' as ScaleType }
 };
 
 export default function LineChart(props: LineChartProps): JSX.Element {
@@ -80,8 +80,7 @@ export default function LineChart(props: LineChartProps): JSX.Element {
             width={parent.width}
             height={props.height}
             xScale={props.xScale}
-            yScale={props.yScale}
-          >
+            yScale={props.yScale}>
             <AnimatedAxis orientation="left" label={props.xLabel} numTicks={props.numYTicks} />
             <AnimatedAxis orientation="bottom" label={props.yLabel} numTicks={props.numXTicks} />
             <AnimatedGrid columns={false} numTicks={props.gridNumYTicks} />
