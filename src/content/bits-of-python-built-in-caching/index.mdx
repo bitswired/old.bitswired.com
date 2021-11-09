@@ -18,7 +18,7 @@ images:
 <BitsOfSummary>
   <BitsOfNutshell>
     In a nutshell: caching is an easy way to improve performance when costly computations can be
-    reused. You can achive it easily in Python using @cache and @lru_cache decorators
+    reused. You can implement it easily in Python using @cache and @lru_cache decorators
   </BitsOfNutshell>
   <BitsOfInfoWarnSection>
     <BitsOfInfoBlock>
@@ -39,7 +39,7 @@ cache is a high-speed, ephemere data storage layer containing a subset of data f
 Instead of computing over and over the same costly results, you store it into the cache. When you
 need it later, read it from the cache instead of re-computing.
 
-Python's standard libary provides decorators to easily cache functions. `@cache` and `@lru_cache`
+Python's standard libary provides decorators to easily cache functions: `@cache` and `@lru_cache`
 from the [functools][functools] module.
 
 ### Cache Size
@@ -90,6 +90,14 @@ def recur_fibo_no_cache(n):
     else:
         return recur_fibo_no_cache(n - 1) + recur_fibo_no_cache(n - 2)
 ```
+
+<InfoBlock>
+
+This implementaion is recursive: the function calls itself many times to solve the problem. It is
+not the most performant implementaion. The iterative version is both more computationally and memory
+efficient. However it's a good example to demonstrate the benefits of caching.
+
+</InfoBlock>
 
 As you can observe, we repeat over and over the same computations. An easy way to speedup this code
 is to have a cache: we will never compute more than once for a given input.

@@ -1,3 +1,8 @@
+declare global {
+  interface Window {
+    dataLayer: Record<string, any>[];
+  }
+}
 interface Route {
   path: string;
   name: string;

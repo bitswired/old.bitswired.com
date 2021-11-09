@@ -17,7 +17,7 @@ import LazyImage from 'components/LazyImage';
 import { AttentionSeeker } from 'components/Reveal/AttentionSeeker';
 //import LazyImage from 'components/LazyImage';
 import React from 'react';
-import { FaBell, FaClock, FaEdit, FaTags } from 'react-icons/fa';
+import { FaBell, FaTags } from 'react-icons/fa';
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -67,7 +67,7 @@ interface SideProps {
 function SideFull({ meta }: SideProps) {
   return (
     <>
-      <VStack bgColor="#EEE" spacing="1em" p="1em" rounded="md" align="left" w="max">
+      <VStack bgColor="#EEE" spacing="1.5em" p="1em" rounded="md" align="left" w="max">
         <Box>
           <BlogPostAuthor />
         </Box>
@@ -78,13 +78,11 @@ function SideFull({ meta }: SideProps) {
         </HStack>
 
         <HStack>
-          <Icon as={FaClock} />
-          <Text fontSize="sm">{meta.readMinutes} minutes</Text>
+          <Text fontSize="sm">{meta.readMinutes} minutes read</Text>
         </HStack>
 
         <HStack>
-          <Icon as={FaEdit} />
-          <Text fontSize="sm">{meta.datePublished}</Text>
+          <Text fontSize="sm">Published on {meta.datePublished}</Text>
         </HStack>
       </VStack>
 
@@ -120,12 +118,10 @@ function SideMin({ meta }: SideProps) {
       <WrapItem>
         <HStack spacing="1em">
           <HStack align="center" spacing={1}>
-            <Icon fontSize="sm" as={FaClock} />
             <Text fontSize="sm">{meta.readMinutes} minutes</Text>
           </HStack>
 
           <HStack align="center" spacing={1}>
-            <Icon fontSize="sm" as={FaEdit} />
             <Text fontSize="sm">{meta.datePublished}</Text>
           </HStack>
         </HStack>
@@ -206,7 +202,7 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
 
           <Box w="100%" position="absolute" top="40%" overflow="hidden">
             <Text
-              lineHeight={1.1}
+              lineHeight={1.2}
               fontWeight="bold"
               backdropFilter="blur(5px) saturate(180%)"
               bgColor="rgba(0,0,0, 0.5)"

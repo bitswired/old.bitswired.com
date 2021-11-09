@@ -80,7 +80,8 @@ export default function LineChart(props: LineChartProps): JSX.Element {
             width={parent.width}
             height={props.height}
             xScale={props.xScale}
-            yScale={props.yScale}>
+            yScale={props.yScale}
+          >
             <AnimatedAxis orientation="left" label={props.xLabel} numTicks={props.numYTicks} />
             <AnimatedAxis orientation="bottom" label={props.yLabel} numTicks={props.numXTicks} />
             <AnimatedGrid columns={false} numTicks={props.gridNumYTicks} />

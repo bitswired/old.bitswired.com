@@ -37,12 +37,12 @@ export default {
   colors: {
     text: '#000',
     background: '#fff',
-    // primary: '#00AA55',
-    // primary: '#16A085',
     primary: '#1DDD78',
-    // primary: '#00C05E',
-    // secondary: '#0086FF'
-    secondary: '#0B88EE'
+    secondary: '#0B88EE',
+    info: '#1DDD78',
+    // info: '#0AADFF',
+    warning: '#FF5E13',
+    error: '#DC143C'
   },
   textStyles,
   fonts,

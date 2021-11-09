@@ -11,6 +11,7 @@ import {
   Link,
   LinkProps,
   ResponsiveValue,
+  useTheme,
   VStack
 } from '@chakra-ui/react';
 import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
@@ -165,7 +166,8 @@ function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
       rounded="lg"
       py="2em"
       px="2em"
-      sx={{ h2: { my: '0.5em !important' } }}>
+      sx={{ h2: { my: '0.5em !important' } }}
+    >
       {children}
     </VStack>
   );
@@ -183,7 +185,29 @@ function LinLogLineChart(props: LineChartProps) {
   return <DynamicLinLogLineChart {...props} />;
 }
 
+function BlockBuilder(blockType: string) {
+  interface BlockProps {
+    children: JSX.Element;
+  }
+
+  return function Block({ children }: BlockProps) {
+    const theme = useTheme();
+
+    const color = theme.colors[blockType];
+    const bgColor = `${color}33`;
+
+    return (
+      <Box borderLeft={`1em solid ${color}`} pl="1em" pr="1em" py="0.5em" bgColor={bgColor}>
+        {children}
+      </Box>
+    );
+  };
+}
+
 export const mdxComponents = {
+  InfoBlock: BlockBuilder('info'),
+  WarningBlock: BlockBuilder('warning'),
+  ErrorBlock: BlockBuilder('error'),
   LineC,
   BitsOfSummary,
   BitsOfNutshell,
@@ -211,5 +235,4 @@ export const mdxComponents = {
   th: Th,
   td: Td,
   LinLogLineChart
-  // table: Table,
 };

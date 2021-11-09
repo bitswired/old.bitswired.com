@@ -5,6 +5,8 @@ import React from 'react';
 import { Control, FieldValues, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 
+import { useTracker } from './tracker';
+
 export interface UseNewsletterFormValues {
   control: Control<FieldValues>;
   onError: (err: string) => void;
@@ -18,6 +20,7 @@ export interface UseNewsletterFormValues {
 export default function useNewsletterForm(): UseNewsletterFormValues {
   const { control, handleSubmit, getValues } = useForm();
   const captchaRef = React.useRef(null);
+  const tracker = useTracker();
   const toast = useToast();
   const mutation = useMutation(
     ({ token, ...data }: any) => {
@@ -27,7 +30,7 @@ export default function useNewsletterForm(): UseNewsletterFormValues {
       });
     },
     {
-      onSuccess: () => {
+      onSuccess: (_, variables) => {
         toast({
           title: 'Successfully Subscribed!',
           status: 'success',
@@ -36,6 +39,8 @@ export default function useNewsletterForm(): UseNewsletterFormValues {
         });
         (captchaRef as any).current.resetCaptcha();
         newsletterContext && newsletterContext.subscribe();
+
+        tracker.trackNewsletterSubscriptionSuccess(variables);
       },
       onError: (error: any) => {
         toast({
