@@ -22,5 +22,6 @@ const tracker = {
 };
 
 export function useTracker() {
+
   return tracker;
 }
