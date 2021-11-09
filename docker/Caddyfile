@@ -1,3 +1,0 @@
-api.bitswired.com {
-   tls /etc/ssl/certs/certificate.pem /etc/ssl/private/key.pem
-}
