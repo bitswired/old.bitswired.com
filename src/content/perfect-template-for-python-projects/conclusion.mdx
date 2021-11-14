@@ -1,0 +1,43 @@
+import { MDXImage as Figure } from 'components/MDX';
+
+## Bonus: VSCode Integration
+
+If you are using VSCode, there is an awesome Python language server called **Pylance**. It will
+statically check your code as you type, improve code clarity with enhanced colorization. I encourage
+you to enable this feature for all your projects. You can control the level of severity for the type
+checking, so you can adopt it progressively. It will catch tons of potential errors in your code
+just by checking the types.
+
+Also, for all the tools mentioned before, Mypy, Black, Isort, and Flake8, there are **plugins**
+available in the VSCode marketplace.
+
+Finally, to **integrate Poetry and VScode smoothly**, you need to tell VSCode the location of your
+Python interpreter. Since Poetry manages it for you, run `poetry run which python` to get the
+absolute path. Then in VSCode press Ctrl+P, type Select Python interpreter, and put the path.
+
+## The Best Python Template To Start
+
+Implementing all these good practices can feel too demanding especially if you are a beginner.
+However, I encourage you to apply these good practices as **early** as possible in your coding
+habits. It will overall make you a better coder, produce better quality code, and avoid
+easy-to-catch pitfalls and bugs. Even for an advanced programmer, it can be cumbersome to do it
+again and again for every project.
+
+_Setting up these tools is not the most exciting part, but a necessary step toward success._
+
+So I've made your life easier! I created a [GitHub template repository][github repo] addressing all
+the issues. It's **easy to use**, when you create a new Python project, start it from my GitHub
+template. You will only have to run poetry install to get all the dev dependencies required for the
+tooling: **linting**, **formatting**, **type checking**. You will also have **poetry** to handle
+your dependencies and **be ready to ship high-quality code in no time!** Check it out.
+
+<Figure
+  ratio={1}
+  width="100%"
+  maxWidth="600px"
+  src="https://statics.bitswired.com/videos/blog/python-perfect-template-use.gif"
+  alt="how to use my project template"
+  title="How to create a new repository from the template"
+  objectFit="contain !important"
+  responsive={false}
+/>
