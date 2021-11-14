@@ -44,7 +44,7 @@ interface MDXImageProps {
   objectFit: ResponsiveValue<any>;
 }
 
-function MDXImage({
+export function MDXImage({
   src,
   alt,
   title,
@@ -115,11 +115,11 @@ function BitsOfInfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element 
 }
 
 interface InfoWarnBlockProps {
-  children: string;
+  items: string[];
 }
 
 function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
-  return function InfoWarnBlock({ children }: InfoWarnBlockProps) {
+  return function InfoWarnBlock({ items }: InfoWarnBlockProps) {
     const title = type === 'info' ? 'Application' : 'Pitfalls';
     const B = type === 'info' ? FaLightbulb : FaExclamationCircle;
 
@@ -128,11 +128,11 @@ function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
         <Heading as="h3">{title}</Heading>
 
         <VStack>
-          {children.split('&').map((text: string) => (
+          {items.map((text: string) => (
             <HStack key="text" w="100%" align="flex-start">
               {/* <Icon as={B} color={type === 'info' ? 'primary' : 'secondary'} mt="0.25em" /> */}
               <Icon as={B} color="black" mt="0.25em" />
-              <Box>{text.trim()}</Box>
+              <Box>{text}</Box>
             </HStack>
           ))}
         </VStack>
@@ -142,7 +142,7 @@ function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
 }
 
 interface BitsOfNutshellProps {
-  children: JSX.Element;
+  children: string;
 }
 
 function BitsOfNutshell({ children }: BitsOfNutshellProps): JSX.Element {
@@ -154,11 +154,16 @@ function BitsOfNutshell({ children }: BitsOfNutshellProps): JSX.Element {
   );
 }
 
+const BitsOfInfoBlock = BitsOfInfoWarnBlockBuilder('info');
+const BitsOfWarnBlock = BitsOfInfoWarnBlockBuilder('warning');
+
 interface BitsOfSummaryProps {
-  children: JSX.Element;
+  summary: string;
+  infos: string[];
+  warnings: string[];
 }
 
-function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
+export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
   return (
     <VStack
       bgGradient="linear( primary, secondary)"
@@ -166,9 +171,12 @@ function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
       rounded="lg"
       py="2em"
       px="2em"
-      sx={{ h2: { my: '0.5em !important' } }}
-    >
-      {children}
+      sx={{ h2: { my: '0.5em !important' } }}>
+      <BitsOfNutshell>{props.summary}</BitsOfNutshell>
+      <BitsOfInfoWarnSection>
+        <BitsOfInfoBlock items={props.infos} />
+        <BitsOfWarnBlock items={props.warnings} />
+      </BitsOfInfoWarnSection>
     </VStack>
   );
 }
@@ -181,7 +189,7 @@ function CodeBlock(props: CodeBlockProps) {
   return <DynamicCodeBlock {...props} />;
 }
 
-function LinLogLineChart(props: LineChartProps) {
+export function LinLogLineChart(props: LineChartProps) {
   return <DynamicLinLogLineChart {...props} />;
 }
 
@@ -204,19 +212,10 @@ function BlockBuilder(blockType: string) {
   };
 }
 
-export const mdxComponents = {
-  InfoBlock: BlockBuilder('info'),
-  WarningBlock: BlockBuilder('warning'),
-  ErrorBlock: BlockBuilder('error'),
-  LineC,
-  BitsOfSummary,
-  BitsOfNutshell,
-  BitsOfInfoWarnSection,
-  BitsOfInfoBlock: BitsOfInfoWarnBlockBuilder('info'),
-  BitsOfWarnBlock: BitsOfInfoWarnBlockBuilder('warning'),
-  Box,
-  VStack,
-  Figure: MDXImage,
+export const InfoBlock = BlockBuilder('info');
+export const WarningBlock = BlockBuilder('warning');
+
+export const components = {
   code: CodeBlock,
   inlineCode: MDXInlineCodeBlock,
   a: MDXLink,
@@ -233,6 +232,6 @@ export const mdxComponents = {
   tfoot: Tfoot,
   tr: Tr,
   th: Th,
-  td: Td,
-  LinLogLineChart
+  td: Td
+  // LinLogLineChart
 };

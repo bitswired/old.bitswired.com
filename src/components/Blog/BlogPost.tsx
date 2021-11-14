@@ -134,11 +134,11 @@ function SideMin({ meta }: SideProps) {
   );
 }
 interface BodyProps {
-  mdxRendered: JSX.Element;
+  post: JSX.Element;
   meta: BlogPostMeta;
 }
 
-function Body({ mdxRendered, meta }: BodyProps) {
+function Body({ post, meta }: BodyProps) {
   const layout = useBreakpointValue({ base: 'mobile', md: 'full' });
 
   if (layout === 'mobile')
@@ -153,7 +153,7 @@ function Body({ mdxRendered, meta }: BodyProps) {
               {meta.category}
             </Text>
             <Heading as="h1">{meta.title}</Heading>
-            {mdxRendered}
+            {post}
           </Box>
         </Box>
       </VStack>
@@ -167,7 +167,7 @@ function Body({ mdxRendered, meta }: BodyProps) {
             {meta.category}
           </Text>
           <Heading as="h1">{meta.title}</Heading>
-          {mdxRendered}
+          {post}
         </Box>
       </Box>
 
@@ -179,11 +179,11 @@ function Body({ mdxRendered, meta }: BodyProps) {
 }
 
 export interface BlogPostProps {
-  mdxRendered: JSX.Element;
+  children: JSX.Element;
   meta: BlogPostMeta;
 }
 
-export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Element {
+export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element {
   return (
     <>
       <Box>
@@ -214,15 +214,14 @@ export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Elem
               fontSize={['2xl', '4xl', '4xl', '7xl']}
               as="h1"
               color="white"
-              textAlign="center"
-            >
+              textAlign="center">
               {meta.title}
             </Text>
           </Box>
         </Box>
       </Box>
 
-      <Body meta={meta} mdxRendered={mdxRendered}></Body>
+      <Body meta={meta} post={children}></Body>
     </>
   );
 }
