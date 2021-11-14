@@ -59,8 +59,8 @@ export default function BlogLandingPage({ metas }: BlogPostLandingPageProps): JS
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
+  const metas = await getAllPosts();
   return {
-    props: { metas: posts.map((x: any) => x.meta) }
+    props: { metas }
   };
 }

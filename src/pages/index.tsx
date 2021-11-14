@@ -54,8 +54,8 @@ export default function LandingPage({ featuredPosts }: LandingPageProps): JSX.El
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
-  const featured = await getFeaturedPost(posts);
+  const metas = await getAllPosts();
+  const featured = await getFeaturedPost(metas);
 
   return {
     props: { featuredPosts: featured }

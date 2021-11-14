@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/no-abusive-eslint-disable */
 import JoiDate from '@joi/date';
-import matter from 'gray-matter';
+import { Meta } from '@storybook/react';
+import glob from 'glob-promise';
 import * as JoiImport from 'joi';
-import _ from 'lodash';
 
 // eslint-disable-next-line
 const fs = require('fs').promises;
@@ -33,32 +33,17 @@ interface ParsedPost {
   data: any;
 }
 
-export async function getAllPosts(): Promise<ParsedPost[]> {
-  return [];
-  const posts = await fs.readdir(CONTENT_PATH);
+export async function getAllPosts(): Promise<Meta[]> {
+  const paths = await glob(`${CONTENT_PATH}/**/*meta.json`);
 
-  const tasks: Promise<ParsedPost>[] = posts.map(async (p: any) => {
-    const fullpath = path.join(CONTENT_PATH, p);
-
-    const mdxPath = `${fullpath}/index.mdx`;
-    const dataPath = `${fullpath}/data.json`;
-
-    const postData = JSON.parse(await fs.readFile(dataPath, 'utf8'));
-
-    const fileContents = await fs.readFile(mdxPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    const d = metaSchema.validate(data, { convert: true });
-    if (d.error) throw new Error(d.error);
-
-    return { meta: d.value, content, data: postData };
+  const tasks = paths.map(async (path) => {
+    const meta = await fs.readFile(path);
+    return JSON.parse(meta);
   });
 
-  return _.chain(await Promise.all(tasks))
-    .filter((x) => x.meta.published)
-    .sortBy((x) => Date.parse(x.meta.datePublished))
-    .value();
+  return await Promise.all(tasks);
 }
 
-export function getFeaturedPost(parsedPosts: ParsedPost[]) {
-  return parsedPosts.slice(0, 3).map((x) => x.meta);
+export function getFeaturedPost(metas: Meta[]) {
+  return metas.slice(0, 3);
 }
