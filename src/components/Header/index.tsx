@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Flex, Spacer } from '@chakra-ui/layout';
 import Logo from 'components/Logo';
 import Navigation from 'components/Navigation';
 // import NavigationSlider from 'components/NavigationSlider';
@@ -55,8 +55,7 @@ export default function Header({
         shadow="2xl"
         px={8}
         bg="black"
-        transition="color 0.5s, top 0.5s"
-      >
+        transition="color 0.5s, top 0.5s">
         <Logo /> <Spacer /> <NavigationResponsiveWrapper /> <Spacer />
         <MenuIconResponsiveWrapper onSliderOpen={onSliderOpen} />
       </Flex>

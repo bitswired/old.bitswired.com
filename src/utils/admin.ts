@@ -34,6 +34,7 @@ interface ParsedPost {
 }
 
 export async function getAllPosts(): Promise<ParsedPost[]> {
+  return []
   const posts = await fs.readdir(CONTENT_PATH);
 
   const tasks: Promise<ParsedPost>[] = posts.map(async (p: any) => {

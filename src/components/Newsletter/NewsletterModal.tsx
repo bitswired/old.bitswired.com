@@ -1,17 +1,14 @@
+import { Icon } from '@chakra-ui/icon';
+import { Box, HStack, Text, VStack } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import {
-  Box,
-  HStack,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
-  Text,
-  useBreakpointValue,
-  VStack
-} from '@chakra-ui/react';
-import { Icon } from '@chakra-ui/react';
+  ModalOverlay
+} from '@chakra-ui/modal';
 import { FaCheck } from 'react-icons/fa';
 
 import NewsletterForm from './NewsletterForm';

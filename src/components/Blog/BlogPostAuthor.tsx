@@ -1,4 +1,5 @@
-import { Box, Flex, Text, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import InternalLink from 'components/InternalLink';
 import MeAvatar from 'components/Me/MeAvatar';
 

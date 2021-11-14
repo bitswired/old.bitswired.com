@@ -1,4 +1,4 @@
-import { Avatar, AvatarProps } from '@chakra-ui/react';
+import { Avatar, AvatarProps } from '@chakra-ui/avatar';
 import { IMAGE_ME } from 'utils/static-urls';
 
 export type MeAvatarProps = AvatarProps;

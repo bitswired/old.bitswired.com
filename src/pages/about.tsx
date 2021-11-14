@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Icon } from '@chakra-ui/icon';
 import {
   Box,
   Heading,
   HStack,
-  Icon,
   Link,
   LinkBox,
   LinkOverlay,
@@ -12,7 +12,7 @@ import {
   UnorderedList,
   VStack,
   Wrap
-} from '@chakra-ui/react';
+} from '@chakra-ui/layout';
 import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';

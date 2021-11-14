@@ -1,5 +1,5 @@
-import { Input, InputProps } from '@chakra-ui/react';
-import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/react';
+import { FormControl, FormHelperText, FormLabel } from '@chakra-ui/form-control';
+import { Input, InputProps } from '@chakra-ui/input';
 import { ControllerProps, useController } from 'react-hook-form';
 
 export interface TextInputProps

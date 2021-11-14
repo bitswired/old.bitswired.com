@@ -1,4 +1,4 @@
-import { Image } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/image';
 import InternalLink from 'components/InternalLink';
 
 export default function Logo(): JSX.Element {

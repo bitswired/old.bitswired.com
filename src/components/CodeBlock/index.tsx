@@ -1,14 +1,8 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  HStack,
-  Icon,
-  LinkBox,
-  LinkOverlay,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Button } from '@chakra-ui/button';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { Icon } from '@chakra-ui/icon';
+import { Box, HStack, LinkBox, LinkOverlay, Text } from '@chakra-ui/layout';
+import { Collapse } from '@chakra-ui/transition';
 import { codeLanguageIcons } from 'config';
 import React from 'react';
 import { FaChevronDown, FaChevronUp, FaGithub } from 'react-icons/fa';

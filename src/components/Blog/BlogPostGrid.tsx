@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
 import { motion } from 'framer-motion';
 import { TechArticleJsonLd } from 'rich-results';
 
@@ -26,8 +26,7 @@ function Cell({ width, meta, ratio }: CellProps) {
       w={['100%', '50%', width]}
       verticalAlign="middle"
       mt={['10vh', '10vh', '10vh']}
-      px="5vw"
-    >
+      px="5vw">
       <BlogPostCard
         meta={meta}
         ratio={[16 / 9, 16 / 9, ratio]}

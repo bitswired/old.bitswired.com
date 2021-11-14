@@ -1,4 +1,4 @@
-import { Box, Center, Heading, VStack } from '@chakra-ui/react';
+import { Box, Center, Heading, VStack } from '@chakra-ui/layout';
 import BlogPostGrid from 'components/Blog/BlogPostGrid';
 import { BLOG_URL } from 'config';
 import { BlogJsonLd, NextSeo } from 'next-seo';

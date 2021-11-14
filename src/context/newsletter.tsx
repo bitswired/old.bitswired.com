@@ -1,4 +1,4 @@
-import { useBoolean } from '@chakra-ui/react';
+import { useBoolean } from '@chakra-ui/hooks';
 import React from 'react';
 
 interface NewsletterContextInterface {

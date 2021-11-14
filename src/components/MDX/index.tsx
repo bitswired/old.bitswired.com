@@ -1,3 +1,4 @@
+import { Icon } from '@chakra-ui/icon';
 import {
   AspectRatio,
   Box,
@@ -7,16 +8,13 @@ import {
   Flex,
   Heading,
   HStack,
-  Icon,
   Link,
   LinkProps,
-  ResponsiveValue,
-  useTheme,
   VStack
-} from '@chakra-ui/react';
-import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
+} from '@chakra-ui/layout';
+import { ResponsiveValue, useTheme } from '@chakra-ui/system';
+import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/table';
 import { LineChartProps } from 'components/Charts/LineChart';
-import LineChartDynamic from 'components/Charts/LineChart/dynamic';
 // import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
 import { CodeBlockProps } from 'components/CodeBlock';
 import InternalLink from 'components/InternalLink';
@@ -102,7 +100,7 @@ function MDXInlineCodeBlock({ children }: CodeProps): JSX.Element {
 }
 
 interface InfoWarnSectionProps {
-  children: JSX.Element;
+  children: JSX.Element[];
 }
 
 function BitsOfInfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element {
@@ -181,10 +179,6 @@ export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
   );
 }
 
-function LineC(props: any) {
-  return <LineChartDynamic {...props} />;
-}
-
 function CodeBlock(props: CodeBlockProps) {
   return <DynamicCodeBlock {...props} />;
 }
@@ -233,5 +227,4 @@ export const components = {
   tr: Tr,
   th: Th,
   td: Td
-  // LinLogLineChart
 };

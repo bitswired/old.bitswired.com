@@ -1,4 +1,4 @@
-import { Box, Center, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Center, GridItem, SimpleGrid, Text } from '@chakra-ui/layout';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import InternalLink from 'components/InternalLink';
@@ -73,8 +73,7 @@ export default function Footer(): JSX.Element {
       gap={16}
       bg="black"
       p={16}
-      textAlign={['center', 'center', 'left']}
-    >
+      textAlign={['center', 'center', 'left']}>
       <FooterSection title={<WireUpTitle />} body={<WireUpBody />} />
       <FooterSection title="Socials" body={<SocialsBody />} />
       <FooterSection title="Pages" body={<PagesBody />} />

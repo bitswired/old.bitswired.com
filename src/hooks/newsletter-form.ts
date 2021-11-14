@@ -1,4 +1,4 @@
-import { useToast } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/toast';
 import axios from 'axios';
 import { NewsletterContext } from 'context/newsletter';
 import React from 'react';

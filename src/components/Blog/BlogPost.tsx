@@ -1,16 +1,7 @@
-import {
-  AspectRatio,
-  Box,
-  Heading,
-  HStack,
-  Icon,
-  Tag,
-  Text,
-  useBreakpointValue,
-  VStack,
-  Wrap,
-  WrapItem
-} from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/icon';
+import { AspectRatio, Box, Heading, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Tag } from '@chakra-ui/tag';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import LazyImage from 'components/LazyImage';

@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Text } from '@chakra-ui/react';
+import { AspectRatio, Box, Text } from '@chakra-ui/layout';
 import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
 
@@ -22,16 +22,14 @@ export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps):
             '.taz': {
               transform: 'scale(0.95)'
             }
-          }}
-        >
+          }}>
           <AspectRatio
             className="taz"
             width="100%"
             ratio={ratio}
             overflow="hidden"
             rounded="sm"
-            transition="transform 0.1s"
-          >
+            transition="transform 0.1s">
             <LazyImage
               w="100%"
               h="100%"

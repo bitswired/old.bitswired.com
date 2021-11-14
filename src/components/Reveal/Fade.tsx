@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -53,8 +53,7 @@ export function Fade({
         w="100%"
         variants={variants[direction]}
         animate={reveal ? 'inView' : 'outView'}
-        transition={{ type: 'spring', damping: 15 }}
-      >
+        transition={{ type: 'spring', damping: 15 }}>
         {children}
       </MotionBox>
     </Box>

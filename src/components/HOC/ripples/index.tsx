@@ -1,4 +1,5 @@
-import { Box, keyframes } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
+import { keyframes } from '@chakra-ui/system';
 import React from 'react';
 import { ComponentType } from 'react';
 
@@ -59,8 +60,7 @@ export default function withRipples<T>(
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
             pointerEvents: 'none'
           }
-        }}
-      >
+        }}>
         <Component {...props} />
       </Box>
     );

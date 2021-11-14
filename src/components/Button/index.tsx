@@ -1,4 +1,4 @@
-import { Button as BaseButton, ButtonProps as BaseButtonProps } from '@chakra-ui/react';
+import { Button as BaseButton, ButtonProps as BaseButtonProps } from '@chakra-ui/button';
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -14,12 +14,11 @@ const MotionButton = motion(BaseButton);
 export default function Button({ children, ...properties }: ButtonProps): JSX.Element {
   return (
     <MotionButton
-      whileTap={{ scale: 0.9, transition: { duration: 0.01 } }}
+      // whileTap={{ scale: 0.9, transition: { duration: 0.01 } }}
       {...properties}
       onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
         properties.onClick && properties.onClick(e);
-      }}
-    >
+      }}>
       {children}
     </MotionButton>
   );
