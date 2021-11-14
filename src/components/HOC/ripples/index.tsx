@@ -60,7 +60,8 @@ export default function withRipples<T>(
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
             pointerEvents: 'none'
           }
-        }}>
+        }}
+      >
         <Component {...props} />
       </Box>
     );

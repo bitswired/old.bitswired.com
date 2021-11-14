@@ -73,7 +73,8 @@ export default function Footer(): JSX.Element {
       gap={16}
       bg="black"
       p={16}
-      textAlign={['center', 'center', 'left']}>
+      textAlign={['center', 'center', 'left']}
+    >
       <FooterSection title={<WireUpTitle />} body={<WireUpBody />} />
       <FooterSection title="Socials" body={<SocialsBody />} />
       <FooterSection title="Pages" body={<PagesBody />} />

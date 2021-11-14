@@ -31,7 +31,8 @@ function Actions() {
           isExternal
           display="inline"
           color="primary"
-          textDecoration="underline">
+          textDecoration="underline"
+        >
           Join the Discord
         </Link>
       </Box>
@@ -60,7 +61,8 @@ function NavigationMobileItem({ route, isActive }: NavigationItemProps) {
       }
       transition="all 0.3s"
       cursor="pointer"
-      fontSize={{ base: 'xl', md: '4xl' }}>
+      fontSize={{ base: 'xl', md: '4xl' }}
+    >
       <InternalLink href={route.path}>{route.name}</InternalLink>
     </Text>
   );
@@ -91,7 +93,8 @@ export default function NavigationSlider({
             backdropFilter: 'blur(20px) saturate(180%)',
             WebkitBackdropFilter: 'blur(20px) saturate(180%)'
           }}
-          onClick={onSliderClose}>
+          onClick={onSliderClose}
+        >
           <DrawerBody position="relative">
             <Logo />
 
@@ -102,7 +105,8 @@ export default function NavigationSlider({
                 textAlign="center"
                 mt={16}
                 align="center"
-                justify="center">
+                justify="center"
+              >
                 {routes.map((x) => (
                   <NavigationMobileItem key={x.name} route={x} isActive={base === x.path} />
                 ))}

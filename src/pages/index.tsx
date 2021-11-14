@@ -1,4 +1,4 @@
-import { Heading, VStack, Wrap, WrapItem } from '@chakra-ui/layout';
+import { Heading, VStack, Wrap, WrapItem } from '@chakra-ui/react';
 import BlogPostCard from 'components/Blog/BlogPostCard';
 import Features from 'components/Home/Features';
 import Landing from 'components/Home/Landing';

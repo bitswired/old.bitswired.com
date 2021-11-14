@@ -205,7 +205,8 @@ export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element
               fontSize={['2xl', '4xl', '4xl', '7xl']}
               as="h1"
               color="white"
-              textAlign="center">
+              textAlign="center"
+            >
               {meta.title}
             </Text>
           </Box>

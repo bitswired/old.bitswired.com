@@ -19,9 +19,7 @@ const Template: Story<BlogPostProps> = (arguments_) => <BlogPost {...arguments_}
 
 // Curabitur libero dui, posuere ut lorem in, dictum faucibus magna. Nunc a vehicula felis. Donec iaculis lorem eget dignissim feugiat. Pellentesque ullamcorper convallis consectetur. Phasellus placerat, dui ut rhoncus elementum, ante eros convallis metus, blandit fermentum purus ex nec dui. Duis rhoncus gravida erat ut viverra. Curabitur urna mi, vestibulum non lacus et, fermentum tempor risus. Pellentesque in augue quam.
 
-
 // <Figure ratio={16 / 9} src="https://wallpapercave.com/wp/wp4676582.jpg" alt="image" title="Title" />
-
 
 // ## Test 2
 
@@ -47,7 +45,6 @@ const Template: Story<BlogPostProps> = (arguments_) => <BlogPost {...arguments_}
 //   }
 // };
 // \`\`\`
-
 
 // # Testar
 

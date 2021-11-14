@@ -17,7 +17,8 @@ export default function Landing(): JSX.Element {
       bgSize="cover"
       pt="5em"
       px="1em"
-      fontSize={['md', 'xl']}>
+      fontSize={['md', 'xl']}
+    >
       <Center py="1em">
         <Text
           fontSize="3em"
@@ -26,7 +27,8 @@ export default function Landing(): JSX.Element {
           textAlign="center"
           fontWeight="bold"
           bgGradient="linear(to-l, primary, secondary)"
-          bgClip="text">
+          bgClip="text"
+        >
           {/* Spreading Tech Knowledge from Programing up to Machine Learning */}
           Data, AI, Visualization and Web!
         </Text>

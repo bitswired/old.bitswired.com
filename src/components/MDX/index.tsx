@@ -15,11 +15,9 @@ import {
 import { ResponsiveValue, useTheme } from '@chakra-ui/system';
 import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/table';
 import { LineChartProps } from 'components/Charts/LineChart';
-// import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
 import { CodeBlockProps } from 'components/CodeBlock';
 import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
-// import LazyImage from 'components/LazyImage';
 import dynamic from 'next/dynamic';
 import { FaExclamationCircle, FaLightbulb } from 'react-icons/fa';
 
@@ -169,7 +167,8 @@ export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
       rounded="lg"
       py="2em"
       px="2em"
-      sx={{ h2: { my: '0.5em !important' } }}>
+      sx={{ h2: { my: '0.5em !important' } }}
+    >
       <BitsOfNutshell>{props.summary}</BitsOfNutshell>
       <BitsOfInfoWarnSection>
         <BitsOfInfoBlock items={props.infos} />
