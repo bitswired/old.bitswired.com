@@ -46,7 +46,7 @@ export default {
           // fontSize: ['2xl', '5xl'],
           fontSize: ['2.8em', '3.2rem'],
           my: '1em',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           lineHeight: 1.1
         },
         h2: {
@@ -54,7 +54,7 @@ export default {
           // fontSize: ['2xl', '4xl'],
           fontSize: '2.4rem',
           my: '1em',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           lineHeight: 1.1
         },
         h3: {
@@ -62,7 +62,7 @@ export default {
           // fontSize: ['xl', '2xl'],
           fontSize: '1.8rem',
           my: '0.7em',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           lineHeight: 1.1
         },
         h4: {
