@@ -1,6 +1,8 @@
 export default {
   Button: {
     baseStyle: {
+      justify: 'center',
+      align: 'center',
       fontWeight: 'bold',
       _focus: { boxShadow: 'none', outline: 'none' },
       verticalAlign: 'baseline',
