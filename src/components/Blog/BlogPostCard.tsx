@@ -1,4 +1,6 @@
-import { AspectRatio, Box, Text } from '@chakra-ui/layout';
+import { AspectRatio, Box, HStack, Text, VStack, Wrap } from '@chakra-ui/layout';
+import { Tag } from '@chakra-ui/tag';
+import Button from 'components/Button';
 import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
 
@@ -10,49 +12,69 @@ export interface BlogPostCardProps {
 
 export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps): JSX.Element {
   return (
-    <InternalLink href={`/blog/${meta.slug}`}>
-      <a href={`/blog/${meta.slug}`} style={{ display: 'block', width: '100%' }}>
-        <Box
+    <Box
+      w="100%"
+      _hover={{
+        img: {
+          transform: 'scale(1.2)'
+        }
+        // '.taz': {
+        //   transform: 'scale(0.95)'
+        // }
+      }}
+    >
+      <AspectRatio
+        className="taz"
+        width="100%"
+        ratio={ratio}
+        overflow="hidden"
+        rounded="sm"
+        transition="transform 0.1s"
+      >
+        <LazyImage
           w="100%"
-          cursor="pointer"
-          _hover={{
-            img: {
-              transform: 'scale(1.2)'
-            },
-            '.taz': {
-              transform: 'scale(0.95)'
-            }
-          }}
-        >
-          <AspectRatio
-            className="taz"
-            width="100%"
-            ratio={ratio}
-            overflow="hidden"
-            rounded="sm"
-            transition="transform 0.1s"
-          >
-            <LazyImage
-              w="100%"
-              h="100%"
-              objectFit="cover"
-              transition="transform 0.1s"
-              src={meta.image}
-              sizes={sizes}
-            />
-          </AspectRatio>
-          <Box w="100%" overflow="hidden" p="1em">
-            <Text fontSize="1em" color="gray.500" textTransform="uppercase">
-              {meta.category}
-            </Text>
-            <Text fontSize="1.2em">{meta.title}</Text>
-            <Text color="gray.600" noOfLines={2} fontSize="0.9em">
-              {meta.description}
-            </Text>
-          </Box>
-        </Box>
-      </a>
-    </InternalLink>
+          h="100%"
+          objectFit="cover"
+          transition="transform 0.1s"
+          src={meta.image}
+          sizes={sizes}
+        />
+      </AspectRatio>
+      <VStack w="100%" overflow="hidden" py="1em" align="start" spacing="0.5em">
+        <Text fontSize="1.4em" fontWeight="bold">
+          {meta.title}
+        </Text>
+
+        <HStack align="center" justify="end">
+          <Text fontSize="1em" color="gray.500" textTransform="uppercase">
+            {meta.category}
+          </Text>
+          <Text fontSize="0.8em" color="gray.500">
+            -
+          </Text>
+          <Text fontSize="0.8em" color="gray.500">
+            {meta.readMinutes} min
+          </Text>
+
+          <InternalLink href={`/blog/${meta.slug}`}>
+            <Button variant="primary-link" marginLeft="auto" size="sm">
+              READ MORE
+            </Button>
+          </InternalLink>
+        </HStack>
+
+        <Text color="gray.600" noOfLines={2} fontSize="0.9em">
+          {meta.description}
+        </Text>
+        <Wrap>
+          {meta.tags.map((tag) => (
+            <Tag bgColor="lightblue" key={tag} size="md">
+              {tag}
+            </Tag>
+          ))}
+        </Wrap>
+      </VStack>
+    </Box>
   );
 }
 

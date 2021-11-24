@@ -1,5 +1,15 @@
 import { Icon } from '@chakra-ui/icon';
-import { AspectRatio, Box, Heading, HStack, Text, VStack, Wrap, WrapItem } from '@chakra-ui/layout';
+import {
+  AspectRatio,
+  Box,
+  Center,
+  Heading,
+  HStack,
+  Text,
+  VStack,
+  Wrap,
+  WrapItem
+} from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Tag } from '@chakra-ui/tag';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
@@ -135,15 +145,31 @@ function Body({ post, meta }: BodyProps) {
   if (layout === 'mobile')
     return (
       <VStack>
-        <HStack spacing="2em" p="1em">
-          <SideMin meta={meta}></SideMin>
-        </HStack>
         <Box maxW="900px" mx="auto" w="100%">
           <Box px="1.5em" id="prose" as="article">
-            <Text fontSize="1em" opacity={0.5} mb="-1em !important">
+            <Text fontSize="1em" opacity={0.5} mb="-1em !important" textTransform="uppercase">
               {meta.category}
             </Text>
             <Heading as="h1">{meta.title}</Heading>
+            <Center>
+              <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%">
+                <LazyImage
+                  src={meta.image}
+                  alt="Title image"
+                  w="100%"
+                  h="100%"
+                  objectFit="cover"
+                  m="auto"
+                />
+              </AspectRatio>
+            </Center>
+          </Box>
+
+          <HStack spacing="2em" p="1em">
+            <SideMin meta={meta}></SideMin>
+          </HStack>
+
+          <Box px="1.5em" id="prose" as="article">
             {post}
           </Box>
         </Box>
@@ -154,10 +180,22 @@ function Body({ post, meta }: BodyProps) {
     <HStack align="start" maxW="2000px" mx="auto">
       <Box maxW="900px" mx="auto">
         <Box p="1.5em" py="1em" id="prose" as="article">
-          <Text fontSize="1em" opacity={0.5} mb="-1em !important">
+          <Text fontSize="1em" opacity={0.5} mb="-1em !important" textTransform="uppercase">
             {meta.category}
           </Text>
           <Heading as="h1">{meta.title}</Heading>
+          <Center>
+            <AspectRatio ratio={{ base: 16 / 9, md: 16 / 9 }} w="100%">
+              <LazyImage
+                src={meta.image}
+                alt="Title image"
+                w="100%"
+                h="100%"
+                objectFit="cover"
+                m="auto"
+              />
+            </AspectRatio>
+          </Center>
           {post}
         </Box>
       </Box>
@@ -177,7 +215,7 @@ export interface BlogPostProps {
 export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element {
   return (
     <>
-      <Box>
+      {/* <Box>
         <Box position="relative">
           <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%" bg="black">
             <LazyImage
@@ -211,7 +249,7 @@ export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element
             </Text>
           </Box>
         </Box>
-      </Box>
+      </Box> */}
 
       <Body meta={meta} post={children}></Body>
     </>
