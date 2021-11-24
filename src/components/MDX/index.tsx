@@ -198,7 +198,7 @@ function BlockBuilder(blockType: string) {
     const bgColor = `${color}33`;
 
     return (
-      <Box borderLeft={`1em solid ${color}`} pl="1em" pr="1em" py="0.5em" bgColor={bgColor}>
+      <Box borderLeft={`0.5em solid ${color}`} pl="1em" pr="1em" py="0.5em" bgColor={bgColor}>
         {children}
       </Box>
     );
