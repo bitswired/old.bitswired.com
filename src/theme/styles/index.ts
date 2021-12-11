@@ -6,7 +6,7 @@ export default {
     global: (props: any) => ({
       '*': {
         // outline: '1px solid red'
-        outline: 0
+        // outline: 0
       },
       html: {
         fontSize: { base: '16px', sm: '18px', md: '18px' },
