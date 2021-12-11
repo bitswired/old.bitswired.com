@@ -1,13 +1,13 @@
 /* eslint-disable unicorn/no-abusive-eslint-disable */
 import JoiDate from '@joi/date';
 import { Meta } from '@storybook/react';
+// eslint-disable-next-line
+import * as fss from 'fs';
 import glob from 'glob-promise';
 import * as JoiImport from 'joi';
-
 // eslint-disable-next-line
-const fs = require('fs').promises;
-// eslint-disable-next-line
-const path = require('path');
+import * as path from 'path';
+const fs = fss.promises;
 
 const Joi = JoiImport.extend(JoiDate);
 
@@ -38,7 +38,12 @@ export async function getAllPosts(): Promise<Meta[]> {
 
   const tasks = paths.map(async (path) => {
     const meta = await fs.readFile(path);
-    return JSON.parse(meta);
+    const data = JSON.parse(meta.toString());
+
+    const d = metaSchema.validate(data, { convert: true });
+    if (d.error) throw new Error(d.error);
+
+    return data;
   });
 
   return await Promise.all(tasks);

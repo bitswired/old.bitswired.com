@@ -4,7 +4,6 @@ export default {
       justify: 'center',
       align: 'center',
       fontWeight: 'bold',
-      _focus: { boxShadow: 'none', outline: 'none' },
       verticalAlign: 'baseline',
       alignItems: 'start',
       alignContent: 'start'
@@ -62,7 +61,6 @@ export default {
     baseStyle: {
       display: 'none',
       fontWeight: 'bold',
-      _focus: { boxShadow: 'none', outline: 'none' },
       verticalAlign: 'baseline',
       alignItems: 'start',
       alignContent: 'start'

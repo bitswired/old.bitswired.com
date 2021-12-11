@@ -3,7 +3,7 @@ import { mode } from '@chakra-ui/theme-tools';
 export default {
   styles: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-    global: (properties: any) => ({
+    global: (props: any) => ({
       '*': {
         // outline: '1px solid red'
         outline: 0
@@ -14,8 +14,8 @@ export default {
       },
       'html, body': {
         fontFamily: 'sans',
-        color: mode('gray.800', 'whiteAlpha.900')(properties),
-        bg: mode('white', 'gray.800')(properties),
+        color: mode('gray.800', 'whiteAlpha.900')(props),
+        bg: mode('white', 'gray.800')(props),
         lineHeight: 'base',
         height: 'auto',
         width: '100vw',
@@ -114,6 +114,14 @@ export default {
         figure: {
           textAlign: 'center',
           fontStyle: 'italic'
+        },
+        code: {
+          p: '0.1em',
+          borderRadius: '3px',
+          bgColor: '#DDD',
+          fontFamily: props.theme.fonts.mono,
+          //color: props.theme.colors.secondary
+          color: 'green'
         }
       }
     })

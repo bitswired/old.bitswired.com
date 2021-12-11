@@ -1,7 +1,7 @@
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 const fonts = {
-  mono: `'Menlo', monospace`,
+  mono: `'IBM Plex Mono', monospace`,
   //sans: "'Karla', sans-serif",
   //sans: "'Open Sans', sans-serif",
   orbitron: "'Orbitron', sans-serif",

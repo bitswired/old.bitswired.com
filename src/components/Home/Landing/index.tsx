@@ -40,7 +40,7 @@ export default function Landing(): JSX.Element {
             Stay tuned! Join the newsletter
           </Text>
           <NewsletterSubscribeAction>
-            <Button variant="secondary-solid">SUBSCRIBE</Button>
+            <Button variant="secondary-solid">subscribe</Button>
           </NewsletterSubscribeAction>
         </HStack>
       </Center>

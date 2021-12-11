@@ -16,7 +16,7 @@ function Actions() {
         <Text color="white">Fortnightly curated content</Text>
         <NewsletterSubscribeAction>
           <Button size="sm" variant="secondary-solid">
-            SUBSCRIBE
+            subscribe
           </Button>
         </NewsletterSubscribeAction>
       </HStack>

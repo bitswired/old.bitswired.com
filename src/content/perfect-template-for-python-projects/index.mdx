@@ -3,13 +3,17 @@ import BlogPost from 'components/Blog/BlogPost';
 
 import Introduction from './introduction.mdx';
 import Issue1 from './issue-1.mdx';
-import Issue2 from './issue-1.mdx';
-import Issue3 from './issue-1.mdx';
+import Issue2 from './issue-2.mdx';
+import Issue3 from './issue-3.mdx';
 import Conclusion from './conclusion.mdx';
 
 export default function Layout({ children }) {
   return <BlogPost meta={meta}>{children}</BlogPost>;
 }
+
+[github repo]: https://github.com/bitswired/perfect-python-starter
+[packaging]: https://packaging.python.org/tutorials/packaging-projects/
+[poetry]: https://github.com/python-poetry/poetry
 
 <Introduction />
 
@@ -18,7 +22,3 @@ export default function Layout({ children }) {
 <Issue3 />
 
 <Conclusion />
-
-[github repo]: https://github.com/bitswired/perfect-python-starter
-[packaging]: https://packaging.python.org/tutorials/packaging-projects/
-[poetry]: https://github.com/python-poetry/poetry

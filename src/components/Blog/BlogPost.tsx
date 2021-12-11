@@ -68,7 +68,7 @@ interface SideProps {
 function SideFull({ meta }: SideProps) {
   return (
     <>
-      <VStack bgColor="#EEE" spacing="1.5em" p="1em" rounded="md" align="left" w="max">
+      <VStack bgColor="#EEE" spacing="1.5em" p="2em" rounded="md" align="left" w="max">
         <Box>
           <BlogPostAuthor />
         </Box>
@@ -87,7 +87,7 @@ function SideFull({ meta }: SideProps) {
         </HStack>
       </VStack>
 
-      <VStack bgColor="#EEE" spacing="2em" p="1em" rounded="md">
+      <VStack bgColor="#EEE" spacing="2em" p="2em" rounded="md">
         <Text colot="primary" textTransform="uppercase" fontWeight="bold">
           Subscribe to get updates
         </Text>
@@ -169,7 +169,7 @@ function Body({ post, meta }: BodyProps) {
             <SideMin meta={meta}></SideMin>
           </HStack>
 
-          <Box px="1.5em" id="prose" as="article">
+          <Box px="1.5em" id="prose" as="article" py="1em">
             {post}
           </Box>
         </Box>
@@ -196,7 +196,8 @@ function Body({ post, meta }: BodyProps) {
               />
             </AspectRatio>
           </Center>
-          {post}
+
+          <Box py="1em">{post}</Box>
         </Box>
       </Box>
 
