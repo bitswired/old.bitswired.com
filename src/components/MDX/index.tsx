@@ -51,7 +51,7 @@ export function MDXImage({
   objectFit = 'cover'
 }: MDXImageProps): JSX.Element {
   return (
-    <Box as="figure">
+    <Box as="figure" my="1em">
       <Center>
         <AspectRatio ratio={ratio} width={width} maxW={maxWidth}>
           <LazyImage
