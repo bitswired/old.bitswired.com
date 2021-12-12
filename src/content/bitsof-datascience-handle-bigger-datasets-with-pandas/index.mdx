@@ -2,7 +2,7 @@ import meta from './meta';
 import data from './data';
 import BlogPost from 'components/Blog/BlogPost';
 
-import { BitsOfSummary, InfoBlock } from 'components/MDX';
+import { BitsOfSummary, InfoBlock, MDXImage as Figure } from 'components/MDX';
 
 export default function Layout({ children }) {
   return <BlogPost meta={meta}>{children}</BlogPost>;
@@ -21,6 +21,43 @@ export default function Layout({ children }) {
 />
 
 Find the code related to this _Bits of ..._ [on GitHub][github repo].
+
+<Figure
+  ratio={16 / 9}
+  width="100%"
+  maxWidth="500px"
+  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/csv.svg"
+  alt="before and after code formatting"
+  title="Before/after code formatting"
+  objectFit="contain !important"
+/>
+<Figure
+  ratio={16 / 9}
+  width="100%"
+  maxWidth="1000px"
+  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/no-optimization.svg"
+  alt="before and after code formatting"
+  title="Before/after code formatting"
+  objectFit="contain !important"
+/>
+<Figure
+  ratio={16 / 9}
+  width="100%"
+  maxWidth="1000px"
+  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/optimization.svg"
+  alt="before and after code formatting"
+  title="Before/after code formatting"
+  objectFit="contain !important"
+/>
+<Figure
+  ratio={16 / 9}
+  width="100%"
+  maxWidth="1000px"
+  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/relevant-columns.svg"
+  alt="before and after code formatting"
+  title="Before/after code formatting"
+  objectFit="contain !important"
+/>
 
 ## Concept
 
@@ -43,7 +80,7 @@ default which consumes **8x more memory**.
 
 The first optimization step is to assign the most optimized types to your numerical columns.
 
-### Use the proper representation for categorical columns
+### Use the proper dtype for categorical columns
 
 When a column has a low cardinality, the string representation is the worst. Because you are
 repeating over and over the same value in the column, and if the dataset is big you are wasting a
