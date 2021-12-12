@@ -1,0 +1,13 @@
+{
+  "title": "Bits of Data Science - Handle Bigger Datasets with Pandas",
+  "description": "Easily squeeze performance out of your scripts, with only slight modifications. Learn how to leverage caching easily in Python.",
+  "readMinutes": 10,
+  "image": "https://statics.bitswired.com/images-opti/blog/gears.webp",
+  "category": "Data Science",
+  "tags": ["Data Science", "Pandas"],
+  "slug": "bitsof-datascience-handle-bigger-datasets-with-pandas",
+  "published": true,
+  "datePublished": "2021-12-11",
+  "dateModified": "2021-12-11",
+  "images": ["https://statics.bitswired.com/images-opti/blog/gears.webp"]
+}

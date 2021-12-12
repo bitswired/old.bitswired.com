@@ -50,6 +50,7 @@ export default function BlogPostGrid({ metas }: BlogPostGridProps): JSX.Element 
     <Box mx={[null, null, '10em']}>
       <Cell meta={metas[0]} width="48%" ratio={16 / 9} />
       <Cell meta={metas[1]} width="48%" ratio={16 / 9} />
+      <Cell meta={metas[2]} width="48%" ratio={16 / 9} />
     </Box>
 
     //   {/* <Cell meta={metas[2]} width="50%" ratio={16 / 9} />
