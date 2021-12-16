@@ -4,7 +4,6 @@ import { Image } from '@chakra-ui/image';
 import {
   AspectRatio,
   Box,
-  Center,
   Code,
   CodeProps,
   Flex,
@@ -12,6 +11,7 @@ import {
   HStack,
   Link,
   LinkProps,
+  Text,
   VStack
 } from '@chakra-ui/layout';
 import { Modal, ModalContent, ModalOverlay } from '@chakra-ui/modal';
@@ -37,7 +37,7 @@ function ImageModal({ children, onClose, isOpen }) {
     return (
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent m="auto" maxW={['100vw', '80vw']} p="1em">
+        <ModalContent m="auto" maxW={['100vw', '100vw', '1600px']} p="1em">
           {children}
         </ModalContent>
       </Modal>
@@ -73,41 +73,37 @@ export function MDXImage({
   if (src.endsWith('svg')) {
     return (
       <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
-        <Box as="figure" my="1em" onClick={setIsModal.toggle}>
-          <Center>
-            <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
-              <Image src={src} alt={alt} w="100px" objectFit={objectFit} />
-            </AspectRatio>
-          </Center>
-          <Center>
-            <Box as="figcaption">{title}</Box>
-          </Center>
-        </Box>
+        <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
+          <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
+            <Image src={src} alt={alt} w="100px" objectFit={objectFit} />
+          </AspectRatio>
+          <Text as="figcaption" fontStyle="italic" textAlign="center">
+            {title}
+          </Text>
+        </VStack>
       </ImageModal>
     );
   }
 
   return (
     <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
-      <Box as="figure" my="1em" onClick={setIsModal.toggle}>
-        <Center>
-          <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
-            <LazyImage
-              mx="auto"
-              src={src}
-              alt={alt}
-              w="100%"
-              responsive={responsive}
-              objectFit={objectFit}
-              substituteHeight="400px"
-              sizes="(min-width: 48em) 800px, 100vw"
-            />
-          </AspectRatio>
-        </Center>
-        <Center>
-          <Box as="figcaption">{title}</Box>
-        </Center>
-      </Box>
+      <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
+        <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
+          <LazyImage
+            mx="auto"
+            src={src}
+            alt={alt}
+            w="100%"
+            responsive={responsive}
+            objectFit={objectFit}
+            substituteHeight="400px"
+            sizes="(min-width: 48em) 800px, 100vw"
+          />
+        </AspectRatio>
+        <Text as="figcaption" fontStyle="italic" textAlign="center">
+          {title}
+        </Text>
+      </VStack>
     </ImageModal>
   );
 }
