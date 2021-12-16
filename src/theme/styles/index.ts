@@ -111,10 +111,6 @@ export default {
             display: 'inline'
           }
         },
-        figure: {
-          textAlign: 'center',
-          fontStyle: 'italic'
-        },
         code: {
           p: '0.1em',
           borderRadius: '3px',
