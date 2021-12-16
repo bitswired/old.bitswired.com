@@ -22,75 +22,84 @@ export default function Layout({ children }) {
 
 Find the code related to this _Bits of ..._ [on GitHub][github repo].
 
+## Concept
+
+Pandas is amazing at processing data on a single machine, on a single core, and when it fits into
+memory. If you deal with big datasets, you can easily exceed these settings and might have to look
+into other tools to handle your data. Before moving to distributed computing, with technologies like
+Spark, there are some simple optimizations that will help you scale to bigger datasets.
+
+The main limiting factor is the amount of memory needed to load the data into memory. If we reduce
+the size of the data, we can load more data, process it faster … Consider a simple CSV file with two
+columns: age and job.
+
 <Figure
   ratio={16 / 9}
   width="100%"
   maxWidth="500px"
   src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/csv.svg"
   alt="before and after code formatting"
-  title="Before/after code formatting"
+  title="CSV with two columns"
   objectFit="contain !important"
 />
+
+When you load data into memory, you have to define the types for each column of your dataset, and it
+is often done for you by default. Pandas use numpy arrays to represent each column in your data
+frame. These numpy arrays have a dtype, which is the underlying type of all elements in the array.
+When using pd.read_csv(), pandas will guess the data types of each column and assign numpy arrays
+with default types. However the default types are core-grained, using more space than needed to
+represent the different columns.
+
 <Figure
   ratio={16 / 9}
   width="100%"
   maxWidth="1000px"
   src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/no-optimization.svg"
   alt="before and after code formatting"
-  title="Before/after code formatting"
+  title="In-memory representation of the data loaded by pandas without optimizations"
   objectFit="contain !important"
 />
+
+In our case we would get an age column with an `int64` type and a job column with an `object` type.
+This is sub-optimal since an age has a range [0, 100], needing only 8 bits instead of 64. Also a job
+is not “any string” but is categorical, we most likely have a limited list of possible job and each
+job is an element of this list.
+
+### Use the proper dtype for numerical columns
+
+Pandas does not infer the best type for our numerical columns. In our case we could represent an age
+with a `uint8` type, because an age is unsigned (always positive) and its range is [0, 100].
+However, by default, pandas use an `int64` which **consumes 8x more memory**.
+
+The first step is to enforce optimized types for numerical columns.
+
+### Use the proper dtype for categorical columns
+
+When a column is categorical with a low cardinality (the number of unique values is lower than the
+total number of rows -> lots of repetitions) the **string representation is the worst**. The string
+is a costly type, dependengin on the format (utf-8, ascii, …) we use between 1 and 4 bytes per
+character. It quickly consumes a huge amount of memory when repeated over thousands of rows.
+
+But there is a better way. It’s more efficient to have a dictionary mapping every unique value to an
+index with a small type, for instance 1 byte. Then we repeat only 1 byte thousands of times instead
+of the complete string which is far bigger. Fortunately, pandas has a dtype to handle it
+automatically for you, you just have to use the `category` dtype.
+
+<InfoBlock>
+  It usually brings the biggest improvement in memory consumption. Handling categorical data with
+  simple strings is a huge waste of resources. The `str` type is heavy instead of a mapping with
+  only indices repeated with a proper categorical type.
+</InfoBlock>
+
 <Figure
   ratio={16 / 9}
   width="100%"
   maxWidth="1000px"
   src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/optimization.svg"
   alt="before and after code formatting"
-  title="Before/after code formatting"
+  title="In-memory representation of the data with type optimization. For the AGE column we use uint8 instead of int64. For the JOB column Student is mapped to 0 and Data Scientist is mapped to 1. Then we repeat 0 and 1 in the different data rows instead of the heavy string representation"
   objectFit="contain !important"
 />
-<Figure
-  ratio={16 / 9}
-  width="100%"
-  maxWidth="1000px"
-  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/relevant-columns.svg"
-  alt="before and after code formatting"
-  title="Before/after code formatting"
-  objectFit="contain !important"
-/>
-
-## Concept
-
-Pandas is amazing at processing data on a single machine, on a single core, and when it fits into
-memory. If you deal with big datasets, you can easily blow your memory, preventing you from using
-pandas as a tool. Before moving to distributed computing, with technologies like Spark, there are
-some easy optimizations that will help you process huge datasets.
-
-Every data science project involves loading and storing data at some point. You have to define the
-types for each column of your dataset, and it is often done for you by default. For instance, using
-`pd.read_csv()`, pandas will guess the data types of each column. However the default types are
-core-grained, using more space than needed to represent the different columns.
-
-### Use a better dtype for columns with numerical types
-
-By default, pandas is not assigning the most optimized type to your numerical columns. For instance
-if you load a dataframe with a column containing integer values with range [0, 255], the most
-memory- efficient type is `uint8` (for 8 bits unsigned integer). However you will have an `int64` by
-default which consumes **8x more memory**.
-
-The first optimization step is to assign the most optimized types to your numerical columns.
-
-### Use the proper dtype for categorical columns
-
-When a column has a low cardinality, the string representation is the worst. Because you are
-repeating over and over the same value in the column, and if the dataset is big you are wasting a
-lot of memory. Use a categorical dtype to encode these columns in the most efficient way.
-
-<InfoBlock>
-  This usually bring the most improvement in memory consumption. Handling categorical data with
-  simple strings is a huge waste of resources. The `str` type in heavy instead of a dictionary with
-  only index repeated for a proper categorical type.
-</InfoBlock>
 
 ### Load only relevant columns
 
@@ -98,16 +107,26 @@ It’s likely that you are not using all the columns of your dataset to conduct 
 Using the usecols keyword, you can load only the column of interests. It is a simple trick, but it
 helps you deal with huge datasets easily.
 
+<Figure
+  ratio={16 / 9}
+  width="100%"
+  maxWidth="1000px"
+  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/relevant-columns.svg"
+  alt="before and after code formatting"
+  title="In-memory representation of the data after loading only the relevant columns (assuming we need only the AGE column)"
+  objectFit="contain !important"
+/>
+
 Pandas dtypes contain all numpy dtypes and specific pandas types. You can find the list of all types
-at types and
+at [here][pandas types] and [here][numpy types] and here
 
 ---
 
 ## In Practice
 
-Let’s get our hands dirty! First we load a demo dataset using the defaults from pandas and we
-measure its size in memory. We take a look at the column types and we note that the default types
-are hingering us here.
+Let's get our hands dirty on a real dataset, to demonstrate the importance of data types.
+
+First we import the needed libraries, and build the path to the dataset.
 
 ```python
 ---
@@ -121,22 +140,99 @@ import pandas as pd
 # Data source:
 # https://www.kaggle.com/sveneschlbeck/resale-flat-prices-in-singapore
 data_path = Path(__file__).parents[0] / "flat-prices.zip"
+```
 
+Then we define two helper functions. `to_mb` just convert a size in bytes (B) to a size in mega
+bytes (MB). `analyze` takes a data frame as input and print the data frame dtypes as well as a title
+containing the size in MB. To measure a data frame size in memory, can call we use
+`df.memory_usage(deep=True)` to get the size per column and sum it to get the total size. The
+argument `deep=True` is important to get real amount of memory consumed.
 
+```python
+---
+{"filename": "main.py", "github": "https://github.com/bitswired/bitsof-datascience/blob/master/bitsof_datascience/bigger_dataset_in_pandas/main.py", "collapsable": false }
+---
 def to_mb(bytes: float) -> float:
     """Function to convert bytes to mega bytes (MB)"""
     return bytes / 1024 ** 2
 
+def analyze(df: pd.DataFrame, title: str) -> float:
+    """Print the memory used by the dataframe in MB and return the
+    bytes"""
+    bytes = df.memory_usage(deep=True).sum()
+    mb = to_mb(bytes)
+    print(f"{title}: {mb:.2f} MB")
+    print(df.dtypes)
+    return mb
+```
 
+Then we load the data using `pd.read_csv` without any optimizations:
+
+```python
+---
+{"filename": "main.py", "github": "https://github.com/bitswired/bitsof-datascience/blob/master/bitsof_datascience/bigger_dataset_in_pandas/main.py", "collapsable": false }
+---
 def no_optimization() -> pd.DataFrame:
     """Load the data without any optimization"""
     df = pd.read_csv(data_path)
     return df
+
+...
+
+if __name__ == "__main__":
+    # First we start with no optimizations
+    df_no_opti = no_optimization()
+    mb_no_opti = analyze(df_no_opti, "No optimizations")
 ```
 
-We observe the columns a bit and notice that we can use float16 instead of float64, int8 instead of
-int64 for columns a and b. Now we reload the dataset and specify the proper type for the columns
-using the dtypes argument. Let’s measure memory size again.
+```p
+---
+{"title": "Analysis of the size "}
+---
+No optimizations: 131.36 MB
+month                   object
+town                    object
+flat_type               object
+block                   object
+street_name             object
+storey_range            object
+floor_area_sqm         float64
+flat_model              object
+lease_commence_date      int64
+resale_price             int64
+dtype: object
+```
+
+The data frame takes **{data.noOpti.size} MB** in memory. We also take a look at column types and
+notice that some numerical types can be improved. Let's take a look at the columns `floor_area_sqm`
+and `resale_price`:
+
+```p
+---
+{"title": "Analysis of the size "}
+---
+floor_area_sqm  resale_price
+          31.0          9000
+          31.0          6000
+          31.0          8000
+          31.0          6000
+          73.0         47200
+           ...           ...
+         142.0        456000
+         142.0        408000
+         146.0        469000
+         146.0        440000
+         145.0        484000
+```
+
+The `floor_area_sqm` can fit within a 16 bits float (goes up to **6.55 × 10e4**) column and can be
+represented with a `float16`. `resale_price` can fit into a 32 bits unisgned int (goes up to
+**4.29e+09**) and can be represented with a `unin32`.
+
+<InfoBlock>Quick tip</InfoBlock>
+
+Let's apply our numrical type optimizations. We use the `dtypes` argument in `pd.read_csv` to
+specify a type per column.
 
 ```python
 ---
@@ -154,10 +250,14 @@ def with_numerical_types() -> pd.DataFrame:
     return df
 ```
 
-We already notice a great improvement by reducing the memory consumption X fold. Now we observe that
-the column col_1 is categorical, but it is currently represented as a string column which is the
-worst. Let’s fix the issue with the categorical type available in pandas. This is the most efficient
-way to represent categorical data. We can now measure again the memory consumed.
+The data frame size in memory is now **{data.opti1.size} MB** which is a slight reduction of
+**{data.opti1.improvement}%**.
+
+Now let's deal with the categorical columns. `flat_model`, `flat_type`, `storey_range`, `block` and
+`town` are good candidates for categorical colunms. They have a low cardinality which indicates a
+great memory improvement potential.
+
+Let's apply these optimizations:
 
 ```python
 ---
@@ -180,10 +280,8 @@ def with_numerical_and_categorical_types() -> pd.DataFrame:
     return df
 ```
 
-There is again a drastic improvement, we reduce the size in memory by X. Finally, for our analysis
-we only need 4 columns. There is no need to load the whole dataset in memory to run our
-preprocessing. Let’s load the dataset with only the required columns. We do so with the usecols
-argument.
+The data frame size in memory is now **{data.opti2.size} MB** which is a huge reduction of
+**{data.opti2.improvement}%** compared to the case without optimizations!
 
 ```python
 ---
@@ -205,6 +303,9 @@ def with_numerical_and_categorical_types_and_without_unused_columns() -> pd.Data
     return df
 ```
 
+The data frame size in memory is now **{data.opti3.size} MB** which is a huge reduction of
+**{data.opti3.improvement}%** compared to the case without optimizations!
+
 Another neat improvement, the data frame size decreases by X.
 
 **Handling bigger datasets doesn’t necessarily rhyme with a bigger computer**. Sometimes all you
@@ -214,8 +315,74 @@ Code showing the measurements
 
 ```python
 ---
-{"filename": "main.py", "github": "https://github.com/bitswired/bitsof-datascience/blob/master/bitsof_datascience/bigger_dataset_in_pandas/main.py", "collapsable": true }
+{"filename": "main.py", "github": "https://github.com/bitswired/bitsof-datascience/blob/master/bitsof_datascience/bigger_dataset_in_pandas/main.py", "collapsable": true, "title": "The whole code" }
 ---
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+# Data source:
+# https://www.kaggle.com/sveneschlbeck/resale-flat-prices-in-singapore
+data_path = Path(__file__).parents[0] / "flat-prices.zip"
+
+
+def to_mb(bytes: float) -> float:
+    """Function to convert bytes to mega bytes (MB)"""
+    return bytes / 1024 ** 2
+
+
+def no_optimization() -> pd.DataFrame:
+    """Load the data without any optimization"""
+    df = pd.read_csv(data_path)
+    return df
+
+
+def with_numerical_types() -> pd.DataFrame:
+    """Load the data with proper numerical types"""
+    df = pd.read_csv(
+        data_path,
+        dtype={
+            "floor_area_sqm": np.float16,
+            "resale_price": np.uint32,
+        },
+    )
+    return df
+
+
+def with_numerical_and_categorical_types() -> pd.DataFrame:
+    """Load the data with proper numerical and categorical types"""
+    df = pd.read_csv(
+        data_path,
+        dtype={
+            "floor_area_sqm": np.float16,
+            "resale_price": np.uint32,
+            "flat_model": "category",
+            "flat_type": "category",
+            "storey_range": "category",
+            "block": "category",
+            "town": "category",
+        },
+    )
+    return df
+
+
+def with_numerical_and_categorical_types_and_without_unused_columns() -> pd.DataFrame:
+    """Load the data with proper numerical and categorical types
+    and without unused columns"""
+    dtype = {
+        "floor_area_sqm": np.float16,
+        "resale_price": np.uint32,
+        "flat_model": "category",
+        "flat_type": "category",
+        "storey_range": "category",
+        "block": "category",
+        "town": "category",
+    }
+    df = pd.read_csv(data_path, dtype=dtype, usecols=list(dtype.keys()))
+    return df
+
+
 def analyze(df: pd.DataFrame, title: str) -> float:
     """Print the memory used by the dataframe in MB and return the
     bytes"""
@@ -250,7 +417,7 @@ if __name__ == "__main__":
     print()
 
     # No need to load unused columns. We often use a subset of the
-    # columns, relevant to our analysis.
+    # columns, releveant to our analysis.
     # We assume that we are only interessed in the columns where we
     # defined the types (numerical and categrical)
     df_without_unused_columns = (
@@ -262,7 +429,10 @@ if __name__ == "__main__":
     )
     reduction = (mb_no_opti - mb_without_unused_columns) / mb_no_opti * 100
     print(f"Size reduced by: {reduction:.2f}%")
+
 ```
 
 [github repo]:
   https://github.com/bitswired/bitsof-datascience/blob/master/bitsof_datascience/bigger_dataset_in_pandas/main.py
+[pandas types]: https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes
+[numpy types]: https://numpy.org/doc/stable/user/basics.types.html
