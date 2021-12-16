@@ -4,6 +4,7 @@ import { Icon } from '@chakra-ui/icon';
 import { Box, HStack, LinkBox, LinkOverlay, Text } from '@chakra-ui/layout';
 import { Collapse } from '@chakra-ui/transition';
 import { codeLanguageIcons } from 'config';
+import { useTheme } from '@chakra-ui/system';
 import React from 'react';
 import { FaChevronDown, FaChevronUp, FaGithub } from 'react-icons/fa';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -46,11 +47,14 @@ interface CodeProps {
 }
 
 function Code({ children, language }: CodeProps) {
+  const theme = useTheme();
+
   return (
     <SyntaxHighlighter
       language={language}
       wrapLongLines={true}
       style={style}
+      lineProps={{ style: { fontFamily: theme.fonts.mono } }}
       customStyle={{
         marginTop: 0,
         backgroundColor: '#f6f6f6',
