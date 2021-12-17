@@ -32,7 +32,13 @@ const DynamicLinLogLineChart = dynamic(() => import('oneoff-components/LinLogLin
   ssr: false
 });
 
-function ImageModal({ children, onClose, isOpen }) {
+interface ImageModalProps {
+  children: JSX.Element;
+  onClose: () => void;
+  isOpen: boolean;
+}
+
+function ImageModal({ children, onClose, isOpen }: ImageModalProps) {
   if (isOpen) {
     return (
       <Modal isOpen={isOpen} onClose={onClose} isCentered>

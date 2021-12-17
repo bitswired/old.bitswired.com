@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Tag } from '@chakra-ui/tag';
-import { useToast } from '@chakra-ui/toast';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import LazyImage from 'components/LazyImage';
