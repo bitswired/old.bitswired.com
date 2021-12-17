@@ -2,7 +2,7 @@ import meta from './meta';
 import data from './data';
 import BlogPost from 'components/Blog/BlogPost';
 
-import { BitsOfSummary, InfoBlock, MDXImage as Figure } from 'components/MDX';
+import { BitsOfSummary, MDXImage as Figure } from 'components/MDX';
 
 export default function Layout({ children }) {
   return <BlogPost meta={meta}>{children}</BlogPost>;
@@ -124,7 +124,9 @@ at [here][pandas types] and [here][numpy types] and here
 
 ## In Practice
 
-Let's get our hands dirty on a real dataset, to demonstrate the importance of data types.
+Let's get our hands dirty on a real dataset, to demonstrate the importance of data types. We will
+use a [public dataset][dataset] from Kaggle entitled: Resale Flat Prices in Sigapore (between 1990
+and 1999).
 
 First we import the needed libraries, and build the path to the dataset.
 
@@ -142,11 +144,16 @@ import pandas as pd
 data_path = Path(__file__).parents[0] / "flat-prices.zip"
 ```
 
-Then we define two helper functions. `to_mb` just convert a size in bytes (B) to a size in mega
-bytes (MB). `analyze` takes a data frame as input and print the data frame dtypes as well as a title
-containing the size in MB. To measure a data frame size in memory, can call we use
-`df.memory_usage(deep=True)` to get the size per column and sum it to get the total size. The
-argument `deep=True` is important to get real amount of memory consumed.
+Then we define two helper functions:
+
+1. `to_mb`: to convert a size in bytes (B) to a size in mega bytes (MB).
+2. `analyze`: takes a data frame as input and print the data frame dtypes as well as a title
+   containing the size in MB.
+
+<InfoBlock>
+  We use `df.memory_usage(deep=True)` to get the memory size per column and sum it to get the total
+  size. The argument `deep=True` is important to get real amount of memory consumed.
+</InfoBlock>
 
 ```python
 ---
@@ -225,11 +232,21 @@ floor_area_sqm  resale_price
          145.0        484000
 ```
 
-The `floor_area_sqm` can fit within a 16 bits float (goes up to **6.55 × 10e4**) column and can be
-represented with a `float16`. `resale_price` can fit into a 32 bits unisgned int (goes up to
+The `floor_area_sqm` can fit within a 16 bits float (with max value **6.55 × 10e4**) column and can
+be represented with a `float16`. `resale_price` can fit into a 32 bits unisgned int (with max value
 **4.29e+09**) and can be represented with a `unin32`.
 
-<InfoBlock>Quick tip</InfoBlock>
+<InfoBlock>
+You can inspect the count, min, max and some other statistics for every column in your dataset
+using `df.describe()`.
+
+It is particularly useful to find the range of numerical columns, and the cardinality (count of
+unique values) of a categorical columns.
+
+- Numerical columns with small range can be optimized with a smaller type
+- The `category` type for a low cardinality column provides a huge memory gain
+
+</InfoBlock>
 
 Let's apply our numrical type optimizations. We use the `dtypes` argument in `pd.read_csv` to
 specify a type per column.
@@ -306,12 +323,10 @@ def with_numerical_and_categorical_types_and_without_unused_columns() -> pd.Data
 The data frame size in memory is now **{data.opti3.size} MB** which is a huge reduction of
 **{data.opti3.improvement}%** compared to the case without optimizations!
 
-Another neat improvement, the data frame size decreases by X.
+> Handling bigger datasets doesn’t always rhyme with a bigger computer.
 
-**Handling bigger datasets doesn’t necessarily rhyme with a bigger computer**. Sometimes all you
-need is to be cautious about the types of your data and clarity about what columns you really need.
-
-Code showing the measurements
+Sometimes all you need is to be cautious about the types of your data and clarity about the columns
+you really need.
 
 ```python
 ---
@@ -436,3 +451,4 @@ if __name__ == "__main__":
   https://github.com/bitswired/bitsof-datascience/blob/master/bitsof_datascience/bigger_dataset_in_pandas/main.py
 [pandas types]: https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes
 [numpy types]: https://numpy.org/doc/stable/user/basics.types.html
+[dataset]: https://www.kaggle.com/sveneschlbeck/resale-flat-prices-in-singapore

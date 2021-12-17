@@ -91,25 +91,32 @@ export default {
         li: {
           my: '0.5em'
         },
+        // blockquote: {
+        //   fontFamily: 'serif',
+        //   background: '#f9f9f9',
+        //   borderLeft: '10px solid',
+        //   borderColor: 'secondary',
+        //   margin: '1.5em 10px',
+        //   padding: '0.5em 10px',
+        //   quotes: "'\\201C' '\\201D'",
+        //   _before: {
+        //     color: 'secondary',
+        //     content: 'open-quote',
+        //     fontSize: '4em',
+        //     lineHeight: '0.1em',
+        //     marginRight: '0.25em',
+        //     verticalAlign: '-0.4em'
+        //   },
+
+        //   p: {
+        //     display: 'inline'
+        //   }
+        // },
         blockquote: {
-          fontFamily: 'serif',
-          background: '#f9f9f9',
-          borderLeft: '10px solid',
-          borderColor: 'secondary',
-          margin: '1.5em 10px',
-          padding: '0.5em 10px',
-          quotes: "'\\201C' '\\201D'",
-          _before: {
-            color: 'secondary',
-            content: 'open-quote',
-            fontSize: '4em',
-            lineHeight: '0.1em',
-            marginRight: '0.25em',
-            verticalAlign: '-0.4em'
-          },
-          p: {
-            display: 'inline'
-          }
+          px: '10%',
+          textAlign: 'center',
+          fontStyle: 'italic',
+          fontSize: '1.3em'
         },
         code: {
           p: '0.1em',

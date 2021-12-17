@@ -246,6 +246,8 @@ export const InfoBlock = BlockBuilder('info');
 export const WarningBlock = BlockBuilder('warning');
 
 export const components = {
+  InfoBlock,
+  WarningBlock,
   code: CodeBlock,
   inlineCode: MDXInlineCodeBlock,
   a: MDXLink,
