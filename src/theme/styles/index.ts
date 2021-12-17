@@ -43,7 +43,6 @@ export default {
         fontFamily: 'serif',
         h1: {
           fontFamily: 'sans',
-          // fontSize: ['2xl', '5xl'],
           fontSize: ['2.8em', '3.2rem'],
           my: '1em',
           fontWeight: 'normal',
@@ -51,7 +50,6 @@ export default {
         },
         h2: {
           fontFamily: 'sans',
-          // fontSize: ['2xl', '4xl'],
           fontSize: '2.4rem',
           my: '1em',
           fontWeight: 'normal',
@@ -59,7 +57,6 @@ export default {
         },
         h3: {
           fontFamily: 'sans',
-          // fontSize: ['xl', '2xl'],
           fontSize: '1.8rem',
           my: '0.7em',
           fontWeight: 'normal',
@@ -67,7 +64,6 @@ export default {
         },
         h4: {
           fontFamily: 'sans',
-          // fontSize: ['lg', 'xl'],
           fontSize: '1.4rem',
           my: '0.5m',
           fontWeight: 'bold',
@@ -78,7 +74,6 @@ export default {
           my: '1em',
           color: '#272727',
           fontSize: '1em'
-          // fontWeight: '300'
         },
         ul: {
           listStylePosition: 'inside',
@@ -91,29 +86,8 @@ export default {
         li: {
           my: '0.5em'
         },
-        // blockquote: {
-        //   fontFamily: 'serif',
-        //   background: '#f9f9f9',
-        //   borderLeft: '10px solid',
-        //   borderColor: 'secondary',
-        //   margin: '1.5em 10px',
-        //   padding: '0.5em 10px',
-        //   quotes: "'\\201C' '\\201D'",
-        //   _before: {
-        //     color: 'secondary',
-        //     content: 'open-quote',
-        //     fontSize: '4em',
-        //     lineHeight: '0.1em',
-        //     marginRight: '0.25em',
-        //     verticalAlign: '-0.4em'
-        //   },
-
-        //   p: {
-        //     display: 'inline'
-        //   }
-        // },
         blockquote: {
-          px: '10%',
+          px: '5%',
           textAlign: 'center',
           fontStyle: 'italic',
           fontSize: '1.3em'

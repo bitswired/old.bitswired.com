@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Tag } from '@chakra-ui/tag';
+import { useToast } from '@chakra-ui/toast';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import LazyImage from 'components/LazyImage';
@@ -146,7 +147,7 @@ function Body({ post, meta }: BodyProps) {
     return (
       <VStack>
         <Box maxW="900px" mx="auto" w="100%">
-          <Box px="1.5em" id="prose" as="article">
+          <Box px="1.5em" as="article" id="prose">
             <Text fontSize="1em" opacity={0.5} mb="-1em !important" textTransform="uppercase">
               {meta.category}
             </Text>
@@ -169,7 +170,7 @@ function Body({ post, meta }: BodyProps) {
             <SideMin meta={meta}></SideMin>
           </HStack>
 
-          <Box px="1.5em" id="prose" as="article" py="1em">
+          <Box px="1.5em" as="section" py="1em" id="prose">
             {post}
           </Box>
         </Box>
@@ -179,7 +180,7 @@ function Body({ post, meta }: BodyProps) {
   return (
     <HStack align="start" maxW="2000px" mx="auto">
       <Box maxW="900px" mx="auto">
-        <Box p="1.5em" py="1em" id="prose" as="article">
+        <Box p="1.5em" py="1em" as="article" id="prose">
           <Text fontSize="1em" opacity={0.5} mb="-1em !important" textTransform="uppercase">
             {meta.category}
           </Text>
@@ -197,7 +198,9 @@ function Body({ post, meta }: BodyProps) {
             </AspectRatio>
           </Center>
 
-          <Box py="1em">{post}</Box>
+          <Box as="section" py="1em" id="prose">
+            {post}
+          </Box>
         </Box>
       </Box>
 

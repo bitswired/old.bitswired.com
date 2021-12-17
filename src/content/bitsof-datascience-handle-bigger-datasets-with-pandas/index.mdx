@@ -77,7 +77,7 @@ The first step is to enforce optimized types for numerical columns.
 
 When a column is categorical with a low cardinality (the number of unique values is lower than the
 total number of rows -> lots of repetitions) the **string representation is the worst**. The string
-is a costly type, dependengin on the format (utf-8, ascii, …) we use between 1 and 4 bytes per
+is a costly type, depending on the format (utf-8, ascii, …) we use between 1 and 4 bytes per
 character. It quickly consumes a huge amount of memory when repeated over thousands of rows.
 
 But there is a better way. It’s more efficient to have a dictionary mapping every unique value to an
@@ -194,7 +194,7 @@ if __name__ == "__main__":
 
 ```p
 ---
-{"title": "Analysis of the size "}
+{"title": "Columns dtypes"}
 ---
 No optimizations: 131.36 MB
 month                   object
@@ -216,7 +216,7 @@ and `resale_price`:
 
 ```p
 ---
-{"title": "Analysis of the size "}
+{"title": "Sample data from two numerical columns"}
 ---
 floor_area_sqm  resale_price
           31.0          9000
