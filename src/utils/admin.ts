@@ -27,11 +27,11 @@ const metaSchema = Joi.object({
   images: Joi.array().items(Joi.string()).required()
 });
 
-interface ParsedPost {
-  meta: any;
-  content: any;
-  data: any;
-}
+// interface ParsedPost {
+//   meta: any;
+//   content: any;
+//   data: any;
+// }
 
 export async function getAllPosts(): Promise<Meta[]> {
   const paths = await glob(`${CONTENT_PATH}/**/*meta.json`);
