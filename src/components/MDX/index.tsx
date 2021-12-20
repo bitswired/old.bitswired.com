@@ -23,6 +23,7 @@ import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
 import dynamic from 'next/dynamic';
 import { FaExclamationCircle, FaLightbulb } from 'react-icons/fa';
+import LazyLoad from 'react-lazyload';
 
 const DynamicCodeBlock = dynamic(() => import('components/CodeBlock'), {
   ssr: false
@@ -78,39 +79,43 @@ export function MDXImage({
 
   if (src.endsWith('svg')) {
     return (
+      <LazyLoad height={100} once>
+        <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
+          <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
+            <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
+              <Image src={src} alt={alt} w="100px" objectFit={objectFit} />
+            </AspectRatio>
+            <Text as="figcaption" fontStyle="italic" textAlign="center">
+              {title}
+            </Text>
+          </VStack>
+        </ImageModal>
+      </LazyLoad>
+    );
+  }
+
+  return (
+    <LazyLoad height={100} once>
       <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
         <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
           <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
-            <Image src={src} alt={alt} w="100px" objectFit={objectFit} />
+            <LazyImage
+              mx="auto"
+              src={src}
+              alt={alt}
+              w="100%"
+              responsive={responsive}
+              objectFit={objectFit}
+              substituteHeight="400px"
+              sizes="(min-width: 48em) 800px, 100vw"
+            />
           </AspectRatio>
           <Text as="figcaption" fontStyle="italic" textAlign="center">
             {title}
           </Text>
         </VStack>
       </ImageModal>
-    );
-  }
-
-  return (
-    <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
-      <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
-        <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
-          <LazyImage
-            mx="auto"
-            src={src}
-            alt={alt}
-            w="100%"
-            responsive={responsive}
-            objectFit={objectFit}
-            substituteHeight="400px"
-            sizes="(min-width: 48em) 800px, 100vw"
-          />
-        </AspectRatio>
-        <Text as="figcaption" fontStyle="italic" textAlign="center">
-          {title}
-        </Text>
-      </VStack>
-    </ImageModal>
+    </LazyLoad>
   );
 }
 
@@ -222,11 +227,21 @@ export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
 }
 
 function CodeBlock(props: CodeBlockProps) {
-  return <DynamicCodeBlock {...props} />;
+  if (!props.className) return <Code>{props.children}</Code>;
+
+  return (
+    <LazyLoad height={100} once>
+      <DynamicCodeBlock {...props} />
+    </LazyLoad>
+  );
 }
 
 export function LinLogLineChart(props: LineChartProps) {
-  return <DynamicLinLogLineChart {...props} />;
+  return (
+    <LazyLoad height={100} once>
+      <DynamicLinLogLineChart {...props} />;
+    </LazyLoad>
+  );
 }
 
 function BlockBuilder(blockType: string) {

@@ -59,7 +59,7 @@ function Code({ children, language }: CodeProps) {
         marginTop: 0,
         backgroundColor: '#f6f6f6',
         lineHeight: '3px',
-        // fontSize: '0.8em',
+        fontSize: '0.8em',
         width: '100%',
         borderLeft: 'solid #BBB 0.5rem'
       }}

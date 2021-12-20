@@ -88,9 +88,12 @@ export default {
         },
         blockquote: {
           px: '5%',
+          py: '1em',
           textAlign: 'center',
-          fontStyle: 'italic',
-          fontSize: '1.3em'
+          fontSize: '1.3em',
+          p: {
+            color: '#888 !important'
+          }
         },
         code: {
           p: '0.1em',

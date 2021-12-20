@@ -17,8 +17,11 @@ import Button from 'components/Button';
 import LazyImage from 'components/LazyImage';
 import { AttentionSeeker } from 'components/Reveal/AttentionSeeker';
 //import LazyImage from 'components/LazyImage';
+import { infos } from 'config';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 import { FaBell, FaTags } from 'react-icons/fa';
+import { TechArticleJsonLd } from 'rich-results';
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -216,16 +219,20 @@ export interface BlogPostProps {
 }
 
 export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element {
+  const url = `https://www.bitswired.com/blog/${meta.slug}`;
+
   return (
     <>
       {/* <Box>
         <Box position="relative">
-          <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%" bg="black">
+          <AspectRatio ratio={{ base:import { infos } from 'config';
+16 / 9, md: 21 / 9 }} w="100%" bg="black">
             <LazyImage
               src={meta.image}
               alt="Title image"
               w="100%"
-              h="100%"
+              h="100%import { infos } from 'config';
+
               objectFit="cover"
               m="auto"
               opacity={0.6}
@@ -253,7 +260,37 @@ export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element
           </Box>
         </Box>
       </Box> */}
-
+      <NextSeo
+        title={meta.title}
+        description={meta.description}
+        canonical={url}
+        openGraph={{
+          url,
+          title: meta.title,
+          description: meta.description,
+          images: meta.images.map((x) => ({ url: x })),
+          site_name: 'Bitswired',
+          article: {
+            publishedTime: meta.datePublished,
+            modifiedTime: meta.dateModified,
+            section: meta.category,
+            authors: [infos.linkedInProfile],
+            tags: meta.tags
+          }
+        }}
+        twitter={{
+          handle: '@bitswired',
+          site: '@bitswired'
+        }}
+      />
+      <TechArticleJsonLd
+        url={url}
+        headline={meta.title}
+        description={meta.description}
+        image={meta.images}
+        datePublished={meta.datePublished}
+        dateModified={meta.dateModified}
+      />
       <Body meta={meta} post={children}></Body>
     </>
   );
