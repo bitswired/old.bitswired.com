@@ -159,7 +159,7 @@ function BitsOfInfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element 
 }
 
 interface InfoWarnBlockProps {
-  items: string[];
+  items: string[]    </LazyLoad>;
 }
 
 function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
@@ -172,8 +172,7 @@ function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
         <Heading as="h3">{title}</Heading>
 
         <VStack>
-          {items.map((text: string) => (
-            <HStack key="text" w="100%" align="flex-start">
+          {items.map((text: string) => (    </LazyLoad>flex-start">
               {/* <Icon as={B} color={type === 'info' ? 'primary' : 'secondary'} mt="0.25em" /> */}
               <Icon as={B} color="black" mt="0.25em" />
               <Box>{text}</Box>
