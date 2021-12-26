@@ -233,33 +233,33 @@ export default function AboutPage(): JSX.Element {
             <Wrap m="auto" justify="center">
               <NewsletterFeature
                 icon={FaBrain}
-                title="Bits of Research"
-                description="1 highlighted research paper, with comments and executive summary."
+                title="A bit of Research"
+                description="Highlighted research paper, with comments and executive summary."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaAtom}
-                title="Bits of Tech"
-                description="2 selected articles to stay on top of our modern data era."
+                title="A bit of "
+                description="Articles to stay on top of our modern data era."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaCode}
-                title="Bits of Code"
-                description="1 highlighted library, framework or tool introduced in the blink of an eye."
+                title="A bit of tools"
+                description="Highlighted libraries, framework or tool introduced in the blink of an eye."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaEnvelopeOpenText}
-                title="Bits of News"
-                description="Several news covering important events around the digital technologies world."
+                title="A bit of news"
+                description="News covering important events around the digital technologies world."
                 color="secondary"
               />
             </Wrap>
           </VStack>
         </Section>
 
-        <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>
+        {/* <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>
           <Text>
             The{' '}
             <Link href={infos.discrodInvite} isExternal textDecor="underline" color="primary">
@@ -279,7 +279,7 @@ export default function AboutPage(): JSX.Element {
           <br />
           <br />
           <br />
-        </Section>
+        </Section> */}
       </VStack>
     </>
   );

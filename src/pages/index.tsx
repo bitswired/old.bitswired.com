@@ -5,6 +5,7 @@ import Landing from 'components/Home/Landing';
 import { Fade } from 'components/Reveal/Fade';
 import { NextSeo } from 'next-seo';
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 import { getAllPosts, getFeaturedPost } from 'utils/admin';
 
 interface LandingPageProps {
@@ -36,19 +37,24 @@ export default function LandingPage({ featuredPosts }: LandingPageProps): JSX.El
         }}
       />
       <Landing />
-      <Features />
-      <VStack p="2em" spacing="7em">
-        <Heading as="h2"> Featured Blog Posts</Heading>
-        <Wrap justify="center" mt="-5em" w="100%" spacing="3em">
-          {featuredPosts.map((x) => (
-            <WrapItem key={x.title} w={['100%', '65%', '30%']}>
-              <Fade frac={0.5} triggerOnce>
-                <BlogPostCard meta={x} ratio={16 / 9} sizes="700px" />
-              </Fade>
-            </WrapItem>
-          ))}
-        </Wrap>
-      </VStack>
+      <LazyLoad height={100} once>
+        <Features />
+      </LazyLoad>
+
+      <LazyLoad height={100} once>
+        <VStack p="2em" spacing="7em">
+          <Heading as="h2"> Featured Blog Posts</Heading>
+          <Wrap justify="center" mt="-5em" w="100%" spacing="3em">
+            {featuredPosts.map((x) => (
+              <WrapItem key={x.title} w={['100%', '65%', '30%']}>
+                <Fade frac={0.5} triggerOnce>
+                  <BlogPostCard meta={x} ratio={16 / 9} sizes="700px" />
+                </Fade>
+              </WrapItem>
+            ))}
+          </Wrap>
+        </VStack>
+      </LazyLoad>
     </>
   );
 }

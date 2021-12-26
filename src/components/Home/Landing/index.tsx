@@ -45,14 +45,14 @@ export default function Landing(): JSX.Element {
         </HStack>
       </Center>
 
-      <Center py="1em">
+      {/* <Center py="1em">
         <HStack>
           <Text color="white" fontSize="1em">
             Join the Discord community!
           </Text>
           <SocialIcon as={FaDiscord} url="https://discord.gg/GStmskX2g6" fontSize="60px" />
         </HStack>
-      </Center>
+      </Center> */}
     </Box>
   );
 }

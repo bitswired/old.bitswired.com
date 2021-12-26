@@ -51,7 +51,7 @@ export const deoDefaults = {
 };
 
 export const socialsFollow = [
-  { url: infos.discrodInvite, name: 'discord', icon: FaDiscord },
+  // { url: infos.discrodInvite, name: 'discord', icon: FaDiscord },
   { url: infos.twitterProfile, name: 'twitter', icon: FaTwitter }
   // { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
 ];
