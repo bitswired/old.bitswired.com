@@ -210,7 +210,9 @@ interface BitsOfSummaryProps {
 export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
   return (
     <VStack
-      bgGradient="linear(primary, secondary)"
+      bgGradient="linear(primary, white)"
+      bgColor="primary"
+      shadow="xl"
       color="333"
       rounded="lg"
       py="2em"

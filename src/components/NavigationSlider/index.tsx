@@ -1,11 +1,11 @@
-import { Box, Divider, HStack, Link, Text, VStack } from '@chakra-ui/layout';
+import { Divider, HStack, Text, VStack } from '@chakra-ui/layout';
 import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@chakra-ui/modal';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import InternalLink from 'components/InternalLink';
 import Logo from 'components/Logo';
 import Follow from 'components/Socials/Follow';
-import { infos, routes } from 'config';
+import { routes } from 'config';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -21,7 +21,7 @@ function Actions() {
         </NewsletterSubscribeAction>
       </HStack>
 
-      <Box>
+      {/* <Box>
         <Text display="inline" color="white">
           Not yet a member?
         </Text>{' '}
@@ -35,7 +35,7 @@ function Actions() {
         >
           Join the Discord
         </Link>
-      </Box>
+      </Box> */}
     </VStack>
   );
 }

@@ -75,7 +75,6 @@ export interface CodeBlockProps {
 }
 
 export default function CodeBlock({ children, className }: CodeBlockProps): JSX.Element | null {
-
   const language = className.replace(/language-/, '') as CodeLanguage;
   const re = /---(.*?)---/s;
   const meta = JSON.parse(re.exec(children)![1]);

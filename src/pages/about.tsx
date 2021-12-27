@@ -4,7 +4,6 @@ import {
   Box,
   Heading,
   HStack,
-  Link,
   LinkBox,
   LinkOverlay,
   ListItem,
@@ -20,10 +19,8 @@ import {
   FaAtom,
   FaBrain,
   FaCode,
-  FaDiscord,
   FaEnvelope,
   FaEnvelopeOpenText,
-  FaExternalLinkAlt,
   FaGlobe,
   FaLinkedin,
   FaUser

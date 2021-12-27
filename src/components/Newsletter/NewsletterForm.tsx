@@ -1,4 +1,4 @@
-import { Box, Center, Stack, VStack } from '@chakra-ui/layout';
+import { Box, Center, Stack, StackDirection } from '@chakra-ui/layout';
 import { Spinner } from '@chakra-ui/spinner';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Button from 'components/Button';
@@ -11,48 +11,37 @@ function isEmail(email: string) {
   return re.test(email) || `${email} is not a valid email`;
 }
 
-export default function NewsletterForm(): JSX.Element {
+interface NewsletterFormProps {
+  direction?: StackDirection;
+  inputTextColor?: string;
+}
+
+export default function NewsletterForm({
+  direction = 'row',
+  inputTextColor
+}: NewsletterFormProps): JSX.Element {
   const { control, onError, onExpire, onVerify, handleSubmit, captchaRef, loading } =
     useNewsletterForm();
 
   return (
     <Box position="relative">
       <form onSubmit={handleSubmit}>
-        <VStack>
+        <Stack direction="row">
           <TextInput
             size="md"
+            color={inputTextColor}
             control={control}
             placeholder="Email"
             name="email"
             rules={{ required: 'Email required', validate: { isEmail } }}
             borderColor="primary"
           />
-
-          <Stack w="100%" direction={['column', 'row']}>
-            <TextInput
-              size="md"
-              control={control}
-              name="firstName"
-              placeholder="First Name"
-              rules={{ required: 'First name required' }}
-              borderColor="primary"
-            />
-            <TextInput
-              size="md"
-              control={control}
-              name="lastName"
-              placeholder="Last Name"
-              rules={{ required: 'Last name required' }}
-              borderColor="primary"
-            />
-          </Stack>
-        </VStack>
+          <Button variant="secondary-solid" type="submit">
+            Wire Up
+          </Button>
+        </Stack>
 
         <br />
-
-        <Button variant="secondary-solid" type="submit">
-          Wire Up
-        </Button>
 
         <HCaptcha
           sitekey="acc1764f-11de-455c-8547-1c5ce7bd8e35"

@@ -1,5 +1,5 @@
 import { Icon } from '@chakra-ui/icon';
-import { FaDiscord, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
 import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';
 
 export const staticsBaseUrl = 'https://statics.bitswired.com';
