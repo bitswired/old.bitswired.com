@@ -1,5 +1,5 @@
 import { Icon } from '@chakra-ui/icon';
-import { Box, HStack, Text, VStack } from '@chakra-ui/layout';
+import { AspectRatio, Box, Heading, HStack, Text, VStack } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import {
   Modal,
@@ -9,41 +9,53 @@ import {
   ModalHeader,
   ModalOverlay
 } from '@chakra-ui/modal';
+import { Image } from '@chakra-ui/react';
 import { FaCheck } from 'react-icons/fa';
 
 import NewsletterForm from './NewsletterForm';
 
 function Footer() {
   return (
-    <Text>
-      Never miss out our{' '}
+    <Text w="100%">
+      Stay on top the of{' '}
       <Box as="span" fontWeight="bold">
-        insightful
+        our digital era
       </Box>
-      , regular tech content
+      !
     </Text>
   );
 }
 
 function Body() {
   return (
-    <VStack alignItems="stretch" spacing="2em">
-      <Box>
-        <Text fontSize="lg">
-          Bitswired provide tech tips, programming tutorials, in depth guides and curated tech news!
-        </Text>
-      </Box>
+    <>
+      <AspectRatio ratio={16 / 9} maxH="250px">
+        <Image
+          borderTopLeftRadius={5}
+          borderTopRightRadius={5}
+          objectFit="cover"
+          src="https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        />
+      </AspectRatio>
 
-      <NewsletterForm size={{ base: 'md', sm: 'lg' }} />
-    </VStack>
+      <VStack alignItems="stretch" spacing="2em" p="2em" pb={0}>
+        <Box>
+          <Heading as="h1" fontSize="2em">
+            Subscribe to the newsletter
+          </Heading>
+        </Box>
+
+        <NewsletterForm size={{ base: 'md', sm: 'lg' }} />
+      </VStack>
+    </>
   );
 }
 
 function NotSubscribed() {
   return (
     <>
-      <ModalHeader fontSize="2xl">Wire Up to the Newletter</ModalHeader>
-      <ModalBody>
+      {/* <ModalHeader fontSize="2xl">Wire Up to the Newletter</ModalHeader> */}
+      <ModalBody p={0}>
         <Body />
       </ModalBody>
       <ModalFooter>
