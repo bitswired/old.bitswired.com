@@ -34,7 +34,7 @@ function Body() {
         </Text>
       </Box>
 
-      <NewsletterForm />
+      <NewsletterForm size={{ base: 'md', sm: 'lg' }} />
     </VStack>
   );
 }

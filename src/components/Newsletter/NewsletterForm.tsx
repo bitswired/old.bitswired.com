@@ -1,4 +1,5 @@
 import { Box, Center, Stack, StackDirection } from '@chakra-ui/layout';
+import { ResponsiveValue, useBreakpointValue } from '@chakra-ui/react';
 import { Spinner } from '@chakra-ui/spinner';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Button from 'components/Button';
@@ -14,21 +15,26 @@ function isEmail(email: string) {
 interface NewsletterFormProps {
   direction?: StackDirection;
   inputTextColor?: string;
+  size?: ResponsiveValue<SizeVariant>;
 }
 
 export default function NewsletterForm({
   direction = 'row',
-  inputTextColor
+  inputTextColor,
+  size = 'md'
 }: NewsletterFormProps): JSX.Element {
   const { control, onError, onExpire, onVerify, handleSubmit, captchaRef, loading } =
     useNewsletterForm();
+
+  const sizeValue = useBreakpointValue(typeof size === 'string' ? [size] : size);
+
 
   return (
     <Box position="relative" w="100%">
       <form onSubmit={handleSubmit}>
         <Stack direction={direction}>
           <TextInput
-            size="lg"
+            size={sizeValue}
             color={inputTextColor}
             control={control}
             placeholder="Email"
@@ -37,7 +43,7 @@ export default function NewsletterForm({
             borderColor="primary"
           />
           <Box>
-            <Button variant="secondary-solid" type="submit" size="lg">
+            <Button variant="secondary-solid" type="submit" size={sizeValue}>
               Wire up
             </Button>
           </Box>

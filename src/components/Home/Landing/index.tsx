@@ -78,8 +78,12 @@ export default function Landing(): JSX.Element {
             </NewsletterSubscribeAction> */}
           </HStack>
         </Center>
-        <Box py="1em" w="75%" m="auto">
-          <NewsletterForm direction="row" inputTextColor="primary" />
+        <Box py="1em" w="75%" m="auto" maxW="750px">
+          <NewsletterForm
+            direction="row"
+            inputTextColor="primary"
+            size={{ base: 'md', sm: 'lg' }}
+          />
         </Box>
       </Box>
 
