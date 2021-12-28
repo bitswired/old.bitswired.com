@@ -24,11 +24,11 @@ export default function NewsletterForm({
     useNewsletterForm();
 
   return (
-    <Box position="relative">
+    <Box position="relative" w="100%">
       <form onSubmit={handleSubmit}>
-        <Stack direction="row">
+        <Stack direction={direction}>
           <TextInput
-            size="md"
+            size="lg"
             color={inputTextColor}
             control={control}
             placeholder="Email"
@@ -36,11 +36,12 @@ export default function NewsletterForm({
             rules={{ required: 'Email required', validate: { isEmail } }}
             borderColor="primary"
           />
-          <Button variant="secondary-solid" type="submit">
-            Wire Up
-          </Button>
+          <Box>
+            <Button variant="secondary-solid" type="submit" size="lg">
+              Wire up
+            </Button>
+          </Box>
         </Stack>
-
         <br />
 
         <HCaptcha

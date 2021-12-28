@@ -1,5 +1,19 @@
 import { Box, Center, HStack, Text } from '@chakra-ui/layout';
 import NewsletterForm from 'components/Newsletter/NewsletterForm';
+import React from 'react';
+import { VIDEO_HOME } from 'utils/static-urls';
+
+function AutoPlaySilentVideo({ src, ...props }) {
+  const videoRef = React.useRef(undefined);
+  React.useEffect(() => {
+    videoRef.current.defaultMuted = true;
+  });
+  return (
+    <video ref={videoRef} loop autoPlay muted playsInline {...props}>
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+}
 
 export default function Landing(): JSX.Element {
   return (
@@ -17,7 +31,7 @@ export default function Landing(): JSX.Element {
       px="1em"
       fontSize={['md', 'xl']}
     >
-      <video
+      <AutoPlaySilentVideo
         style={{
           position: 'absolute',
           width: '100vw',
@@ -27,16 +41,12 @@ export default function Landing(): JSX.Element {
           left: 0,
           zIndex: 1
         }}
-        muted
-        playsInline
-        onCanPLay="this.muted=true"
-        autoPlay
-        loop
-        src="/video.mp4"
+        src={VIDEO_HOME}
       />
       <Box
-        top={0}
+        top={-5}
         left={0}
+        pt="10vh"
         position="absolute"
         zIndex={100}
         w="100%"
@@ -68,11 +78,9 @@ export default function Landing(): JSX.Element {
             </NewsletterSubscribeAction> */}
           </HStack>
         </Center>
-        <Center py="1em">
-          <Box>
-            <NewsletterForm direction="row" inputTextColor="primary" />
-          </Box>
-        </Center>
+        <Box py="1em" w="75%" m="auto">
+          <NewsletterForm direction="row" inputTextColor="primary" />
+        </Box>
       </Box>
 
       {/* <Center py="1em">

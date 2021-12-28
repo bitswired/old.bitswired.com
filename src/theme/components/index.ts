@@ -4,9 +4,7 @@ export default {
       justify: 'center',
       align: 'center',
       fontWeight: 'bold',
-      verticalAlign: 'baseline',
-      alignItems: 'start',
-      alignContent: 'start'
+      alignItems: 'center'
     },
 
     sizes: {
