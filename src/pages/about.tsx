@@ -236,19 +236,19 @@ export default function AboutPage(): JSX.Element {
               />
               <NewsletterFeature
                 icon={FaAtom}
-                title="A bit of "
+                title="A bit of Tech"
                 description="Articles to stay on top of our modern data era."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaCode}
-                title="A bit of tools"
+                title="A bit of Tools"
                 description="Highlighted libraries, framework or tool introduced in the blink of an eye."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaEnvelopeOpenText}
-                title="A bit of news"
+                title="A bit of News"
                 description="News covering important events around the digital technologies world."
                 color="secondary"
               />
