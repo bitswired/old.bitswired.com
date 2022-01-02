@@ -20,22 +20,6 @@ function Actions() {
           </Button>
         </NewsletterSubscribeAction>
       </HStack>
-
-      {/* <Box>
-        <Text display="inline" color="white">
-          Not yet a member?
-        </Text>{' '}
-        <Link
-          href={infos.discrodInvite}
-          title="Discord invitation"
-          isExternal
-          display="inline"
-          color="primary"
-          textDecoration="underline"
-        >
-          Join the Discord
-        </Link>
-      </Box> */}
     </VStack>
   );
 }
