@@ -13,9 +13,9 @@ function Actions() {
   return (
     <VStack spacing="2em">
       <HStack>
-        <Text color="white">Fortnightly curated content</Text>
+        <Text color="white">Regular curated content</Text>
         <NewsletterSubscribeAction>
-          <Button size="sm" variant="secondary-solid">
+          <Button size="md" variant="secondary-solid">
             subscribe
           </Button>
         </NewsletterSubscribeAction>

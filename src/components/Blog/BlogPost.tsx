@@ -15,6 +15,7 @@ import { Tag } from '@chakra-ui/tag';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import LazyImage from 'components/LazyImage';
+import NewsletterForm from 'components/Newsletter/NewsletterForm';
 import { AttentionSeeker } from 'components/Reveal/AttentionSeeker';
 //import LazyImage from 'components/LazyImage';
 import { infos } from 'config';
@@ -223,43 +224,6 @@ export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element
 
   return (
     <>
-      {/* <Box>
-        <Box position="relative">
-          <AspectRatio ratio={{ base:import { infos } from 'config';
-16 / 9, md: 21 / 9 }} w="100%" bg="black">
-            <LazyImage
-              src={meta.image}
-              alt="Title image"
-              w="100%"
-              h="100%import { infos } from 'config';
-
-              objectFit="cover"
-              m="auto"
-              opacity={0.6}
-            />
-          </AspectRatio>
-
-          <Box w="100%" position="absolute" top="40%" overflow="hidden">
-            <Text
-              lineHeight={1.2}
-              fontWeight="bold"
-              backdropFilter="blur(5px) saturate(180%)"
-              bgColor="rgba(0,0,0, 0.5)"
-              shadow="lg"
-              p="0.5em"
-              w="max"
-              maxW="90%"
-              mx="auto"
-              fontSize={['2xl', '4xl', '4xl', '7xl']}
-              as="h1"
-              color="white"
-              textAlign="center"
-            >
-              {meta.title}
-            </Text>
-          </Box>
-        </Box>
-      </Box> */}
       <NextSeo
         title={meta.title}
         description={meta.description}

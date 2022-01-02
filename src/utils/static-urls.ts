@@ -11,7 +11,7 @@ export default function resolveStaticAsset(type: string, asset: string): string 
   }
 }
 
-export const VIDEO_HOME = "https://statics.bitswired.com/videos/home.mp4";
+export const VIDEO_HOME = 'https://statics.bitswired.com/videos/home.mp4';
 
 export const IMAGE_HOME = resolveStaticAsset('general', 'home');
 

@@ -28,7 +28,6 @@ export default function NewsletterForm({
 
   const sizeValue = useBreakpointValue(typeof size === 'string' ? [size] : size);
 
-
   return (
     <Box position="relative" w="100%">
       <form onSubmit={handleSubmit}>

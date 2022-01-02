@@ -4,7 +4,7 @@ import React from 'react';
 import { VIDEO_HOME } from 'utils/static-urls';
 
 function AutoPlaySilentVideo({ src, ...props }) {
-  const videoRef = React.useRef(undefined);
+  const videoRef = React.useRef();
   React.useEffect(() => {
     videoRef.current.defaultMuted = true;
   });
