@@ -17,9 +17,9 @@ import NewsletterForm from './NewsletterForm';
 function Footer() {
   return (
     <Text w="100%">
-      Stay on top the of{' '}
+      Get regular{' '}
       <Box as="span" fontWeight="bold">
-        our digital era
+        content and updates
       </Box>
       !
     </Text>
