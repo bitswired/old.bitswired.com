@@ -37,7 +37,7 @@ function WireUpTitle() {
 function WireUpBody() {
   return (
     <NewsletterSubscribeAction>
-      <Button variant="secondary-solid">sign up</Button>
+      <Button variant="secondary-outline">sign up</Button>
     </NewsletterSubscribeAction>
   );
 }

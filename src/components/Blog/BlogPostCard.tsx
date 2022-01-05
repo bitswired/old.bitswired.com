@@ -13,8 +13,12 @@ export interface BlogPostCardProps {
 export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps): JSX.Element {
   return (
     <Box
+      transition="box-shadow 0.2s ease, transform 0.1s ease-out"
       w="100%"
+      rounded="md"
       _hover={{
+        shadow: 'xl',
+        transform: 'translate(0, -2em)',
         img: {
           transform: 'scale(1.2)'
         }
@@ -40,7 +44,7 @@ export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps):
           sizes={sizes}
         />
       </AspectRatio>
-      <VStack w="100%" overflow="hidden" py="1em" align="start" spacing="0.5em">
+      <VStack w="100%" overflow="hidden" py="1em" px="1em" align="start" spacing="0.5em">
         <Text fontSize="1.4em" fontWeight="bold">
           {meta.title}
         </Text>

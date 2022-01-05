@@ -33,6 +33,18 @@ export default {
         bg: 'secondary',
         textTransform: 'uppercase'
       },
+      'primary-outline': {
+        color: 'primary',
+        borderColor: 'primary',
+        borderWidth: '2px',
+        textTransform: 'uppercase'
+      },
+      'secondary-outline': {
+        color: 'secondary',
+        borderColor: 'secondary',
+        borderWidth: '2px',
+        textTransform: 'uppercase'
+      },
       'primary-link': {
         textTransform: 'capitalize',
         color: 'primary',
