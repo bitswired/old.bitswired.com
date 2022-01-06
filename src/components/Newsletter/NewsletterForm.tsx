@@ -26,7 +26,9 @@ export default function NewsletterForm({
   const { control, onError, onExpire, onVerify, handleSubmit, captchaRef, loading } =
     useNewsletterForm();
 
-  const sizeValue = useBreakpointValue(typeof size === 'string' ? [size] : size);
+  // TODO: Fix type
+  // @ts-ignore
+  const sizeValue = useBreakpointValue(typeof size === 'string' ? [size] : size) ?? undefined;
 
   return (
     <Box position="relative" w="100%">

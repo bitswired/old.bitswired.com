@@ -14,7 +14,7 @@ interface BlogPostMeta {
   image: string;
   readMinutes: number;
   category: string;
-  series: string;
+  series?: string;
   tags: string[];
   slug: string;
   published: boolean;

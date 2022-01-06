@@ -3,13 +3,14 @@ import NewsletterForm from 'components/Newsletter/NewsletterForm';
 import React from 'react';
 import { VIDEO_HOME } from 'utils/static-urls';
 
-function AutoPlaySilentVideo({ src, ...props }: HTMLVideoElement) {
-  const videoRef = React.useRef();
-  React.useEffect(() => {
-    videoRef.current.defaultMuted = true;
-  });
+interface AutoPlaySilentVideoProps {
+  src: string;
+  style: any;
+}
+
+function AutoPlaySilentVideo({ src, style }: AutoPlaySilentVideoProps) {
   return (
-    <video ref={videoRef} loop autoPlay muted playsInline {...props}>
+    <video loop autoPlay muted playsInline style={style}>
       <source src={src} type="video/mp4" />
     </video>
   );

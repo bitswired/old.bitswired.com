@@ -4,7 +4,13 @@ import React from 'react';
 
 export interface ButtonProps extends BaseButtonProps {
   children: string;
-  variant?: 'primary-solid' | 'secondary-solid' | 'primary-link' | 'secondary-link';
+  variant?:
+    | 'primary-solid'
+    | 'secondary-solid'
+    | 'primary-link'
+    | 'secondary-link'
+    | 'primary-outline'
+    | 'secondary-outline';
   size?: 'sm' | 'md' | 'lg';
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
