@@ -3,7 +3,7 @@ import NewsletterForm from 'components/Newsletter/NewsletterForm';
 import React from 'react';
 import { VIDEO_HOME } from 'utils/static-urls';
 
-function AutoPlaySilentVideo({ src, ...props }) {
+function AutoPlaySilentVideo({ src, ...props }: HTMLVideoElement) {
   const videoRef = React.useRef();
   React.useEffect(() => {
     videoRef.current.defaultMuted = true;

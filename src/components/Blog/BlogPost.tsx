@@ -1,3 +1,4 @@
+import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
 import { Icon } from '@chakra-ui/icon';
 import {
   AspectRatio,
@@ -14,14 +15,14 @@ import { useBreakpointValue } from '@chakra-ui/media-query';
 import { Tag } from '@chakra-ui/tag';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
+import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
-import NewsletterForm from 'components/Newsletter/NewsletterForm';
 import { AttentionSeeker } from 'components/Reveal/AttentionSeeker';
 //import LazyImage from 'components/LazyImage';
 import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';
-import { FaBell, FaTags } from 'react-icons/fa';
+import { FaBell, FaChevronRight, FaTags } from 'react-icons/fa';
 import { TechArticleJsonLd } from 'rich-results';
 
 import BlogPostAuthor from './BlogPostAuthor';
@@ -138,6 +139,27 @@ function SideMin({ meta }: SideProps) {
     </Wrap>
   );
 }
+
+interface NavigationProps {
+  meta: BlogPostMeta;
+}
+
+function Navigation({ meta }: NavigationProps) {
+  return (
+    <Breadcrumb mt="3em" mb="-1em" spacing="8px" separator={<FaChevronRight color="gray.500" />}>
+      <BreadcrumbItem>
+        <InternalLink href="/blog">{meta.category}</InternalLink>
+      </BreadcrumbItem>
+
+      {meta.series && (
+        <BreadcrumbItem>
+          <InternalLink href="/blog">{meta.series}</InternalLink>
+        </BreadcrumbItem>
+      )}
+    </Breadcrumb>
+  );
+}
+
 interface BodyProps {
   post: JSX.Element;
   meta: BlogPostMeta;
@@ -151,10 +173,11 @@ function Body({ post, meta }: BodyProps) {
       <VStack>
         <Box maxW="900px" mx="auto" w="100%">
           <Box px="1.5em" as="article" id="prose">
-            <Text fontSize="1em" opacity={0.5} mb="-1em !important" textTransform="uppercase">
-              {meta.category}
-            </Text>
-            <Heading as="h1">{meta.title}</Heading>
+            <Navigation meta={meta} />
+
+            <Heading as="h1" textTransform="capitalize">
+              {meta.title}
+            </Heading>
             <Center>
               <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%">
                 <LazyImage
@@ -184,10 +207,10 @@ function Body({ post, meta }: BodyProps) {
     <HStack align="start" maxW="2000px" mx="auto">
       <Box maxW="900px" mx="auto">
         <Box p="1.5em" py="1em" as="article" id="prose">
-          <Text fontSize="1em" opacity={0.5} mb="-1em !important" textTransform="uppercase">
-            {meta.category}
-          </Text>
-          <Heading as="h1">{meta.title}</Heading>
+          <Navigation meta={meta} />
+          <Heading as="h1" textTransform="capitalize">
+            {meta.title}
+          </Heading>
           <Center>
             <AspectRatio ratio={{ base: 16 / 9, md: 16 / 9 }} w="100%">
               <LazyImage

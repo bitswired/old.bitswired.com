@@ -14,11 +14,13 @@ const Joi = JoiImport.extend(JoiDate);
 const CONTENT_PATH = path.join(process.cwd(), 'src/content');
 
 const metaSchema = Joi.object({
+  id: Joi.number().required(),
   title: Joi.string().required(),
   description: Joi.string().required(),
   readMinutes: Joi.number().required(),
   image: Joi.string().uri().required(),
   tags: Joi.array().items(Joi.string()).required(),
+  series: Joi.string(),
   category: Joi.string().required(),
   slug: Joi.string().required(),
   published: Joi.boolean().required(),

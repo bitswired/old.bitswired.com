@@ -37,8 +37,8 @@ columns: age and job.
   ratio={16 / 9}
   width="100%"
   maxWidth="500px"
-  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/csv.svg"
-  alt="before and after code formatting"
+  src="https://statics.bitswired.com/images-opti/blog/2/csv.svg"
+  alt="CSV with 2 columns"
   title="CSV with two columns"
   objectFit="contain !important"
 />
@@ -54,8 +54,8 @@ represent the different columns.
   ratio={16 / 9}
   width="100%"
   maxWidth="1000px"
-  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/no-optimization.svg"
-  alt="before and after code formatting"
+  src="https://statics.bitswired.com/images-opti/blog/2/no-optimization.svg"
+  alt="In-memory representation of the data loaded by pandas without optimizations"
   title="In-memory representation of the data loaded by pandas without optimizations"
   objectFit="contain !important"
 />
@@ -95,11 +95,18 @@ automatically for you, you just have to use the `category` dtype.
   ratio={16 / 9}
   width="100%"
   maxWidth="1000px"
-  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/optimization.svg"
-  alt="before and after code formatting"
+  src="https://statics.bitswired.com/images-opti/blog/2/optimization.svg"
+  alt="In-memory representation of the data with type optimization."
   title="In-memory representation of the data with type optimization. For the AGE column we use uint8 instead of int64. For the JOB column Student is mapped to 0 and Data Scientist is mapped to 1. Then we repeat 0 and 1 in the different data rows instead of the heavy string representation"
   objectFit="contain !important"
 />
+
+<WarningBlock>
+  In the calculation above, we assume that the smallest chunk of memory we can allocate is 1 byte (8
+  bits). Indeed, we only have two different values for the vocabulary, *Data Scientist* and
+  *Student*. To represent two different values we only need 1 bit: either 0 or 1. But since we
+  assumed that we can allocate 1 byte integer at minimum, we get 1 byte for each entry.
+</WarningBlock>
 
 ### Load only relevant columns
 
@@ -111,8 +118,8 @@ helps you deal with huge datasets easily.
   ratio={16 / 9}
   width="100%"
   maxWidth="1000px"
-  src="https://statics.bitswired.com/images-opti/blog/bitsof-datascience-handle-bigger-datasets-with-pandas/relevant-columns.svg"
-  alt="before and after code formatting"
+  src="https://statics.bitswired.com/images-opti/blog/2/relevant-columns.svg"
+  alt="In-memory representation of the data after loading only the relevant columns."
   title="In-memory representation of the data after loading only the relevant columns (assuming we need only the AGE column)"
   objectFit="contain !important"
 />

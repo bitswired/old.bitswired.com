@@ -45,7 +45,7 @@ export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps):
         />
       </AspectRatio>
       <VStack w="100%" overflow="hidden" py="1em" px="1em" align="start" spacing="0.5em">
-        <Text fontSize="1.4em" fontWeight="bold">
+        <Text fontSize="1.4em" fontWeight="bold" textTransform="capitalize">
           {meta.title}
         </Text>
 
@@ -66,6 +66,14 @@ export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps):
             </Button>
           </InternalLink>
         </HStack>
+
+        {meta.series && (
+          <HStack align="center" justify="end">
+            <Text fontSize="0.7em" color="gray.500">
+              Series: {meta.series}
+            </Text>
+          </HStack>
+        )}
 
         <Text color="gray.600" noOfLines={2} fontSize="0.9em">
           {meta.description}
