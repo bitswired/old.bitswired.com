@@ -241,7 +241,7 @@ function CodeBlock(props: CodeBlockProps) {
 export function LinLogLineChart(props: LineChartProps) {
   return (
     <LazyLoad height={100} once>
-      <DynamicLinLogLineChart {...props} />;
+      <DynamicLinLogLineChart {...props} />
     </LazyLoad>
   );
 }

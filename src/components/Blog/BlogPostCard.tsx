@@ -50,7 +50,7 @@ export default function BlogPostCard({ ratio, meta, sizes }: BlogPostCardProps):
         </Text>
 
         <HStack align="center" justify="end">
-          <Text fontSize="1em" color="gray.500" textTransform="uppercase">
+          <Text fontSize="0.8em" color="gray.500" textTransform="uppercase">
             {meta.category}
           </Text>
           <Text fontSize="0.8em" color="gray.500">
