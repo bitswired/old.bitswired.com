@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
+import Button from 'components/Button';
 import { Icon } from '@chakra-ui/icon';
 import {
   Box,
   Heading,
   HStack,
+  Link,
   LinkBox,
   LinkOverlay,
   ListItem,
@@ -124,9 +126,9 @@ export default function AboutPage(): JSX.Element {
         <Section id="me" title="Me" variant="light" icon={FaUser}>
           <Box>
             <Text>
-              I am a French, 28 years old machine learning engineer based in Switzerland. I studied
-              at EPFL where I first got a Bachelor's degree in Computer Science/Communication
-              Systems, and then a Master's degree in Data Science.
+              I am a 28 years old machine learning engineer based in Switzerland. I studied at EPFL
+              where I first got a Bachelor's degree in Computer Science/Communication Systems, and
+              then a Master's degree in Data Science.
             </Text>
             <br />
             <Text>
@@ -141,23 +143,17 @@ export default function AboutPage(): JSX.Element {
           </Box>
 
           <VStack align={['center', 'stretch']}>
-            <LinkBox>
-              <HStack color="primary" w="22ch">
-                <Icon as={FaEnvelope} fontSize="2xl" />
-                <LinkOverlay textDecoration="underline" href={`mailto:${infos.contactEmail}`}>
-                  Contact me by email
-                </LinkOverlay>
-              </HStack>
-            </LinkBox>
+            <Link alt="Email address" href={`mailto:${infos.contactEmail}`}>
+              <Button size="md" variant="primary-solid" leftIcon={<FaEnvelope />}>
+                Contact me by email
+              </Button>
+            </Link>
 
-            <LinkBox>
-              <HStack color="secondary" w="22ch">
-                <Icon as={FaLinkedin} fontSize="2xl" />
-                <LinkOverlay textDecoration="underline" isExternal href={infos.linkedInProfile}>
-                  Find me on LinkedIn
-                </LinkOverlay>
-              </HStack>
-            </LinkBox>
+            <Link alt href={infos.linkedInProfile}>
+              <Button size="md" variant="secondary-solid" leftIcon={<FaLinkedin />}>
+                Find me on Linkedin
+              </Button>
+            </Link>
           </VStack>
         </Section>
 
