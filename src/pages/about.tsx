@@ -1,19 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import Button from 'components/Button';
 import { Icon } from '@chakra-ui/icon';
 import {
   Box,
   Heading,
   HStack,
   Link,
-  LinkBox,
-  LinkOverlay,
   ListItem,
   Text,
   UnorderedList,
   VStack,
   Wrap
 } from '@chakra-ui/layout';
+import Button from 'components/Button';
 import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';

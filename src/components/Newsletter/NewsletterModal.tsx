@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/modal';
 import { Image } from '@chakra-ui/react';
 import { FaCheck } from 'react-icons/fa';
+import { IMAGE_WIREUP } from 'utils/static-urls';
 
 import NewsletterForm from './NewsletterForm';
 
@@ -29,12 +30,12 @@ function Footer() {
 function Body() {
   return (
     <>
-      <AspectRatio ratio={16 / 9} maxH="250px">
+      <AspectRatio ratio={16 / 9} maxH="300px">
         <Image
           borderTopLeftRadius={5}
           borderTopRightRadius={5}
           objectFit="cover"
-          src="https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          src={IMAGE_WIREUP}
         />
       </AspectRatio>
 

@@ -17,7 +17,7 @@ export const IMAGE_HOME = resolveStaticAsset('general', 'home');
 
 export const IMAGE_HOME_MOBILE = resolveStaticAsset('general', 'home-mobile');
 
-export const IMAGE_WIREUP = resolveStaticAsset('general', 'wireup');
+export const IMAGE_WIREUP = resolveStaticAsset('general', 'newsletter');
 
 export const IMAGE_ME = resolveStaticAsset('me', 'jimzer-id-photo');
 
