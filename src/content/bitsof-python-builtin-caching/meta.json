@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "title": "1 line to cache slow functions and speed up your Python script",
+  "description": "Easily squeeze performance out of your scripts, with only slight modifications. Learn how to leverage caching easily in Python.",
+  "readMinutes": 10,
+  "image": "https://statics.bitswired.com/images-opti/blog/1/cover.webp",
+  "category": "Programming",
+  "series": "Bits of Python",
+  "tags": ["Python", "Caching"],
+  "slug": "1-line-to-cache-slow-functions-and-speed-up-your-python-script",
+  "published": true,
+  "datePublished": "2019-01-01",
+  "dateModified": "2019-01-01",
+  "images": ["https://statics.bitswired.com/images-opti/blog/1/cover.webp"]
+}

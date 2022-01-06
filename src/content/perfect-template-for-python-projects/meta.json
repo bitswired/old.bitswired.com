@@ -1,0 +1,14 @@
+{
+  "id": 0,
+  "title": "Perfect template to start python projects",
+  "description": "Python is great but lacks structure. I detail the issues and provide a GitHub template repository to solve the issue.",
+  "readMinutes": 20,
+  "image": "https://statics.bitswired.com/images-opti/blog/0/cover.webp",
+  "category": "Programming",
+  "tags": ["Python", "Template", "Best-Practices"],
+  "slug": "perfect-template-to-start-python-projects",
+  "published": true,
+  "datePublished": "2020-01-01",
+  "dateModified": "2020-01-01",
+  "images": ["https://statics.bitswired.com/images-opti/blog/0/cover.webp"]
+}

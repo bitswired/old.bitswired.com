@@ -22,7 +22,7 @@ export default {
 };
 
 //👇 We create a “template” of how args map to rendering
-const Template: Story<ButtonProps> = (arguments_) => <Button {...arguments_}>SUBSCRIBE</Button>;
+const Template: Story<ButtonProps> = (arguments_) => <Button {...arguments_}>subscribe</Button>;
 
 //👇 Each story then reuses that template
 export const Primary = Template.bind({});

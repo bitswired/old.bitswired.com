@@ -3,10 +3,10 @@ import { mode } from '@chakra-ui/theme-tools';
 export default {
   styles: {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
-    global: (properties: any) => ({
+    global: (props: any) => ({
       '*': {
         // outline: '1px solid red'
-        outline: 0
+        // outline: 0
       },
       html: {
         fontSize: { base: '16px', sm: '18px', md: '18px' },
@@ -14,8 +14,8 @@ export default {
       },
       'html, body': {
         fontFamily: 'sans',
-        color: mode('gray.800', 'whiteAlpha.900')(properties),
-        bg: mode('white', 'gray.800')(properties),
+        color: mode('gray.800', 'whiteAlpha.900')(props),
+        bg: mode('white', 'gray.800')(props),
         lineHeight: 'base',
         height: 'auto',
         width: '100vw',
@@ -43,31 +43,27 @@ export default {
         fontFamily: 'serif',
         h1: {
           fontFamily: 'sans',
-          // fontSize: ['2xl', '5xl'],
           fontSize: ['2.8em', '3.2rem'],
           my: '1em',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           lineHeight: 1.1
         },
         h2: {
           fontFamily: 'sans',
-          // fontSize: ['2xl', '4xl'],
           fontSize: '2.4rem',
           my: '1em',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           lineHeight: 1.1
         },
         h3: {
           fontFamily: 'sans',
-          // fontSize: ['xl', '2xl'],
           fontSize: '1.8rem',
           my: '0.7em',
-          fontWeight: 'bold',
+          fontWeight: 'normal',
           lineHeight: 1.1
         },
         h4: {
           fontFamily: 'sans',
-          // fontSize: ['lg', 'xl'],
           fontSize: '1.4rem',
           my: '0.5m',
           fontWeight: 'bold',
@@ -78,7 +74,6 @@ export default {
           my: '1em',
           color: '#272727',
           fontSize: '1em'
-          // fontWeight: '300'
         },
         ul: {
           listStylePosition: 'inside',
@@ -92,28 +87,21 @@ export default {
           my: '0.5em'
         },
         blockquote: {
-          fontFamily: 'serif',
-          background: '#f9f9f9',
-          borderLeft: '10px solid',
-          borderColor: 'secondary',
-          margin: '1.5em 10px',
-          padding: '0.5em 10px',
-          quotes: "'\\201C' '\\201D'",
-          _before: {
-            color: 'secondary',
-            content: 'open-quote',
-            fontSize: '4em',
-            lineHeight: '0.1em',
-            marginRight: '0.25em',
-            verticalAlign: '-0.4em'
-          },
+          px: '5%',
+          py: '1em',
+          textAlign: 'center',
+          fontSize: '1.3em',
           p: {
-            display: 'inline'
+            color: '#888 !important'
           }
         },
-        figure: {
-          textAlign: 'center',
-          fontStyle: 'italic'
+        code: {
+          p: '0.1em',
+          borderRadius: '3px',
+          bgColor: '#DDD',
+          fontFamily: props.theme.fonts.mono,
+          //color: props.theme.colors.secondary
+          color: 'green'
         }
       }
     })

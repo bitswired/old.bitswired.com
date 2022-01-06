@@ -1,4 +1,4 @@
-import { Image, ImageProps } from '@chakra-ui/react';
+import { Image, ImageProps } from '@chakra-ui/image';
 // import { Skeleton } from 'components/Skeleton';
 import React from 'react';
 import { getResponsiveSet } from 'utils/static-urls';

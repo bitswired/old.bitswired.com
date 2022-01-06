@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 export interface FadeProps {

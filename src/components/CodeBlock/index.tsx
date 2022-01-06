@@ -1,14 +1,9 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  HStack,
-  Icon,
-  LinkBox,
-  LinkOverlay,
-  Text,
-  useDisclosure
-} from '@chakra-ui/react';
+import { Button } from '@chakra-ui/button';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { Icon } from '@chakra-ui/icon';
+import { Box, HStack, LinkBox, LinkOverlay, Text } from '@chakra-ui/layout';
+import { useTheme } from '@chakra-ui/system';
+import { Collapse } from '@chakra-ui/transition';
 import { codeLanguageIcons } from 'config';
 import React from 'react';
 import { FaChevronDown, FaChevronUp, FaGithub } from 'react-icons/fa';
@@ -52,16 +47,19 @@ interface CodeProps {
 }
 
 function Code({ children, language }: CodeProps) {
+  const theme = useTheme();
+
   return (
     <SyntaxHighlighter
       language={language}
       wrapLongLines={true}
       style={style}
+      lineProps={{ style: { fontFamily: theme.fonts.mono } }}
       customStyle={{
         marginTop: 0,
         backgroundColor: '#f6f6f6',
         lineHeight: '3px',
-        // fontSize: '0.8em',
+        fontSize: '0.8em',
         width: '100%',
         borderLeft: 'solid #BBB 0.5rem'
       }}
@@ -76,7 +74,7 @@ export interface CodeBlockProps {
   className: string;
 }
 
-export default function CodeBlock({ children, className }: CodeBlockProps): JSX.Element {
+export default function CodeBlock({ children, className }: CodeBlockProps): JSX.Element | null {
   const language = className.replace(/language-/, '') as CodeLanguage;
   const re = /---(.*?)---/s;
   const meta = JSON.parse(re.exec(children)![1]);

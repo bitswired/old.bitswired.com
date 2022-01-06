@@ -1,4 +1,5 @@
-import { Box, StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
+import { StylesProvider, useMultiStyleConfig, useStyles } from '@chakra-ui/system';
 
 export interface FeatureCardProps {
   title: string;

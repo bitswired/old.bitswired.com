@@ -1,5 +1,5 @@
-import { HStack, Icon } from '@chakra-ui/react';
-import { LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/icon';
+import { HStack, LinkBox, LinkOverlay } from '@chakra-ui/layout';
 import { socialsFollow } from 'config';
 import React from 'react';
 

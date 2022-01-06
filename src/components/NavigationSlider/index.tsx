@@ -1,21 +1,11 @@
-import {
-  Box,
-  Divider,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  HStack,
-  Link,
-  Text,
-  VStack
-} from '@chakra-ui/react';
+import { Divider, HStack, Text, VStack } from '@chakra-ui/layout';
+import { Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@chakra-ui/modal';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import InternalLink from 'components/InternalLink';
 import Logo from 'components/Logo';
 import Follow from 'components/Socials/Follow';
-import { infos, routes } from 'config';
+import { routes } from 'config';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -23,29 +13,13 @@ function Actions() {
   return (
     <VStack spacing="2em">
       <HStack>
-        <Text color="white">Fortnightly curated content</Text>
+        <Text color="white">Regular curated content</Text>
         <NewsletterSubscribeAction>
           <Button size="sm" variant="secondary-solid">
-            SUBSCRIBE
+            subscribe
           </Button>
         </NewsletterSubscribeAction>
       </HStack>
-
-      <Box>
-        <Text display="inline" color="white">
-          Not yet a member?
-        </Text>{' '}
-        <Link
-          href={infos.discrodInvite}
-          title="Discord invitation"
-          isExternal
-          display="inline"
-          color="primary"
-          textDecoration="underline"
-        >
-          Join the Discord
-        </Link>
-      </Box>
     </VStack>
   );
 }

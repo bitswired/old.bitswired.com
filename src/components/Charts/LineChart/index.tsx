@@ -1,4 +1,4 @@
-import { Box, Center } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/layout';
 import { curveCatmullRom } from '@visx/curve';
 import { LegendOrdinal } from '@visx/legend';
 import { ParentSize } from '@visx/responsive';

@@ -1,4 +1,4 @@
-import { Box, Center, GridItem, SimpleGrid, Text } from '@chakra-ui/react';
+import { Box, Center, GridItem, SimpleGrid, Text } from '@chakra-ui/layout';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
 import InternalLink from 'components/InternalLink';
@@ -37,7 +37,7 @@ function WireUpTitle() {
 function WireUpBody() {
   return (
     <NewsletterSubscribeAction>
-      <Button variant="secondary-solid">SIGN UP</Button>
+      <Button variant="secondary-outline">sign up</Button>
     </NewsletterSubscribeAction>
   );
 }

@@ -1,29 +1,29 @@
+import { useBoolean } from '@chakra-ui/hooks';
+import { Icon } from '@chakra-ui/icon';
+import { Image } from '@chakra-ui/image';
 import {
   AspectRatio,
   Box,
-  Center,
   Code,
   CodeProps,
   Flex,
   Heading,
   HStack,
-  Icon,
   Link,
   LinkProps,
-  ResponsiveValue,
-  useTheme,
+  Text,
   VStack
-} from '@chakra-ui/react';
-import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
+} from '@chakra-ui/layout';
+import { Modal, ModalContent, ModalOverlay } from '@chakra-ui/modal';
+import { ResponsiveValue, useTheme } from '@chakra-ui/system';
+import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/table';
 import { LineChartProps } from 'components/Charts/LineChart';
-import LineChartDynamic from 'components/Charts/LineChart/dynamic';
-// import CodeBlock, { CodeBlockProps } from 'components/CodeBlock';
 import { CodeBlockProps } from 'components/CodeBlock';
 import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
-// import LazyImage from 'components/LazyImage';
 import dynamic from 'next/dynamic';
 import { FaExclamationCircle, FaLightbulb } from 'react-icons/fa';
+import LazyLoad from 'react-lazyload';
 
 const DynamicCodeBlock = dynamic(() => import('components/CodeBlock'), {
   ssr: false
@@ -32,6 +32,27 @@ const DynamicCodeBlock = dynamic(() => import('components/CodeBlock'), {
 const DynamicLinLogLineChart = dynamic(() => import('oneoff-components/LinLogLineChart'), {
   ssr: false
 });
+
+interface ImageModalProps {
+  children: JSX.Element;
+  onClose: () => void;
+  isOpen: boolean;
+}
+
+function ImageModal({ children, onClose, isOpen }: ImageModalProps) {
+  if (isOpen) {
+    return (
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent m="auto" maxW={['100vw', '100vw', '1600px']} p="1em">
+          {children}
+        </ModalContent>
+      </Modal>
+    );
+  }
+
+  return <>{children}</>;
+}
 
 interface MDXImageProps {
   src: string;
@@ -44,7 +65,7 @@ interface MDXImageProps {
   objectFit: ResponsiveValue<any>;
 }
 
-function MDXImage({
+export function MDXImage({
   src,
   alt,
   title,
@@ -54,24 +75,47 @@ function MDXImage({
   responsive = true,
   objectFit = 'cover'
 }: MDXImageProps): JSX.Element {
+  const [isModal, setIsModal] = useBoolean(false);
+
+  if (src.endsWith('svg')) {
+    return (
+      <LazyLoad height={100} once>
+        <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
+          <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
+            <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
+              <Image src={src} alt={alt} w="100px" objectFit={objectFit} />
+            </AspectRatio>
+            <Text as="figcaption" fontStyle="italic" textAlign="center">
+              {title}
+            </Text>
+          </VStack>
+        </ImageModal>
+      </LazyLoad>
+    );
+  }
+
   return (
-    <Box as="figure">
-      <Center>
-        <AspectRatio ratio={ratio} width={width} maxW={maxWidth}>
-          <LazyImage
-            mx="auto"
-            src={src}
-            alt={alt}
-            w="100%"
-            responsive={responsive}
-            objectFit={objectFit}
-            substituteHeight="400px"
-            sizes="(min-width: 48em) 800px, 100vw"
-          />
-        </AspectRatio>
-      </Center>
-      <Box as="figcaption">{title}</Box>
-    </Box>
+    <LazyLoad height={100} once>
+      <ImageModal onClose={setIsModal.toggle} isOpen={isModal}>
+        <VStack as="figure" my="3em" onClick={setIsModal.toggle} spacing="1em">
+          <AspectRatio ratio={ratio} width={width} maxW={isModal ? '100%' : maxWidth}>
+            <LazyImage
+              mx="auto"
+              src={src}
+              alt={alt}
+              w="100%"
+              responsive={responsive}
+              objectFit={objectFit}
+              substituteHeight="400px"
+              sizes="(min-width: 48em) 800px, 100vw"
+            />
+          </AspectRatio>
+          <Text as="figcaption" fontStyle="italic" textAlign="center">
+            {title}
+          </Text>
+        </VStack>
+      </ImageModal>
+    </LazyLoad>
   );
 }
 
@@ -102,7 +146,7 @@ function MDXInlineCodeBlock({ children }: CodeProps): JSX.Element {
 }
 
 interface InfoWarnSectionProps {
-  children: JSX.Element;
+  children: JSX.Element[];
 }
 
 function BitsOfInfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element {
@@ -115,11 +159,11 @@ function BitsOfInfoWarnSection({ children }: InfoWarnSectionProps): JSX.Element 
 }
 
 interface InfoWarnBlockProps {
-  children: string;
+  items: string[];
 }
 
 function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
-  return function InfoWarnBlock({ children }: InfoWarnBlockProps) {
+  return function InfoWarnBlock({ items }: InfoWarnBlockProps) {
     const title = type === 'info' ? 'Application' : 'Pitfalls';
     const B = type === 'info' ? FaLightbulb : FaExclamationCircle;
 
@@ -128,11 +172,11 @@ function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
         <Heading as="h3">{title}</Heading>
 
         <VStack>
-          {children.split('&').map((text: string) => (
+          {items.map((text: string) => (
             <HStack key="text" w="100%" align="flex-start">
               {/* <Icon as={B} color={type === 'info' ? 'primary' : 'secondary'} mt="0.25em" /> */}
               <Icon as={B} color="black" mt="0.25em" />
-              <Box>{text.trim()}</Box>
+              <Box>{text}</Box>
             </HStack>
           ))}
         </VStack>
@@ -142,7 +186,7 @@ function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
 }
 
 interface BitsOfNutshellProps {
-  children: JSX.Element;
+  children: string;
 }
 
 function BitsOfNutshell({ children }: BitsOfNutshellProps): JSX.Element {
@@ -154,35 +198,52 @@ function BitsOfNutshell({ children }: BitsOfNutshellProps): JSX.Element {
   );
 }
 
+const BitsOfInfoBlock = BitsOfInfoWarnBlockBuilder('info');
+const BitsOfWarnBlock = BitsOfInfoWarnBlockBuilder('warning');
+
 interface BitsOfSummaryProps {
-  children: JSX.Element;
+  summary: string;
+  infos: string[];
+  warnings: string[];
 }
 
-function BitsOfSummary({ children }: BitsOfSummaryProps): JSX.Element {
+export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
   return (
     <VStack
-      bgGradient="linear( primary, secondary)"
-      color="black"
+      bgGradient="linear(primary, white)"
+      bgColor="primary"
+      shadow="xl"
+      color="333"
       rounded="lg"
       py="2em"
       px="2em"
       sx={{ h2: { my: '0.5em !important' } }}
     >
-      {children}
+      <BitsOfNutshell>{props.summary}</BitsOfNutshell>
+      <BitsOfInfoWarnSection>
+        <BitsOfInfoBlock items={props.infos} />
+        <BitsOfWarnBlock items={props.warnings} />
+      </BitsOfInfoWarnSection>
     </VStack>
   );
 }
 
-function LineC(props: any) {
-  return <LineChartDynamic {...props} />;
-}
-
 function CodeBlock(props: CodeBlockProps) {
-  return <DynamicCodeBlock {...props} />;
+  if (!props.className) return <Code>{props.children}</Code>;
+
+  return (
+    <LazyLoad height={100} once>
+      <DynamicCodeBlock {...props} />
+    </LazyLoad>
+  );
 }
 
-function LinLogLineChart(props: LineChartProps) {
-  return <DynamicLinLogLineChart {...props} />;
+export function LinLogLineChart(props: LineChartProps) {
+  return (
+    <LazyLoad height={100} once>
+      <DynamicLinLogLineChart {...props} />
+    </LazyLoad>
+  );
 }
 
 function BlockBuilder(blockType: string) {
@@ -197,26 +258,19 @@ function BlockBuilder(blockType: string) {
     const bgColor = `${color}33`;
 
     return (
-      <Box borderLeft={`1em solid ${color}`} pl="1em" pr="1em" py="0.5em" bgColor={bgColor}>
+      <Box borderLeft={`0.5em solid ${color}`} pl="1em" pr="1em" py="0.5em" bgColor={bgColor}>
         {children}
       </Box>
     );
   };
 }
 
-export const mdxComponents = {
-  InfoBlock: BlockBuilder('info'),
-  WarningBlock: BlockBuilder('warning'),
-  ErrorBlock: BlockBuilder('error'),
-  LineC,
-  BitsOfSummary,
-  BitsOfNutshell,
-  BitsOfInfoWarnSection,
-  BitsOfInfoBlock: BitsOfInfoWarnBlockBuilder('info'),
-  BitsOfWarnBlock: BitsOfInfoWarnBlockBuilder('warning'),
-  Box,
-  VStack,
-  Figure: MDXImage,
+export const InfoBlock = BlockBuilder('info');
+export const WarningBlock = BlockBuilder('warning');
+
+export const components = {
+  InfoBlock,
+  WarningBlock,
   code: CodeBlock,
   inlineCode: MDXInlineCodeBlock,
   a: MDXLink,
@@ -233,6 +287,5 @@ export const mdxComponents = {
   tfoot: Tfoot,
   tr: Tr,
   th: Th,
-  td: Td,
-  LinLogLineChart
+  td: Td
 };

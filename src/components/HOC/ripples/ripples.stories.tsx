@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
 import { Story } from '@storybook/react';
 
 import withRipples from '.';

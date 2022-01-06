@@ -1,4 +1,4 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/provider';
 import ContextsProvider from 'context';
 import { MainLayout } from 'layouts';
 import type { AppProps /*, AppContext */ } from 'next/app';

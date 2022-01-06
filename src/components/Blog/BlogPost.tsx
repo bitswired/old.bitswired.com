@@ -1,23 +1,29 @@
+import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/breadcrumb';
+import { Icon } from '@chakra-ui/icon';
 import {
   AspectRatio,
   Box,
+  Center,
   Heading,
   HStack,
-  Icon,
-  Tag,
   Text,
-  useBreakpointValue,
   VStack,
   Wrap,
   WrapItem
-} from '@chakra-ui/react';
+} from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
+import { Tag } from '@chakra-ui/tag';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
 import Button from 'components/Button';
+import InternalLink from 'components/InternalLink';
 import LazyImage from 'components/LazyImage';
 import { AttentionSeeker } from 'components/Reveal/AttentionSeeker';
 //import LazyImage from 'components/LazyImage';
+import { infos } from 'config';
+import { NextSeo } from 'next-seo';
 import React from 'react';
-import { FaBell, FaTags } from 'react-icons/fa';
+import { FaBell, FaChevronRight, FaTags } from 'react-icons/fa';
+import { TechArticleJsonLd } from 'rich-results';
 
 import BlogPostAuthor from './BlogPostAuthor';
 
@@ -67,7 +73,7 @@ interface SideProps {
 function SideFull({ meta }: SideProps) {
   return (
     <>
-      <VStack bgColor="#EEE" spacing="1.5em" p="1em" rounded="md" align="left" w="max">
+      <VStack bgColor="#EEE" spacing="1.5em" p="2em" rounded="md" align="left" w="max">
         <Box>
           <BlogPostAuthor />
         </Box>
@@ -86,7 +92,7 @@ function SideFull({ meta }: SideProps) {
         </HStack>
       </VStack>
 
-      <VStack bgColor="#EEE" spacing="2em" p="1em" rounded="md">
+      <VStack bgColor="#EEE" spacing="2em" p="2em" rounded="md">
         <Text colot="primary" textTransform="uppercase" fontWeight="bold">
           Subscribe to get updates
         </Text>
@@ -133,27 +139,65 @@ function SideMin({ meta }: SideProps) {
     </Wrap>
   );
 }
-interface BodyProps {
-  mdxRendered: JSX.Element;
+
+interface NavigationProps {
   meta: BlogPostMeta;
 }
 
-function Body({ mdxRendered, meta }: BodyProps) {
+function Navigation({ meta }: NavigationProps) {
+  return (
+    <Breadcrumb mt="3em" mb="-1em" spacing="8px" separator={<FaChevronRight color="gray.500" />}>
+      <BreadcrumbItem>
+        <InternalLink href="/blog">{meta.category}</InternalLink>
+      </BreadcrumbItem>
+
+      {meta.series && (
+        <BreadcrumbItem>
+          <InternalLink href="/blog">{meta.series}</InternalLink>
+        </BreadcrumbItem>
+      )}
+    </Breadcrumb>
+  );
+}
+
+interface BodyProps {
+  post: JSX.Element;
+  meta: BlogPostMeta;
+}
+
+function Body({ post, meta }: BodyProps) {
   const layout = useBreakpointValue({ base: 'mobile', md: 'full' });
 
   if (layout === 'mobile')
     return (
       <VStack>
-        <HStack spacing="2em" p="1em">
-          <SideMin meta={meta}></SideMin>
-        </HStack>
         <Box maxW="900px" mx="auto" w="100%">
-          <Box px="1.5em" id="prose" as="article">
-            <Text fontSize="1em" opacity={0.5} mb="-1em !important">
-              {meta.category}
-            </Text>
-            <Heading as="h1">{meta.title}</Heading>
-            {mdxRendered}
+          <Box px="1.5em" as="article" id="prose">
+            <Navigation meta={meta} />
+
+            <Heading as="h1" textTransform="capitalize">
+              {meta.title}
+            </Heading>
+            <Center>
+              <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%">
+                <LazyImage
+                  src={meta.image}
+                  alt="Title image"
+                  w="100%"
+                  h="100%"
+                  objectFit="cover"
+                  m="auto"
+                />
+              </AspectRatio>
+            </Center>
+          </Box>
+
+          <HStack spacing="2em" p="1em">
+            <SideMin meta={meta}></SideMin>
+          </HStack>
+
+          <Box px="1.5em" as="section" py="1em" id="prose">
+            {post}
           </Box>
         </Box>
       </VStack>
@@ -162,12 +206,27 @@ function Body({ mdxRendered, meta }: BodyProps) {
   return (
     <HStack align="start" maxW="2000px" mx="auto">
       <Box maxW="900px" mx="auto">
-        <Box p="1.5em" py="1em" id="prose" as="article">
-          <Text fontSize="1em" opacity={0.5} mb="-1em !important">
-            {meta.category}
-          </Text>
-          <Heading as="h1">{meta.title}</Heading>
-          {mdxRendered}
+        <Box p="1.5em" py="1em" as="article" id="prose">
+          <Navigation meta={meta} />
+          <Heading as="h1" textTransform="capitalize">
+            {meta.title}
+          </Heading>
+          <Center>
+            <AspectRatio ratio={{ base: 16 / 9, md: 16 / 9 }} w="100%">
+              <LazyImage
+                src={meta.image}
+                alt="Title image"
+                w="100%"
+                h="100%"
+                objectFit="cover"
+                m="auto"
+              />
+            </AspectRatio>
+          </Center>
+
+          <Box as="section" py="1em" id="prose">
+            {post}
+          </Box>
         </Box>
       </Box>
 
@@ -179,50 +238,47 @@ function Body({ mdxRendered, meta }: BodyProps) {
 }
 
 export interface BlogPostProps {
-  mdxRendered: JSX.Element;
+  children: JSX.Element;
   meta: BlogPostMeta;
 }
 
-export default function BlogPost({ mdxRendered, meta }: BlogPostProps): JSX.Element {
+export default function BlogPost({ children, meta }: BlogPostProps): JSX.Element {
+  const url = `https://www.bitswired.com/blog/${meta.slug}`;
+
   return (
     <>
-      <Box>
-        <Box position="relative">
-          <AspectRatio ratio={{ base: 16 / 9, md: 21 / 9 }} w="100%" bg="black">
-            <LazyImage
-              src={meta.image}
-              alt="Title image"
-              w="100%"
-              h="100%"
-              objectFit="cover"
-              m="auto"
-              opacity={0.6}
-            />
-          </AspectRatio>
-
-          <Box w="100%" position="absolute" top="40%" overflow="hidden">
-            <Text
-              lineHeight={1.2}
-              fontWeight="bold"
-              backdropFilter="blur(5px) saturate(180%)"
-              bgColor="rgba(0,0,0, 0.5)"
-              shadow="lg"
-              p="0.5em"
-              w="max"
-              maxW="90%"
-              mx="auto"
-              fontSize={['2xl', '4xl', '4xl', '7xl']}
-              as="h1"
-              color="white"
-              textAlign="center"
-            >
-              {meta.title}
-            </Text>
-          </Box>
-        </Box>
-      </Box>
-
-      <Body meta={meta} mdxRendered={mdxRendered}></Body>
+      <NextSeo
+        title={meta.title}
+        description={meta.description}
+        canonical={url}
+        openGraph={{
+          url,
+          title: meta.title,
+          description: meta.description,
+          images: meta.images.map((x) => ({ url: x })),
+          site_name: 'Bitswired',
+          article: {
+            publishedTime: meta.datePublished,
+            modifiedTime: meta.dateModified,
+            section: meta.category,
+            authors: [infos.linkedInProfile],
+            tags: meta.tags
+          }
+        }}
+        twitter={{
+          handle: '@bitswired',
+          site: '@bitswired'
+        }}
+      />
+      <TechArticleJsonLd
+        url={url}
+        headline={meta.title}
+        description={meta.description}
+        image={meta.images}
+        datePublished={meta.datePublished}
+        dateModified={meta.dateModified}
+      />
+      <Body meta={meta} post={children}></Body>
     </>
   );
 }

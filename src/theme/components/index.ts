@@ -1,11 +1,10 @@
 export default {
   Button: {
     baseStyle: {
+      justify: 'center',
+      align: 'center',
       fontWeight: 'bold',
-      _focus: { boxShadow: 'none', outline: 'none' },
-      verticalAlign: 'baseline',
-      alignItems: 'start',
-      alignContent: 'start'
+      alignItems: 'center'
     },
 
     sizes: {
@@ -34,6 +33,18 @@ export default {
         bg: 'secondary',
         textTransform: 'uppercase'
       },
+      'primary-outline': {
+        color: 'primary',
+        borderColor: 'primary',
+        borderWidth: '2px',
+        textTransform: 'uppercase'
+      },
+      'secondary-outline': {
+        color: 'secondary',
+        borderColor: 'secondary',
+        borderWidth: '2px',
+        textTransform: 'uppercase'
+      },
       'primary-link': {
         textTransform: 'capitalize',
         color: 'primary',
@@ -60,7 +71,6 @@ export default {
     baseStyle: {
       display: 'none',
       fontWeight: 'bold',
-      _focus: { boxShadow: 'none', outline: 'none' },
       verticalAlign: 'baseline',
       alignItems: 'start',
       alignContent: 'start'

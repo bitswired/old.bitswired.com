@@ -1,4 +1,6 @@
-import { Box, Center, Spinner, Stack, VStack } from '@chakra-ui/react';
+import { Box, Center, Stack, StackDirection } from '@chakra-ui/layout';
+import { ResponsiveValue, useBreakpointValue } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/spinner';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import Button from 'components/Button';
 import TextInput from 'components/Input/TextInput';
@@ -10,48 +12,44 @@ function isEmail(email: string) {
   return re.test(email) || `${email} is not a valid email`;
 }
 
-export default function NewsletterForm(): JSX.Element {
+interface NewsletterFormProps {
+  direction?: StackDirection;
+  inputTextColor?: string;
+  size?: ResponsiveValue<SizeVariant>;
+}
+
+export default function NewsletterForm({
+  direction = 'row',
+  inputTextColor,
+  size = 'md'
+}: NewsletterFormProps): JSX.Element {
   const { control, onError, onExpire, onVerify, handleSubmit, captchaRef, loading } =
     useNewsletterForm();
 
+  // TODO: Fix type
+  // @ts-ignore
+  const sizeValue = useBreakpointValue(typeof size === 'string' ? [size] : size) ?? undefined;
+
   return (
-    <Box position="relative">
+    <Box position="relative" w="100%">
       <form onSubmit={handleSubmit}>
-        <VStack>
+        <Stack direction={direction}>
           <TextInput
-            size="md"
+            size={sizeValue}
+            color={inputTextColor}
             control={control}
             placeholder="Email"
             name="email"
             rules={{ required: 'Email required', validate: { isEmail } }}
             borderColor="primary"
           />
-
-          <Stack w="100%" direction={['column', 'row']}>
-            <TextInput
-              size="md"
-              control={control}
-              name="firstName"
-              placeholder="First Name"
-              rules={{ required: 'First name required' }}
-              borderColor="primary"
-            />
-            <TextInput
-              size="md"
-              control={control}
-              name="lastName"
-              placeholder="Last Name"
-              rules={{ required: 'Last name required' }}
-              borderColor="primary"
-            />
-          </Stack>
-        </VStack>
-
+          <Box>
+            <Button variant="secondary-solid" type="submit" size={sizeValue}>
+              Wire up
+            </Button>
+          </Box>
+        </Stack>
         <br />
-
-        <Button variant="secondary-solid" type="submit">
-          Wire Up
-        </Button>
 
         <HCaptcha
           sitekey="acc1764f-11de-455c-8547-1c5ce7bd8e35"

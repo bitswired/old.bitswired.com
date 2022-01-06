@@ -1,4 +1,5 @@
-import { Box, keyframes } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/layout';
+import { keyframes } from '@chakra-ui/system';
 import React from 'react';
 import { ComponentType } from 'react';
 

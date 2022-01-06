@@ -1,4 +1,4 @@
-import { Box, Center, Heading, VStack } from '@chakra-ui/react';
+import { Box, Center, Heading, VStack } from '@chakra-ui/layout';
 import BlogPostGrid from 'components/Blog/BlogPostGrid';
 import { BLOG_URL } from 'config';
 import { BlogJsonLd, NextSeo } from 'next-seo';
@@ -59,8 +59,8 @@ export default function BlogLandingPage({ metas }: BlogPostLandingPageProps): JS
 }
 
 export async function getStaticProps() {
-  const posts = await getAllPosts();
+  const metas = await getAllPosts();
   return {
-    props: { metas: posts.map((x: any) => x.meta) }
+    props: { metas }
   };
 }

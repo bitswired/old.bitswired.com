@@ -1,6 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 
-console.log(process.env.ANALYZE);
+const remarkGfm = require('remark-gfm');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
@@ -8,16 +8,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const withMDX = require('@next/mdx')({
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [],
-    extension: /\.(md|mdx)$/
+    extension: /\.(md|mdx)$/,
+    providerImportSource: '@mdx-js/react'
   }
 });
 
 module.exports = withPlugins(
   [
     withMDX({
-      pageExtensions: ['js', 'ts', 'tsx', 'mdx']
+      pageExtensions: ['js', 'ts', 'tsx', 'mdx', 'md']
     }),
     [withBundleAnalyzer]
   ],

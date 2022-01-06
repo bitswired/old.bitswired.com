@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/layout';
 import InternalLink from 'components/InternalLink';
 import { routes } from 'config';
 import { useRouter } from 'next/router';

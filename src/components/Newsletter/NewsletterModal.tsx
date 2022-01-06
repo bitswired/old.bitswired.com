@@ -1,52 +1,62 @@
+import { Icon } from '@chakra-ui/icon';
+import { AspectRatio, Box, Heading, HStack, Text, VStack } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import {
-  Box,
-  HStack,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
-  Text,
-  useBreakpointValue,
-  VStack
-} from '@chakra-ui/react';
-import { Icon } from '@chakra-ui/react';
+  ModalOverlay
+} from '@chakra-ui/modal';
+import { Image } from '@chakra-ui/react';
 import { FaCheck } from 'react-icons/fa';
+import { IMAGE_WIREUP } from 'utils/static-urls';
 
 import NewsletterForm from './NewsletterForm';
 
 function Footer() {
   return (
-    <Text>
-      Never miss out our{' '}
+    <Text w="100%">
+      Get regular{' '}
       <Box as="span" fontWeight="bold">
-        insightful
+        content and updates
       </Box>
-      , regular tech content
+      !
     </Text>
   );
 }
 
 function Body() {
   return (
-    <VStack alignItems="stretch" spacing="2em">
-      <Box>
-        <Text fontSize="lg">
-          Bitswired provide tech tips, programming tutorials, in depth guides and curated tech news!
-        </Text>
-      </Box>
+    <>
+      <AspectRatio ratio={16 / 9} maxH="300px">
+        <Image
+          borderTopLeftRadius={5}
+          borderTopRightRadius={5}
+          objectFit="cover"
+          src={IMAGE_WIREUP}
+        />
+      </AspectRatio>
 
-      <NewsletterForm />
-    </VStack>
+      <VStack alignItems="stretch" spacing="2em" p="2em" pb={0}>
+        <Box>
+          <Heading as="h1" fontSize="2em">
+            Subscribe to the newsletter
+          </Heading>
+        </Box>
+
+        <NewsletterForm size={{ base: 'md', sm: 'lg' }} />
+      </VStack>
+    </>
   );
 }
 
 function NotSubscribed() {
   return (
     <>
-      <ModalHeader fontSize="2xl">Wire Up to the Newletter</ModalHeader>
-      <ModalBody>
+      {/* <ModalHeader fontSize="2xl">Wire Up to the Newletter</ModalHeader> */}
+      <ModalBody p={0}>
         <Body />
       </ModalBody>
       <ModalFooter>

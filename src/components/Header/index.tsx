@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Flex, Spacer } from '@chakra-ui/layout';
 import Logo from 'components/Logo';
 import Navigation from 'components/Navigation';
 // import NavigationSlider from 'components/NavigationSlider';

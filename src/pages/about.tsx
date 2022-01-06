@@ -1,18 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Icon } from '@chakra-ui/icon';
 import {
   Box,
   Heading,
   HStack,
-  Icon,
   Link,
-  LinkBox,
-  LinkOverlay,
   ListItem,
   Text,
   UnorderedList,
   VStack,
   Wrap
-} from '@chakra-ui/react';
+} from '@chakra-ui/layout';
+import Button from 'components/Button';
 import { infos } from 'config';
 import { NextSeo } from 'next-seo';
 import React from 'react';
@@ -20,10 +19,8 @@ import {
   FaAtom,
   FaBrain,
   FaCode,
-  FaDiscord,
   FaEnvelope,
   FaEnvelopeOpenText,
-  FaExternalLinkAlt,
   FaGlobe,
   FaLinkedin,
   FaUser
@@ -127,9 +124,9 @@ export default function AboutPage(): JSX.Element {
         <Section id="me" title="Me" variant="light" icon={FaUser}>
           <Box>
             <Text>
-              I am a French, 28 years old machine learning engineer based in Switzerland. I studied
-              at EPFL where I first got a Bachelor's degree in Computer Science/Communication
-              Systems, and then a Master's degree in Data Science.
+              I am a 28 years old machine learning engineer based in Switzerland. I studied at EPFL
+              where I first got a Bachelor's degree in Computer Science/Communication Systems, and
+              then a Master's degree in Data Science.
             </Text>
             <br />
             <Text>
@@ -144,23 +141,17 @@ export default function AboutPage(): JSX.Element {
           </Box>
 
           <VStack align={['center', 'stretch']}>
-            <LinkBox>
-              <HStack color="primary" w="22ch">
-                <Icon as={FaEnvelope} fontSize="2xl" />
-                <LinkOverlay textDecoration="underline" href={`mailto:${infos.contactEmail}`}>
-                  Contact me by email
-                </LinkOverlay>
-              </HStack>
-            </LinkBox>
+            <Link alt="Email address" href={`mailto:${infos.contactEmail}`}>
+              <Button size="md" variant="primary-solid" leftIcon={<FaEnvelope />}>
+                Contact me by email
+              </Button>
+            </Link>
 
-            <LinkBox>
-              <HStack color="secondary" w="22ch">
-                <Icon as={FaLinkedin} fontSize="2xl" />
-                <LinkOverlay textDecoration="underline" isExternal href={infos.linkedInProfile}>
-                  Find me on LinkedIn
-                </LinkOverlay>
-              </HStack>
-            </LinkBox>
+            <Link alt href={infos.linkedInProfile}>
+              <Button size="md" variant="secondary-solid" leftIcon={<FaLinkedin />}>
+                Find me on Linkedin
+              </Button>
+            </Link>
           </VStack>
         </Section>
 
@@ -233,33 +224,33 @@ export default function AboutPage(): JSX.Element {
             <Wrap m="auto" justify="center">
               <NewsletterFeature
                 icon={FaBrain}
-                title="Bits of Research"
-                description="1 highlighted research paper, with comments and executive summary."
+                title="A bit of Research"
+                description="Highlighted research paper, with comments and executive summary."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaAtom}
-                title="Bits of Tech"
-                description="2 selected articles to stay on top of our modern data era."
+                title="A bit of Tech"
+                description="Articles to stay on top of our modern data era."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaCode}
-                title="Bits of Code"
-                description="1 highlighted library, framework or tool introduced in the blink of an eye."
+                title="A bit of Tools"
+                description="Highlighted libraries, framework or tool introduced in the blink of an eye."
                 color="secondary"
               />
               <NewsletterFeature
                 icon={FaEnvelopeOpenText}
-                title="Bits of News"
-                description="Several news covering important events around the digital technologies world."
+                title="A bit of News"
+                description="News covering important events around the digital technologies world."
                 color="secondary"
               />
             </Wrap>
           </VStack>
         </Section>
 
-        <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>
+        {/* <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>
           <Text>
             The{' '}
             <Link href={infos.discrodInvite} isExternal textDecor="underline" color="primary">
@@ -279,7 +270,7 @@ export default function AboutPage(): JSX.Element {
           <br />
           <br />
           <br />
-        </Section>
+        </Section> */}
       </VStack>
     </>
   );

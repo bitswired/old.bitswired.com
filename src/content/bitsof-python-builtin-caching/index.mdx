@@ -1,34 +1,21 @@
----
-title: Bits of Python - Built-in Caching
-description:
-  Easily squeeze performance out of your scripts, with only slight modifications. Learn how
-  to leverage caching easily in Python.
-readMinutes: 10
-image: https://statics.bitswired.com/images-opti/blog/gears.webp
-category: Programming
-tags: [Python, Caching]
-slug: bitsof-python-builtin-caching
-published: true
-datePublished: '2019-01-01'
-dateModified: '2019-01-01'
-images:
-  - https://statics.bitswired.com/images-opti/blog/gears.webp
----
+import meta from './meta';
+import data from './data';
+import BlogPost from 'components/Blog/BlogPost';
 
-<BitsOfSummary>
-  <BitsOfNutshell>
-    In a nutshell: caching is an easy way to improve performance when costly computations can be
-    reused. You can implement it easily in Python using @cache and @lru_cache decorators
-  </BitsOfNutshell>
-  <BitsOfInfoWarnSection>
-    <BitsOfInfoBlock>
-      Costly repeated computations& Real-time performance requirements
-    </BitsOfInfoBlock>
-    <BitsOfWarnBlock>
-      Memory can blow up if the cache size in unbounded& Freshness can be an issue in some cases
-    </BitsOfWarnBlock>
-  </BitsOfInfoWarnSection>
-</BitsOfSummary>
+import { BitsOfSummary, InfoBlock, LinLogLineChart } from 'components/MDX';
+
+export default function Layout({ children }) {
+  return <BlogPost meta={meta}>{children}</BlogPost>;
+}
+
+<BitsOfSummary
+  summary=" In a nutshell: caching is an easy way to improve performance when costly computations can be reused. You can implement it easily in Python using @cache and @lru_cache decorators"
+  infos={['Costly repeated computations', 'Real-time performance requirements']}
+  warnings={[
+    'Memory can blow up if the cache size in unbounded',
+    'Freshness can be an issue in some cases'
+  ]}
+/>
 
 Find the code related to this _Bits of ..._ [on GitHub][github repo].
 
@@ -92,11 +79,9 @@ def recur_fibo_no_cache(n):
 ```
 
 <InfoBlock>
-
-This implementaion is recursive: the function calls itself many times to solve the problem. It is
-not the most performant implementaion. The iterative version is both more computationally and memory
-efficient. However it's a good example to demonstrate the benefits of caching.
-
+  This implementaion is recursive: the function calls itself many times to solve the problem. It is
+  not the most performant implementation. The iterative version is both more computationally and
+  memory efficient. However it's a good example to demonstrate the benefits of caching.
 </InfoBlock>
 
 As you can observe, we repeat over and over the same computations. An easy way to speedup this code

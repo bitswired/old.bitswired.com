@@ -1,5 +1,5 @@
-import { Icon } from '@chakra-ui/react';
-import { FaDiscord, FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
+import { Icon } from '@chakra-ui/icon';
+import { FaInstagram, FaLinkedin, FaReddit, FaTwitter } from 'react-icons/fa';
 import { SiJavascript, SiPython, SiTypescript } from 'react-icons/si';
 
 export const staticsBaseUrl = 'https://statics.bitswired.com';
@@ -51,7 +51,7 @@ export const deoDefaults = {
 };
 
 export const socialsFollow = [
-  { url: infos.discrodInvite, name: 'discord', icon: FaDiscord },
+  // { url: infos.discrodInvite, name: 'discord', icon: FaDiscord },
   { url: infos.twitterProfile, name: 'twitter', icon: FaTwitter }
   // { url: 'https://www.instagram.com/bitswired/', name: 'intagram', icon: FaInstagram }
 ];
