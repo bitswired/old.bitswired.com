@@ -1,5 +1,6 @@
 import { Box, Flex } from '@chakra-ui/layout';
 import NewsletterSubscribeAction from 'components/Actions/NewsletterSubscribeAction';
+import Button from 'components/Button';
 import { Fade } from 'components/Reveal/Fade';
 import React from 'react';
 import { FaChalkboard, FaEnvelope, FaUsers } from 'react-icons/fa';
@@ -29,9 +30,7 @@ export default function Features(): JSX.Element | null {
           <>
             Sharing new content from Bitswired and other websites, interesting papers and resources.{' '}
             <NewsletterSubscribeAction display="inline">
-              <Box as="span" color="primary1" textDecor="underline" cursor="pointer">
-                Subscribe!
-              </Box>
+              <Button variant="primary-link">Subscribe!</Button>
             </NewsletterSubscribeAction>
           </>
         </FeatureCard>

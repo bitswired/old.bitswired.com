@@ -1,5 +1,5 @@
 import { Icon } from '@chakra-ui/icon';
-import { AspectRatio, Box, Heading, HStack, Text, VStack } from '@chakra-ui/layout';
+import { AspectRatio, Box, Heading, HStack, Link, Text, VStack } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
 import {
   Modal,
@@ -10,20 +10,38 @@ import {
   ModalOverlay
 } from '@chakra-ui/modal';
 import { Image } from '@chakra-ui/react';
+import InternalLink from 'components/InternalLink';
+import { NewsletterContext } from 'context/newsletter';
+import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { IMAGE_WIREUP } from 'utils/static-urls';
 
 import NewsletterForm from './NewsletterForm';
 
 function Footer() {
+  const newsletterContext = React.useContext(NewsletterContext);
+
   return (
-    <Text w="100%">
-      Get regular{' '}
-      <Box as="span" fontWeight="bold">
-        content and updates
-      </Box>
-      !
-    </Text>
+    <Box>
+      <Text display="inline">
+        Get regular{' '}
+        <Box as="span" fontWeight="bold">
+          content and updates
+        </Box>
+        !
+      </Text>
+      <InternalLink href="/about#newsletter" passHref>
+        <Link
+          color="secondary1"
+          textDecoration="underline"
+          alt="newsletter"
+          ml="1em"
+          onClick={() => newsletterContext?.close()}
+        >
+          learn more
+        </Link>
+      </InternalLink>
+    </Box>
   );
 }
 
