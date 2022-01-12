@@ -41,18 +41,18 @@ export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
         onSliderOpen={onSliderOpen}
         onSliderClose={onSliderClose}
       />
-      <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-        <MotionBox
-          key={pathname}
-          variants={variants}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          mt="75px"
-        >
-          {children}
-        </MotionBox>
-      </AnimatePresence>
+      {/* <AnimatePresence exitBeforeEnter initial={false} onExitComplete={() => window.scrollTo(0, 0)}> */}
+      {/* <MotionBox
+        key={pathname}
+        variants={variants}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        mt="75px"
+      > */}
+      <Box mt="75px">{children}</Box>
+      {/* </MotionBox> */}
+      {/* </AnimatePresence> */}
       <DynamicFooter />
       <DynamicNewsletterModal
         isOpen={isNewsletterModalOpen}
