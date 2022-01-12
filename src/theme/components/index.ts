@@ -4,7 +4,8 @@ export default {
       justify: 'center',
       align: 'center',
       fontWeight: 'bold',
-      alignItems: 'center'
+      alignItems: 'center',
+      transition: 'background ease 0.3s'
     },
 
     sizes: {
@@ -26,40 +27,49 @@ export default {
       'primary-solid': {
         color: 'white',
         bg: 'primary1',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        _hover: {
+          bg: 'primary3'
+        }
       },
       'secondary-solid': {
         color: 'white',
         bg: 'secondary1',
         textTransform: 'uppercase',
         _hover: {
-          filter: 'brightness(0.5)'
+          bg: 'secondary3'
         }
       },
       'primary-outline': {
         color: 'primary1',
         borderColor: 'primary1',
         borderWidth: '2px',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        _hover: {
+          borderColor: 'primary3'
+        }
       },
       'secondary-outline': {
         color: 'secondary1',
         borderColor: 'secondary1',
         borderWidth: '2px',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        _hover: {
+          borderColor: 'secondary3'
+        }
       },
       'primary-link': {
         textTransform: 'capitalize',
         color: 'primary1',
         _hover: {
-          bgColor: 'gray.200'
+          bg: 'gray2'
         }
       },
       'secondary-link': {
         textTransform: 'capitalize',
         color: 'secondary1',
         _hover: {
-          bgColor: 'gray.200'
+          bg: 'gray2'
         }
       }
     },

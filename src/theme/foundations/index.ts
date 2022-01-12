@@ -49,12 +49,26 @@ const secondaryScale = {
   secondary5: '#002373'
 };
 
+const grayScale = {
+  gray1: '#f8faf9',
+  gray2: '#eaefec',
+  gray3: '#dbe3de',
+  gray4: '#cad6cf',
+  gray5: '#b8c7bf',
+  gray6: '#a4b8ad',
+  gray7: '#8ca698',
+  gray8: '#71907f',
+  gray8: '#587264',
+  gray10: '#34433b'
+};
+
 export default {
   colors: {
     text: '#000',
     background: '#fff',
     ...primaryScale,
     ...secondaryScale,
+    ...grayScale,
     info: '#1DDD78',
     // info: '#0AADFF',
     warning: '#FF5E13',
