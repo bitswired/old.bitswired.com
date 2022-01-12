@@ -101,7 +101,7 @@ export default {
           bgColor: '#DDD',
           fontFamily: props.theme.fonts.mono,
           //color: props.theme.colors.secondary
-          color: 'green'
+          color: 'primary3'
         }
       }
     })

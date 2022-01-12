@@ -2,7 +2,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Box } from '@chakra-ui/layout';
 import Header from 'components/Header';
 import { NewsletterContext } from 'context/newsletter';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import React from 'react';
