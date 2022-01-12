@@ -124,14 +124,14 @@ function MDXLink(props: LinkProps): JSX.Element {
     const { href, ...p } = props;
     return (
       <InternalLink href={href} passHref>
-        <Link color="secondary" textDecoration="underline" {...p}>
+        <Link color="secondary1" textDecoration="underline" {...p}>
           {props.children}
         </Link>
       </InternalLink>
     );
   } else
     return (
-      <Link color="secondary" textDecoration="underline" isExternal {...props}>
+      <Link color="secondary1" textDecoration="underline" isExternal {...props}>
         {props.children}
       </Link>
     );
@@ -174,7 +174,7 @@ function BitsOfInfoWarnBlockBuilder(type: 'info' | 'warning') {
         <VStack>
           {items.map((text: string) => (
             <HStack key="text" w="100%" align="flex-start">
-              {/* <Icon as={B} color={type === 'info' ? 'primary' : 'secondary'} mt="0.25em" /> */}
+              {/* <Icon as={B} color={type === 'info' ? 'primary1' : 'secondary1'} mt="0.25em" /> */}
               <Icon as={B} color="black" mt="0.25em" />
               <Box>{text}</Box>
             </HStack>
@@ -210,8 +210,8 @@ interface BitsOfSummaryProps {
 export function BitsOfSummary(props: BitsOfSummaryProps): JSX.Element {
   return (
     <VStack
-      bgGradient="linear(primary, white)"
-      bgColor="primary"
+      bgGradient="linear(primary1, white)"
+      bgColor="primary1"
       shadow="xl"
       color="333"
       rounded="lg"

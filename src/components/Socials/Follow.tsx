@@ -13,7 +13,7 @@ export function SocialIcon({ as, url, fontSize = '32px' }: SocialIconProps): JSX
   return (
     <LinkBox>
       <LinkOverlay href={url} isExternal>
-        <Icon color="primary" fontSize={fontSize} as={as} />
+        <Icon color="primary1" fontSize={fontSize} as={as} />
       </LinkOverlay>
     </LinkBox>
   );

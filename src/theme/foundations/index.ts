@@ -33,12 +33,28 @@ const textStyles = {
   }
 };
 
+const primaryScale = {
+  primary1: '#1DDD78',
+  primary2: '#00B150',
+  primary3: '#00862A',
+  primary4: '#005C00',
+  primary5: '#003600'
+};
+
+const secondaryScale = {
+  secondary1: '#0B88EE',
+  secondary2: '#006CCE',
+  secondary3: '#0052AF',
+  secondary4: '#003990',
+  secondary5: '#002373'
+};
+
 export default {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#1DDD78',
-    secondary: '#0B88EE',
+    ...primaryScale,
+    ...secondaryScale,
     info: '#1DDD78',
     // info: '#0AADFF',
     warning: '#FF5E13',

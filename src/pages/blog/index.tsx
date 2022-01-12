@@ -45,7 +45,7 @@ export default function BlogLandingPage({ metas }: BlogPostLandingPageProps): JS
             as="h1"
             fontFamily="orbitron"
             fontSize="2rem"
-            bgGradient="linear(to-l, primary, secondary)"
+            bgGradient="linear(to-l, primary1, secondary1)"
             bgClip="text"
           >
             Bitswired Blog

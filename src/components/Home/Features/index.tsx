@@ -29,7 +29,7 @@ export default function Features(): JSX.Element | null {
           <>
             Sharing new content from Bitswired and other websites, interesting papers and resources.{' '}
             <NewsletterSubscribeAction display="inline">
-              <Box as="span" color="primary" textDecor="underline" cursor="pointer">
+              <Box as="span" color="primary1" textDecor="underline" cursor="pointer">
                 Subscribe!
               </Box>
             </NewsletterSubscribeAction>

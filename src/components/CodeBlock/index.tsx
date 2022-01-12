@@ -91,7 +91,7 @@ export default function CodeBlock({ children, className }: CodeBlockProps): JSX.
         borderLeft="solid #BBB 0.5rem"
         fontFamily="sans"
       >
-        <Box color="primary">{codeLanguageIcons[language]}</Box>
+        <Box color="primary1">{codeLanguageIcons[language]}</Box>
         {meta.filename && <Box fontSize="0.8em">{meta.filename}</Box>}
         {meta.title && (
           <Box fontSize="0.8em" fontWeight="bolder">

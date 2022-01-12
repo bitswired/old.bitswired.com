@@ -41,7 +41,7 @@ export default function NewsletterForm({
             placeholder="Email"
             name="email"
             rules={{ required: 'Email required', validate: { isEmail } }}
-            borderColor="primary"
+            borderColor="primary1"
           />
           <Box>
             <Button variant="secondary-solid" type="submit" size={sizeValue}>
@@ -70,7 +70,7 @@ export default function NewsletterForm({
           bgColor="rgba(255, 255, 255, 0.5)"
         >
           <Center>
-            <Spinner w="200px" h="200px" color="primary" emptyColor="secondary" />
+            <Spinner w="200px" h="200px" color="primary1" emptyColor="secondary1" />
           </Center>
         </Box>
       )}

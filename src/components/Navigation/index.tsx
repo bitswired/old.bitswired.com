@@ -13,12 +13,12 @@ function NavigationItem({ route, isActive }: HeaderNavItemProps) {
   return (
     <Text
       mx={4}
-      color={isActive ? 'secondary' : 'white'}
+      color={isActive ? 'secondary1' : 'white'}
       _hover={
         isActive
           ? {}
           : {
-              color: 'secondary',
+              color: 'secondary1',
               transform: 'scale(1.2)'
             }
       }

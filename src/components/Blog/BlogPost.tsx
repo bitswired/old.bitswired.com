@@ -93,7 +93,7 @@ function SideFull({ meta }: SideProps) {
       </VStack>
 
       <VStack bgColor="#EEE" spacing="2em" p="2em" rounded="md">
-        <Text colot="primary" textTransform="uppercase" fontWeight="bold">
+        <Text colot="primary1" textTransform="uppercase" fontWeight="bold">
           Subscribe to get updates
         </Text>
 

@@ -25,36 +25,39 @@ export default {
     variants: {
       'primary-solid': {
         color: 'white',
-        bg: 'primary',
+        bg: 'primary1',
         textTransform: 'uppercase'
       },
       'secondary-solid': {
         color: 'white',
-        bg: 'secondary',
-        textTransform: 'uppercase'
+        bg: 'secondary1',
+        textTransform: 'uppercase',
+        _hover: {
+          filter: 'brightness(0.5)'
+        }
       },
       'primary-outline': {
-        color: 'primary',
-        borderColor: 'primary',
+        color: 'primary1',
+        borderColor: 'primary1',
         borderWidth: '2px',
         textTransform: 'uppercase'
       },
       'secondary-outline': {
-        color: 'secondary',
-        borderColor: 'secondary',
+        color: 'secondary1',
+        borderColor: 'secondary1',
         borderWidth: '2px',
         textTransform: 'uppercase'
       },
       'primary-link': {
         textTransform: 'capitalize',
-        color: 'primary',
+        color: 'primary1',
         _hover: {
           bgColor: 'gray.200'
         }
       },
       'secondary-link': {
         textTransform: 'capitalize',
-        color: 'secondary',
+        color: 'secondary1',
         _hover: {
           bgColor: 'gray.200'
         }
@@ -134,7 +137,7 @@ export default {
 
       body: {
         fontSize: '100px',
-        color: 'primary',
+        color: 'primary1',
         width: 'max-content',
         margin: 'auto',
         p: 4

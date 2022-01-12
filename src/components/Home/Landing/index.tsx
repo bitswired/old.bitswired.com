@@ -61,7 +61,7 @@ export default function Landing(): JSX.Element {
             w="40ch"
             textAlign="center"
             fontWeight="bold"
-            bgGradient="linear(to-l, primary, secondary)"
+            bgGradient="linear(to-l, primary1, secondary1)"
             bgClip="text"
           >
             {/* Spreading Tech Knowledge from Programing up to Machine Learning */}
@@ -82,7 +82,7 @@ export default function Landing(): JSX.Element {
         <Box py="1em" w="75%" m="auto" maxW="750px">
           <NewsletterForm
             direction="row"
-            inputTextColor="primary"
+            inputTextColor="primary1"
             size={{ base: 'md', sm: 'lg' }}
           />
         </Box>

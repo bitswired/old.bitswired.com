@@ -33,13 +33,13 @@ function NavigationMobileItem({ route, isActive }: NavigationItemProps) {
   return (
     <Text
       mx={4}
-      color={isActive ? 'secondary' : 'white'}
+      color={isActive ? 'secondary1' : 'white'}
       textTransform="uppercase"
       _hover={
         isActive
           ? {}
           : {
-              color: 'secondary',
+              color: 'secondary1',
               transform: 'scale(1.2)'
             }
       }

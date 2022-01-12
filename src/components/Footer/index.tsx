@@ -25,7 +25,7 @@ function FooterSection({ title, body }: FooterSectionProps) {
 function WireUpTitle() {
   return (
     <>
-      <Text display="inline" color="primary">
+      <Text display="inline" color="primary1">
         Wire Up!{' '}
       </Text>
       <Text display="inline">Subscribe</Text>
@@ -54,7 +54,7 @@ function PagesBody() {
   return (
     <Box color="white">
       {routes.map((route) => (
-        <Box key={route.name} textAlign="center" _hover={{ color: 'secondary' }}>
+        <Box key={route.name} textAlign="center" _hover={{ color: 'secondary1' }}>
           <InternalLink href={route.path}>{route.name}</InternalLink>
         </Box>
       ))}

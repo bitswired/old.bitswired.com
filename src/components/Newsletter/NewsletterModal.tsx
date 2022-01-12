@@ -72,7 +72,7 @@ function Subscribed() {
       <ModalHeader fontSize="2xl">Subscribed</ModalHeader>
       <ModalBody>
         <HStack spacing="2em">
-          <Icon color="primary" fontSize="8xl" as={FaCheck} />
+          <Icon color="primary1" fontSize="8xl" as={FaCheck} />
           <Box>
             <Text fontSize="2xl">Thank You for subscribing</Text>
             <br />

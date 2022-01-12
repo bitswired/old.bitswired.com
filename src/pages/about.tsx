@@ -34,8 +34,8 @@ interface AccentProps {
 }
 function Accent({ children, primary = false, secondary = false, bold = false }: AccentProps) {
   let color;
-  if (primary) color = 'primary';
-  else if (secondary) color = 'secondary';
+  if (primary) color = 'primary1';
+  else if (secondary) color = 'secondary1';
 
   const fontWeight = bold ? 'bold' : 'normal';
 
@@ -57,7 +57,7 @@ interface SectionProps {
 function Section({ id, title, variant, icon, children }: SectionProps) {
   const bgColor = variant === 'light' ? 'white' : 'black';
   const color = variant === 'light' ? '#333' : 'white';
-  const headingColor = variant === 'light' ? 'secondary' : 'primary';
+  const headingColor = variant === 'light' ? 'secondary1' : 'primary1';
 
   return (
     <Box as="section" id={id} bgColor={bgColor} color={color} p="2em">
@@ -77,7 +77,7 @@ interface NewsletterFeatureProps {
   icon: any;
   title: string;
   description: string;
-  color: 'primary' | 'secondary';
+  color: 'primary1' | 'secondary1';
 }
 
 function NewsletterFeature({ icon, title, description, color }: NewsletterFeatureProps) {
@@ -226,25 +226,25 @@ export default function AboutPage(): JSX.Element {
                 icon={FaBrain}
                 title="A bit of Research"
                 description="Highlighted research paper, with comments and executive summary."
-                color="secondary"
+                color="secondary1"
               />
               <NewsletterFeature
                 icon={FaAtom}
                 title="A bit of Tech"
                 description="Articles to stay on top of our modern data era."
-                color="secondary"
+                color="secondary1"
               />
               <NewsletterFeature
                 icon={FaCode}
                 title="A bit of Tools"
                 description="Highlighted libraries, framework or tool introduced in the blink of an eye."
-                color="secondary"
+                color="secondary1"
               />
               <NewsletterFeature
                 icon={FaEnvelopeOpenText}
                 title="A bit of News"
                 description="News covering important events around the digital technologies world."
-                color="secondary"
+                color="secondary1"
               />
             </Wrap>
           </VStack>
@@ -253,7 +253,7 @@ export default function AboutPage(): JSX.Element {
         {/* <Section id="discord" title="Discord Community  " variant="dark" icon={FaDiscord}>
           <Text>
             The{' '}
-            <Link href={infos.discrodInvite} isExternal textDecor="underline" color="primary">
+            <Link href={infos.discrodInvite} isExternal textDecor="underline" color="primary1">
               Bitswired discord community <Icon as={FaExternalLinkAlt} fontSize="0.7em" />
             </Link>{' '}
             is a place for us to connect, learn together and share our passion for digital
