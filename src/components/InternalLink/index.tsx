@@ -5,9 +5,5 @@ interface InternalLinkProps extends LinkProps {
 }
 
 export default function InternalLink(props: InternalLinkProps): JSX.Element {
-  return (
-    <Link {...props} scroll={false}>
-      {props.children}
-    </Link>
-  );
+  return <Link {...props}>{props.children}</Link>;
 }

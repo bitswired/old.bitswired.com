@@ -68,7 +68,7 @@ Here is the implementaion in Python:
 
 ```python
 ---
-{ "filename": "cache.py", "github": "https://github.com/bitswired/bitsof/blob/master/python/bits_of_python/caching/cache.py" }
+{ "filename": "cache.py", "github": "https://github.com/bitswired/bitsof-python/blob/master/bitsof_python/functools_caching/cache.py" }
 ---
 # Recursive fibo without cache
 def recur_fibo_no_cache(n):
@@ -94,7 +94,7 @@ size of 5. `@lru_cache(maxsize=None)` is equivalent to `@cache`.
 
 ```python
 ---
-{"filename": "cache.py", "github": "https://github.com/bitswired/bitsof-python/blob/master/bitsof-python/caching/cache.py" }
+{"filename": "cache.py", "github": "https://github.com/bitswired/bitsof-python/blob/master/bitsof_python/functools_caching/cache.py" }
 ---
 # Recursive fibo with cache (using functools cache decorator)
 @cache
@@ -119,7 +119,7 @@ does not improve the performance!
 
 ```python
 ---
-{"filename": "cache.py", "github": "https://github.com/bitswired/bitsof-python/blob/master/bitsof-python/caching/cache.py", "collapsable": true }
+{"filename": "cache.py", "github": "https://github.com/bitswired/bitsof-python/blob/master/bitsof_python/functools_caching/cache.py", "collapsable": true }
 ---
 def exec_and_clear(f, arg):
     a = f(arg)
@@ -178,6 +178,6 @@ Using the `@lru_cache` decorator we get **a x2.28e5 speedup**!
   series={data}
 />
 
-[github repo]: https://github.com/bitswired/bitsof-python/blob/master/bitsof-python/caching/cache.py
+[github repo]: https://github.com/bitswired/bitsof-python/blob/master/bitsof_python/functools_caching/cache.py
 [fibo]: https://en.wikipedia.org/wiki/Fibonacci_number
 [functools]: https://docs.python.org/3/library/functools.html
