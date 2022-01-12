@@ -54,7 +54,7 @@ const grayScale = {
   gray6: '#a4b8ad',
   gray7: '#8ca698',
   gray8: '#71907f',
-  gray8: '#587264',
+  gray9: '#587264',
   gray10: '#34433b'
 };
 

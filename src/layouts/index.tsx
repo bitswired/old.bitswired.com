@@ -2,9 +2,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Box } from '@chakra-ui/layout';
 import Header from 'components/Header';
 import { NewsletterContext } from 'context/newsletter';
-import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import React from 'react';
 
 const DynamicNewsletterModal = dynamic(() => import('components/Newsletter/NewsletterModal'), {
@@ -15,19 +13,19 @@ const DynamicFooter = dynamic(() => import('components/Footer'), {
   ssr: false
 });
 
-const variants = {
-  hidden: { opacity: 0, transition: { ease: 'easeOut', duration: 0.2 } },
-  enter: { opacity: 1, transition: { ease: 'easeOut', duration: 0.2, delay: 0.2 } },
-  exit: { opacity: 0, transition: { ease: 'easeOut', duration: 0.2 } }
-};
+// const variants = {
+//   hidden: { opacity: 0, transition: { ease: 'easeOut', duration: 0.2 } },
+//   enter: { opacity: 1, transition: { ease: 'easeOut', duration: 0.2, delay: 0.2 } },
+//   exit: { opacity: 0, transition: { ease: 'easeOut', duration: 0.2 } }
+// };
 
-const MotionBox = motion(Box);
+// const MotionBox = motion(Box);
 
 interface MainLayoutProps {
   children: JSX.Element[] | JSX.Element;
 }
 export function MainLayout({ children }: MainLayoutProps): JSX.Element | null {
-  const { pathname } = useRouter();
+  // const { pathname } = useRouter();
   const { isOpen: isSliderOpen, onOpen: onSliderOpen, onClose: onSliderClose } = useDisclosure();
 
   const newsletterContext = React.useContext(NewsletterContext);
